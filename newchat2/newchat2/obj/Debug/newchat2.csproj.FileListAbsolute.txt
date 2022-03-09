@@ -94,3 +94,17 @@ C:\Users\griha\source\repos\backupnewchat\newchat5\newchat2\newchat2\obj\Debug\n
 C:\Users\griha\source\repos\backupnewchat\newchat5\newchat2\newchat2\obj\Debug\newchat2.csproj.CopyComplete
 C:\Users\griha\source\repos\backupnewchat\newchat5\newchat2\newchat2\obj\Debug\newchat2.exe
 C:\Users\griha\source\repos\backupnewchat\newchat5\newchat2\newchat2\obj\Debug\newchat2.pdb
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\bin\Debug\newchat2.exe.config
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\bin\Debug\newchat2.exe
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\bin\Debug\newchat2.pdb
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\bin\Debug\MaterialSkin.dll
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.csprojAssemblyReference.cache
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.CreateChat.resources
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.Form1.resources
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.MainPage.resources
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.Properties.Resources.resources
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.csproj.GenerateResource.cache
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.csproj.CoreCompileInputs.cache
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.csproj.CopyComplete
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.exe
+C:\Users\пк\source\repos\chatGitHub\newchat2\newchat2\obj\Debug\newchat2.pdb

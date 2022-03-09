@@ -8,7 +8,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.IO;
 
-
+//sdsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdv
 namespace newchat2.ClASSES
 {
     class ConnectionWithDb
