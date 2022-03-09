@@ -8,7 +8,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.IO;
 
-
+//sdsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdv
 namespace newchat2.ClASSES
 {
     class ConnectionWithDb
@@ -158,7 +158,7 @@ namespace newchat2.ClASSES
             }
         }
 
-        public void create_chat(string user_name, ListBox list, string chat_name,Label l)
+        public void create_chat(string user_name, ListBox list, string chat_name)
         {
             string data_login = "('"+user_name+"'";
 
@@ -168,7 +168,7 @@ namespace newchat2.ClASSES
             }
             data_login += ")";
 
-            l.Text = data_login;
+            //l.Text = data_login;
 
             using (SqlConnection conn = new SqlConnection(_connection))
             {

@@ -32,7 +32,14 @@ namespace newchat2
         {
             if(users_ListBox.SelectedItems.Count>0)
             {
-                db.create_chat(_name_user, users_ListBox, name_chat_txt.Text,label1);
+                if (name_chat_txt.Text.Trim(' ') != "")
+                {
+                    db.create_chat(_name_user, users_ListBox, name_chat_txt.Text.Trim(' '));
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Enter the something the chat name", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
             //users_ListBox.SelectedItems;
             //label1.Text = "";
@@ -43,7 +50,7 @@ namespace newchat2
 
             //db.get_file_name();
 
-            this.Close();
+            //this.Close();
 
         }
 

@@ -38,7 +38,6 @@ namespace newchat2
             this.register = new System.Windows.Forms.Button();
             this.name_reg = new System.Windows.Forms.TextBox();
             this.password_reg = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Login.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -137,22 +136,12 @@ namespace newchat2
             this.password_reg.Enter += new System.EventHandler(this.password_reg_Enter);
             this.password_reg.Leave += new System.EventHandler(this.password_reg_Leave);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(294, 375);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(634, 421);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Login);
             this.Name = "MainPage";
@@ -163,7 +152,6 @@ namespace newchat2
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -178,6 +166,5 @@ namespace newchat2
         private System.Windows.Forms.Button register;
         private System.Windows.Forms.TextBox name_reg;
         private System.Windows.Forms.TextBox password_reg;
-        private System.Windows.Forms.Label label1;
     }
 }
