@@ -37,7 +37,7 @@ namespace newchat2
                     db.create_chat(_name_user, users_ListBox, name_chat_txt.Text.Trim(' '));
                     this.Close();
                 }
-                else
+                else 
                     MessageBox.Show("Enter the something the chat name", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
