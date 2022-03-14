@@ -46,14 +46,14 @@ namespace newchat2
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listBox1.Location = new System.Drawing.Point(216, 63);
+            this.listBox1.Location = new System.Drawing.Point(270, 102);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(349, 316);
             this.listBox1.TabIndex = 0;
             // 
             // send_message
             // 
-            this.send_message.Location = new System.Drawing.Point(415, 385);
+            this.send_message.Location = new System.Drawing.Point(469, 424);
             this.send_message.Name = "send_message";
             this.send_message.Size = new System.Drawing.Size(150, 32);
             this.send_message.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace newchat2
             // message
             // 
             this.message.BackColor = System.Drawing.SystemColors.Window;
-            this.message.Location = new System.Drawing.Point(216, 385);
+            this.message.Location = new System.Drawing.Point(270, 424);
             this.message.Multiline = true;
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(184, 32);
@@ -97,7 +97,7 @@ namespace newchat2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(380, 47);
+            this.label4.Location = new System.Drawing.Point(434, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 7;
@@ -109,7 +109,7 @@ namespace newchat2
             this.listBox2.BackColor = System.Drawing.SystemColors.Window;
             this.listBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(56, 63);
+            this.listBox2.Location = new System.Drawing.Point(110, 102);
             this.listBox2.Name = "listBox2";
             this.listBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listBox2.Size = new System.Drawing.Size(135, 316);
@@ -118,7 +118,7 @@ namespace newchat2
             // 
             // create_chat
             // 
-            this.create_chat.Location = new System.Drawing.Point(56, 385);
+            this.create_chat.Location = new System.Drawing.Point(110, 424);
             this.create_chat.Name = "create_chat";
             this.create_chat.Size = new System.Drawing.Size(135, 32);
             this.create_chat.TabIndex = 10;
