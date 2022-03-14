@@ -123,6 +123,8 @@ namespace newchat2.ClASSES
             }
         }
 
+
+
         public void login_user(MainPage mainPage,string name, string password)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
