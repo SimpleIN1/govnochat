@@ -77,7 +77,7 @@ namespace newchat2.ClASSES
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
-                if (name_reg.IndexOf(' ') >= 0 || password_reg.IndexOf(' ') >= 0)
+                if (name_reg.IndexOf(' ') >= 0 || password_reg.IndexOf(' ') >= 0 || name_reg == "Name" || password_reg=="Password")
                 {
                     //name_reg.Text = "Name";
                     //password_reg.PasswordChar = '\0';
