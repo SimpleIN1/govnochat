@@ -146,6 +146,10 @@ namespace newchat2
             //label2.Text = listBox2.Items.Count.ToString();
             //foreach (object v in listBox2.Items)
             //    label2.Text += v.ToString() + '\n';
+            for(int i = 0;i<11; ++i)
+            {
+                comboBox1.Items.Add(imageList1.Images[i].);
+            }
         }
 
         private void send_message_Click(object sender, EventArgs e)
@@ -252,5 +256,7 @@ namespace newchat2
             MainPage s = new MainPage();
             s.Show();
         }
+
+
     }
 }
