@@ -58,7 +58,7 @@ namespace newchat2.ClASSES
                 string select = "select id, name_chat_for_users from chat.chats where id in " +
                                     "(select id_chat from chat.users_chats where id_user = " +
                                         "(select id from chat.users where login = @login))";
-                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                SqlCommand sqlCommand = new SqlCommand(select, conn);   
                 sqlCommand.Parameters.AddWithValue("login",name);
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -81,7 +81,7 @@ namespace newchat2.ClASSES
                 {
                     //name_reg.Text = "Name";
                     //password_reg.PasswordChar = '\0';
-                    //password_reg.Text = "Password";
+                    //password_reg.Text = "Password";   
                     check_changed_password = true;
                     MessageBox.Show("Incorrect name or password", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -122,6 +122,8 @@ namespace newchat2.ClASSES
                 }
             }
         }
+
+
 
         public void login_user(MainPage mainPage,string name, string password)
         {

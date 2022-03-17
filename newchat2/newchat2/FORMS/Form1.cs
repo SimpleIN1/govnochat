@@ -238,7 +238,7 @@ namespace newchat2
             {
                 _count_written = 0;
                 listBox1.Items.Clear();
-                _path_to_file = "//DESKTOP-H4QAP6P/temp/" + connectionWithDb.get_file_name(chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key);
+                _path_to_file = "T:/!/ЯРЫГИ/temp_chats/" + connectionWithDb.get_file_name(chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key);
             }
 
             //label4.Text = chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key.ToString();//setKey[listBox2.SelectedIndex].ToString();

@@ -15,7 +15,11 @@ namespace newchat2
 {
     public partial class MainPage : Form
     {
+//<<<<<<< HEAD
         public static string connection = @"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True;User ID=aa;Password=1";
+//=======
+        //public static string connection = @"Data Source=dbsrv\sql2021;Initial Catalog=903a1_Serbinovich_GS;Integrated Security=True;User ID=aa";//@"Data Source=dbsrv\sql2021;Initial Catalog=903a1_Serbinovich_GS;Integrated Security=True";
+//>>>>>>> fa6ab9932ba1c7586d61958a8bf69de91d9869f2
         //Data Source=dbsrv\sql2021;Initial Catalog=903a1_Serbinovich_GS;Integrated Security=True //@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
         //Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True
         ConnectionWithDb db = new ConnectionWithDb(connection);
@@ -26,7 +30,11 @@ namespace newchat2
 
         private void MainPage_Load(object sender, EventArgs e)
         {
-
+            groupBox1.BackColor = Color.Transparent;
+            //groupBox1.
+            //groupBox1.Opacity = opacity;
+            //groupBox1.BackColor = Color.LimeGreen; 
+            //groupBox1.TransparencyKey = Color.LimeGreen;
         }
 
         private void enter_Click(object sender, EventArgs e)
