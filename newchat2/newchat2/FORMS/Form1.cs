@@ -22,6 +22,7 @@ namespace newchat2
         private string _path_to_file = null;
         private static int _count_written = 0;
         private string _name_user;
+        private int _id_chat;
         int _count_second = 0;
         Dictionary<int, string> chatsKeyValuePairs = new Dictionary<int, string>();
         //int[] setKey = null;
@@ -146,11 +147,22 @@ namespace newchat2
             //label2.Text = listBox2.Items.Count.ToString();
             //foreach (object v in listBox2.Items)
             //    label2.Text += v.ToString() + '\n';
+            for (int i = 0; i < 11; ++i)
+            {
+                comboBox1.Items.Add(imageList1.Images[i]);
+            }
         }
 
         private void send_message_Click(object sender, EventArgs e)
         {
-            fileWrite();
+            //fileWrite();
+            if(connectionWithDb.insert_message(_name_user, _id_chat, message.Text))
+            {
+                listBox1.Items.Add(message.Text);
+                listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                ++_count_written;
+            }
+            
             //fileRead();
             //upload_file_to_ftp();
             //download_file_from_ftp();
@@ -180,7 +192,9 @@ namespace newchat2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            fileRead();
+            //fileRead();
+
+            connectionWithDb.show_messages(_id_chat,listBox1,_count_written);
             if (_count_second++ > 10)
             {
                 listBox2.Items.Clear();
@@ -192,16 +206,6 @@ namespace newchat2
             //connectionWithDb.show_chats(listBox2, _name_user);
             //download_file_from_ftp();
             //upload_file_to_ftp(); 
-        }
-
-        private void Form1_Validated(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
         }
 
         private void message_Enter(object sender, EventArgs e)
@@ -234,16 +238,23 @@ namespace newchat2
             //\\DESKTOP-H4QAP6P
             //T:/!/ЯРЫГИ/r.txt
             //"DESKTOP-H4QAP6P/temp/data.txt"
-            if (listBox2.SelectedItem!=null)//проверка, что нажат элемент listbox
-            {
-                _count_written = 0;
-                listBox1.Items.Clear();
-                _path_to_file = "T:/!/ЯРЫГИ/temp_chats/" + connectionWithDb.get_file_name(chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key);
-            }
+
+            //if (listBox2.SelectedItem!=null)//проверка, что нажат элемент listbox
+            //{
+            //    _count_written = 0;
+            //    listBox1.Items.Clear();
+            //    _path_to_file = "T:/!/ЯРЫГИ/temp_chats/" + connectionWithDb.get_file_name(chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key);
+            //}
 
             //label4.Text = chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key.ToString();//setKey[listBox2.SelectedIndex].ToString();
             //label4.Text = listBox2.SelectedIndex.ToString();
             //label1.Text = name;
+            if (listBox2.SelectedItem != null)
+            {
+                _count_written = 0;
+                listBox1.Items.Clear();
+                _id_chat = chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -252,5 +263,7 @@ namespace newchat2
             MainPage s = new MainPage();
             s.Show();
         }
+
+
     }
 }

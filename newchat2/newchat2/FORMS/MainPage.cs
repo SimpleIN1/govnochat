@@ -35,6 +35,7 @@ namespace newchat2
             //groupBox1.Opacity = opacity;
             //groupBox1.BackColor = Color.LimeGreen; 
             //groupBox1.TransparencyKey = Color.LimeGreen;
+            //label1.Text = 
         }
 
         private void enter_Click(object sender, EventArgs e)
@@ -61,6 +62,7 @@ namespace newchat2
                 password.PasswordChar = '*';
             }
         }
+
         private void password_Leave(object sender, EventArgs e)
         {
             if (password.Text == "")
@@ -112,19 +114,5 @@ namespace newchat2
             }
         }
 
-        private void name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

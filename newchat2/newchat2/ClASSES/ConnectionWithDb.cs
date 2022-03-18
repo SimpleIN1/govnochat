@@ -55,7 +55,7 @@ namespace newchat2.ClASSES
                 //                            "(select id from chat.users where login = @login))"+
                 //                     "group by id_user)"+
                 //                    "and id<>(select id from chat.users where login= @login)";
-                string select = "select id, name_chat_for_users from chat.chats where id in " +
+                string select = "select id, chat_name from chat.chats where id in " +
                                     "(select id_chat from chat.users_chats where id_user = " +
                                         "(select id from chat.users where login = @login))";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);   
@@ -123,7 +123,58 @@ namespace newchat2.ClASSES
             }
         }
 
+        public bool insert_message(string nameUser, int idChat, string message)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string insert = "insert into chat.messages (id_user,id_chat,message, date) values ((select id from chat.users where login=@nameu),@idc,@mes,current_timestamp)";
+                SqlCommand sqlCommand = new SqlCommand(insert, conn);
+                sqlCommand.Parameters.AddWithValue("nameu", nameUser);
+                sqlCommand.Parameters.AddWithValue("idc", idChat);
+                sqlCommand.Parameters.AddWithValue("mes", message);
 
+                try
+                {
+                    sqlCommand.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+
+        public void show_messages(int idChat, ListBox list,int count_written)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select * from chat.messages where id_chat=@idc order by date asc";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                //sqlCommand.Parameters.AddWithValue("idu", idUser);
+                sqlCommand.Parameters.AddWithValue("idc", idChat);
+
+                try
+                {
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                    sqlDataReader.Read();
+                    int count_i = 0;
+                    while(sqlDataReader.Read())
+                    {
+                        if(++count_i>count_written && count_i>list.Items.Count)
+                            list.Items.Add(sqlDataReader["message"]);
+                    }
+                    count_written += (count_i - count_written); 
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
+        }
 
         public void login_user(MainPage mainPage,string name, string password)
         {
@@ -191,8 +242,8 @@ namespace newchat2.ClASSES
                     {
                         sqlDataReader.Close();
                         string insert = "declare @idc int;" +
-                                        "insert into chat.chats(date,name_chat_for_users) values(getdate(),@name);" +
-                                        "set @idc = SCOPE_IDENTITY()" +
+                                        "insert into chat.chats(chat_name,date) values(@name,current_timestamp);" +
+                                        "set @idc = SCOPE_IDENTITY();" +
                                         "insert into chat.users_chats(id_user, id_chat)values((select id from chat.users where login = @login0),@idc)";
                         int i = 0;
                         while (i++ < list.SelectedItems.Count)
@@ -220,6 +271,7 @@ namespace newchat2.ClASSES
                         {
                             MessageBox.Show(error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
                     }
                 }
                 catch(Exception error)

@@ -30,32 +30,34 @@ namespace newchat2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.send_message = new System.Windows.Forms.Button();
             this.message = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.create_chat = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listBox1.Location = new System.Drawing.Point(270, 102);
+            this.listBox1.Location = new System.Drawing.Point(180, 76);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(349, 316);
             this.listBox1.TabIndex = 0;
             // 
             // send_message
             // 
-            this.send_message.Location = new System.Drawing.Point(469, 424);
+            this.send_message.Location = new System.Drawing.Point(370, 398);
             this.send_message.Name = "send_message";
-            this.send_message.Size = new System.Drawing.Size(150, 32);
+            this.send_message.Size = new System.Drawing.Size(159, 32);
             this.send_message.TabIndex = 1;
             this.send_message.Text = "send";
             this.send_message.UseVisualStyleBackColor = true;
@@ -64,7 +66,7 @@ namespace newchat2
             // message
             // 
             this.message.BackColor = System.Drawing.SystemColors.Window;
-            this.message.Location = new System.Drawing.Point(270, 424);
+            this.message.Location = new System.Drawing.Point(180, 398);
             this.message.Multiline = true;
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(184, 32);
@@ -89,11 +91,6 @@ namespace newchat2
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -109,7 +106,7 @@ namespace newchat2
             this.listBox2.BackColor = System.Drawing.SystemColors.Window;
             this.listBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(110, 102);
+            this.listBox2.Location = new System.Drawing.Point(16, 76);
             this.listBox2.Name = "listBox2";
             this.listBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listBox2.Size = new System.Drawing.Size(135, 316);
@@ -118,7 +115,7 @@ namespace newchat2
             // 
             // create_chat
             // 
-            this.create_chat.Location = new System.Drawing.Point(110, 424);
+            this.create_chat.Location = new System.Drawing.Point(16, 398);
             this.create_chat.Name = "create_chat";
             this.create_chat.Size = new System.Drawing.Size(135, 32);
             this.create_chat.TabIndex = 10;
@@ -130,7 +127,7 @@ namespace newchat2
             // 
             this.button2.BackgroundImage = global::newchat2.Properties.Resources.exit;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(654, 9);
+            this.button2.Location = new System.Drawing.Point(654, 15);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(82, 48);
@@ -138,12 +135,39 @@ namespace newchat2
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "2.png");
+            this.imageList1.Images.SetKeyName(1, "3.png");
+            this.imageList1.Images.SetKeyName(2, "4.png");
+            this.imageList1.Images.SetKeyName(3, "5.png");
+            this.imageList1.Images.SetKeyName(4, "6.png");
+            this.imageList1.Images.SetKeyName(5, "7.png");
+            this.imageList1.Images.SetKeyName(6, "8.png");
+            this.imageList1.Images.SetKeyName(7, "9.png");
+            this.imageList1.Images.SetKeyName(8, "10.png");
+            this.imageList1.Images.SetKeyName(9, "11.png");
+            this.imageList1.Images.SetKeyName(10, "12.png");
+            this.imageList1.Images.SetKeyName(11, "13.png");
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(569, 176);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(745, 547);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(745, 492);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.create_chat);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button2);
@@ -153,9 +177,8 @@ namespace newchat2
             this.Controls.Add(this.send_message);
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
-            this.Text = "ChaT";
+            this.Text = "+";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Validated += new System.EventHandler(this.Form1_Validated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,11 +191,12 @@ namespace newchat2
         private System.Windows.Forms.TextBox message;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button create_chat;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

@@ -75,7 +75,6 @@ namespace newchat2
             this.password.Size = new System.Drawing.Size(96, 22);
             this.password.TabIndex = 1;
             this.password.Text = "Password";
-            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             this.password.Enter += new System.EventHandler(this.password_Enter);
             this.password.Leave += new System.EventHandler(this.password_Leave);
             // 
@@ -86,7 +85,6 @@ namespace newchat2
             this.name.Size = new System.Drawing.Size(96, 22);
             this.name.TabIndex = 0;
             this.name.Text = "Name";
-            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
             this.name.Enter += new System.EventHandler(this.name_Enter);
             this.name.Leave += new System.EventHandler(this.name_Leave);
             // 
@@ -126,7 +124,6 @@ namespace newchat2
             this.name_reg.Size = new System.Drawing.Size(106, 22);
             this.name_reg.TabIndex = 2;
             this.name_reg.Text = "Name";
-            this.name_reg.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.name_reg.Enter += new System.EventHandler(this.name_reg_Enter);
             this.name_reg.Leave += new System.EventHandler(this.name_reg_Leave);
             // 

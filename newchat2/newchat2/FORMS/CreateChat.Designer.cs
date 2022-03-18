@@ -37,23 +37,23 @@
             // users_ListBox
             // 
             this.users_ListBox.FormattingEnabled = true;
-            this.users_ListBox.Location = new System.Drawing.Point(12, 12);
+            this.users_ListBox.Location = new System.Drawing.Point(9, 12);
             this.users_ListBox.Name = "users_ListBox";
             this.users_ListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.users_ListBox.Size = new System.Drawing.Size(162, 303);
+            this.users_ListBox.Size = new System.Drawing.Size(162, 212);
             this.users_ListBox.TabIndex = 0;
             this.users_ListBox.SelectedIndexChanged += new System.EventHandler(this.users_ListBox_SelectedIndexChanged);
             // 
             // name_chat_txt
             // 
-            this.name_chat_txt.Location = new System.Drawing.Point(181, 116);
+            this.name_chat_txt.Location = new System.Drawing.Point(40, 250);
             this.name_chat_txt.Name = "name_chat_txt";
             this.name_chat_txt.Size = new System.Drawing.Size(100, 20);
             this.name_chat_txt.TabIndex = 1;
             // 
             // create_chat
             // 
-            this.create_chat.Location = new System.Drawing.Point(181, 142);
+            this.create_chat.Location = new System.Drawing.Point(40, 276);
             this.create_chat.Name = "create_chat";
             this.create_chat.Size = new System.Drawing.Size(100, 30);
             this.create_chat.TabIndex = 2;
@@ -64,7 +64,7 @@
             // chat_name_label1
             // 
             this.chat_name_label1.AutoSize = true;
-            this.chat_name_label1.Location = new System.Drawing.Point(201, 100);
+            this.chat_name_label1.Location = new System.Drawing.Point(60, 234);
             this.chat_name_label1.Name = "chat_name_label1";
             this.chat_name_label1.Size = new System.Drawing.Size(60, 13);
             this.chat_name_label1.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 327);
+            this.ClientSize = new System.Drawing.Size(181, 322);
             this.Controls.Add(this.chat_name_label1);
             this.Controls.Add(this.create_chat);
             this.Controls.Add(this.name_chat_txt);
