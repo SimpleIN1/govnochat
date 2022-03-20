@@ -8,7 +8,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.IO;
 
-//sdsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdvsdv
+
 namespace newchat2.ClASSES
 {
     class ConnectionWithDb
@@ -221,17 +221,25 @@ namespace newchat2.ClASSES
             }
             data_login += ")";
 
-            //l.Text = data_login;
 
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select id_chat, count(id_user) from chat.users_chats where id_user in" +
-                                "(select id from chat.users where login in " + data_login + ") and id_chat not in" +
-                                "(select id_chat from chat.users_chats where id_user in" +
-                                "(select id from chat.users where login not in " + data_login + ")) group by id_chat having count(*) = "+(list.SelectedItems.Count+1).ToString();
-                SqlCommand sqlCommandRead = new SqlCommand(select, conn);
+                string select;
+                if (list.SelectedItems.Count + 1 == 2)
+                {
+                    select = "select id_chat, count(id_user) from chat.users_chats where id_user in" +
+                                    "(select id from chat.users where login in " + data_login + ") and id_chat not in" +
+                                    "(select id_chat from chat.users_chats where id_user in" +
+                                    "(select id from chat.users where login not in " + data_login + ")) group by id_chat having count(*) = " + (list.SelectedItems.Count + 1).ToString();
+                }
+                else
+                {
+                    select = "select id from chat.chats where id = -1";
+                }
 
+                SqlCommand sqlCommandRead = new SqlCommand(select, conn);
+                
                 try
                 {
                     SqlDataReader sqlDataReader = sqlCommandRead.ExecuteReader();

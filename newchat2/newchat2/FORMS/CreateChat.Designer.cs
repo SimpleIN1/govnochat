@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateChat));
             this.users_ListBox = new System.Windows.Forms.ListBox();
             this.name_chat_txt = new System.Windows.Forms.TextBox();
             this.create_chat = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             this.name_chat_txt.Name = "name_chat_txt";
             this.name_chat_txt.Size = new System.Drawing.Size(100, 20);
             this.name_chat_txt.TabIndex = 1;
+            this.name_chat_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_chat_txt_KeyDown);
             // 
             // create_chat
             // 
@@ -64,6 +66,7 @@
             // chat_name_label1
             // 
             this.chat_name_label1.AutoSize = true;
+            this.chat_name_label1.BackColor = System.Drawing.Color.Transparent;
             this.chat_name_label1.Location = new System.Drawing.Point(60, 234);
             this.chat_name_label1.Name = "chat_name_label1";
             this.chat_name_label1.Size = new System.Drawing.Size(60, 13);
@@ -74,7 +77,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 322);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(179, 322);
             this.Controls.Add(this.chat_name_label1);
             this.Controls.Add(this.create_chat);
             this.Controls.Add(this.name_chat_txt);

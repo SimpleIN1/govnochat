@@ -74,5 +74,13 @@ namespace newchat2
                 name_chat_txt.Enabled = false;
             }
         }
+
+        private void name_chat_txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                create_chat.PerformClick();
+            }
+        }
     }
 }

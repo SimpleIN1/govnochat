@@ -144,18 +144,29 @@ namespace newchat2
             //fileRead();
             //connectionWithDb.show_chats(listBox2,_name_user);
             intrvled_show_chats();
+            message.Enabled = false;
+            send_message.Enabled = false;
+            //send_message.
             //label2.Text = listBox2.Items.Count.ToString();
             //foreach (object v in listBox2.Items)
             //    label2.Text += v.ToString() + '\n';
-            for (int i = 0; i < 11; ++i)
-            {
-                comboBox1.Items.Add(imageList1.Images[i]);
-            }
+            //comboBox1.DrawItem.
+            //listView1.Items.Clear();
+            //for (int i = 0; i < 11; ++i)
+            //{
+            //    ListViewItem l = new ListViewItem();
+            //    l.ImageIndex = i;
+            //    listView1.Items.Add(l);
+            //}
+
+
+
         }
 
         private void send_message_Click(object sender, EventArgs e)
         {
             //fileWrite();
+            
             if(connectionWithDb.insert_message(_name_user, _id_chat, message.Text))
             {
                 listBox1.Items.Add(message.Text);
@@ -195,6 +206,7 @@ namespace newchat2
             //fileRead();
 
             connectionWithDb.show_messages(_id_chat,listBox1,_count_written);
+            
             if (_count_second++ > 10)
             {
                 listBox2.Items.Clear();
@@ -253,6 +265,8 @@ namespace newchat2
             {
                 _count_written = 0;
                 listBox1.Items.Clear();
+                message.Enabled = true;
+                send_message.Enabled = true;
                 _id_chat = chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key;
             }
         }
@@ -264,6 +278,12 @@ namespace newchat2
             s.Show();
         }
 
-
+        private void message_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                send_message.PerformClick();
+            }
+        }
     }
 }
