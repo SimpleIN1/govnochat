@@ -169,7 +169,7 @@ namespace newchat2
             
             if(connectionWithDb.insert_message(_name_user, _id_chat, message.Text))
             {
-                listBox1.Items.Add(message.Text);
+                listBox1.Items.Add(_name_user+" -> "+message.Text);
                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
                 ++_count_written;
             }
