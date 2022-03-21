@@ -152,11 +152,13 @@ namespace newchat2.ClASSES
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select * from chat.messages where id_chat=@idc order by date asc";
+                string select = "select u.login,m.message,m.image,m.date from chat.messages as m "+
+                                " inner join chat.users as u on u.id = m.id_user "+
+                                " where m.id_chat=@idc order by date asc;";//"select * from chat.messages where id_chat=@idc order by date asc";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 //sqlCommand.Parameters.AddWithValue("idu", idUser);
                 sqlCommand.Parameters.AddWithValue("idc", idChat);
-
+               // l.Text = select;
                 try
                 {
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
@@ -165,7 +167,7 @@ namespace newchat2.ClASSES
                     while(sqlDataReader.Read())
                     {
                         if(++count_i>count_written && count_i>list.Items.Count)
-                            list.Items.Add(sqlDataReader["message"]);
+                            list.Items.Add(sqlDataReader["login"] +" -> "+sqlDataReader["message"]);
                     }
                     count_written += (count_i - count_written); 
                 }
