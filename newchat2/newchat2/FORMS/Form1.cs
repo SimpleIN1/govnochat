@@ -13,6 +13,7 @@ using System.Diagnostics;
 using MaterialSkin.Controls;
 using System.Net;
 using newchat2.ClASSES;
+using MaterialSkin;
 
 namespace newchat2
 {
@@ -273,6 +274,7 @@ namespace newchat2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            connectionWithDb.update_status_user(_name_user, false);
             this.Close();
             MainPage s = new MainPage();
             s.Show();

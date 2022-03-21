@@ -51,7 +51,7 @@ namespace newchat2
             this.LoginGroupBox.Controls.Add(this.name);
             this.LoginGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.LoginGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginGroupBox.Location = new System.Drawing.Point(374, 134);
+            this.LoginGroupBox.Location = new System.Drawing.Point(387, 127);
             this.LoginGroupBox.Name = "LoginGroupBox";
             this.LoginGroupBox.Size = new System.Drawing.Size(141, 134);
             this.LoginGroupBox.TabIndex = 0;
@@ -97,7 +97,7 @@ namespace newchat2
             this.regGroupBox.Controls.Add(this.password_reg);
             this.regGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.regGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regGroupBox.Location = new System.Drawing.Point(73, 97);
+            this.regGroupBox.Location = new System.Drawing.Point(70, 99);
             this.regGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.regGroupBox.Name = "regGroupBox";
             this.regGroupBox.Padding = new System.Windows.Forms.Padding(2);

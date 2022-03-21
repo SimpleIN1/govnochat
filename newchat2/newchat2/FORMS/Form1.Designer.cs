@@ -157,7 +157,7 @@ namespace newchat2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(590, 432);
+            this.ClientSize = new System.Drawing.Size(579, 427);
             this.Controls.Add(this.create_chat);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button2);

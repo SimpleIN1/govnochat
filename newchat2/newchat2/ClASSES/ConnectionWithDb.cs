@@ -91,7 +91,7 @@ namespace newchat2.ClASSES
                     try
                     {
                         conn.Open();
-                        string insert = "insert into chat.users(login,password) values (@login,@password)";
+                        string insert = "insert into chat.users(login,password,status) values (@login,@password,0)";
                         SqlCommand sqlCommand = new SqlCommand(insert, conn);
 
                         sqlCommand.Parameters.AddWithValue("login", name_reg);
@@ -178,6 +178,28 @@ namespace newchat2.ClASSES
             }
         }
 
+        public void update_status_user(string name,bool status)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string update = "update chat.users set status=@status where login=@login";
+
+                SqlCommand sqlCommand = new SqlCommand(update, conn);
+                sqlCommand.Parameters.AddWithValue("status",status);
+                sqlCommand.Parameters.AddWithValue("login", name);
+
+                try
+                {
+                    sqlCommand.ExecuteNonQuery();
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         public void login_user(MainPage mainPage,string name, string password)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -197,6 +219,7 @@ namespace newchat2.ClASSES
 
                     if (sqlDataReader.HasRows)
                     {
+                        this.update_status_user(name, true);
                         mainPage.Visible = false; 
                         Form1 form1 = new Form1(name);
                         form1.Show();
@@ -252,7 +275,7 @@ namespace newchat2.ClASSES
                     {
                         sqlDataReader.Close();
                         string insert = "declare @idc int;" +
-                                        "insert into chat.chats(chat_name,date) values(@name,current_timestamp);" +
+                                        "insert into chat.chats(chat_name,date,id_admin) values(@name,current_timestamp,(select id from chat.users where login=@login0));" +
                                         "set @idc = SCOPE_IDENTITY();" +
                                         "insert into chat.users_chats(id_user, id_chat)values((select id from chat.users where login = @login0),@idc)";
                         int i = 0;
