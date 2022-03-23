@@ -169,7 +169,7 @@ namespace newchat2
             //fileWrite();
             
             if(connectionWithDb.insert_message(_name_user, _id_chat, message.Text))
-            {
+            { 
                 listBox1.Items.Add(_name_user+" -> "+message.Text);
                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
                 ++_count_written;
@@ -205,7 +205,6 @@ namespace newchat2
         private void timer1_Tick(object sender, EventArgs e)
         {
             //fileRead();
-
             connectionWithDb.show_messages(_id_chat,listBox1,_count_written);
             
             if (_count_second++ > 10)
