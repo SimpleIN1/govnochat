@@ -72,6 +72,12 @@
     <Compile Include="FORMS\CreateChat.Designer.cs">
       <DependentUpon>CreateChat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\Edit_chat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Edit_chat.Designer.cs">
+      <DependentUpon>Edit_chat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FORMS\CreateChat.resx">
       <DependentUpon>CreateChat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Edit_chat.resx">
+      <DependentUpon>Edit_chat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -286,5 +286,16 @@ namespace newchat2
                 send_message.PerformClick();
             }
         }
+
+        private void edit_chat_button_Click(object sender, EventArgs e)
+        {
+            Edit_chat edit_Chat = new Edit_chat(_id_chat, _name_user);
+            edit_Chat.Show();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            connectionWithDb.update_status_user(_name_user, false);
+        }
     }
 }

@@ -41,20 +41,21 @@ namespace newchat2
             this.create_chat = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.edit_chat_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listBox1.Location = new System.Drawing.Point(180, 76);
+            this.listBox1.Location = new System.Drawing.Point(186, 135);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(349, 316);
             this.listBox1.TabIndex = 0;
             // 
             // send_message
             // 
-            this.send_message.Location = new System.Drawing.Point(370, 398);
+            this.send_message.Location = new System.Drawing.Point(376, 457);
             this.send_message.Name = "send_message";
             this.send_message.Size = new System.Drawing.Size(159, 20);
             this.send_message.TabIndex = 1;
@@ -65,7 +66,7 @@ namespace newchat2
             // message
             // 
             this.message.BackColor = System.Drawing.SystemColors.Window;
-            this.message.Location = new System.Drawing.Point(180, 398);
+            this.message.Location = new System.Drawing.Point(186, 457);
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(184, 20);
             this.message.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace newchat2
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 18);
+            this.label1.Location = new System.Drawing.Point(18, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(466, 42);
             this.label1.TabIndex = 4;
@@ -94,7 +95,7 @@ namespace newchat2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(441, 60);
+            this.label4.Location = new System.Drawing.Point(447, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 7;
@@ -105,7 +106,7 @@ namespace newchat2
             this.listBox2.BackColor = System.Drawing.SystemColors.Window;
             this.listBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(39, 76);
+            this.listBox2.Location = new System.Drawing.Point(45, 135);
             this.listBox2.Name = "listBox2";
             this.listBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listBox2.Size = new System.Drawing.Size(135, 316);
@@ -114,7 +115,7 @@ namespace newchat2
             // 
             // create_chat
             // 
-            this.create_chat.Location = new System.Drawing.Point(39, 398);
+            this.create_chat.Location = new System.Drawing.Point(45, 457);
             this.create_chat.Name = "create_chat";
             this.create_chat.Size = new System.Drawing.Size(135, 20);
             this.create_chat.TabIndex = 10;
@@ -126,7 +127,7 @@ namespace newchat2
             // 
             this.button2.BackgroundImage = global::newchat2.Properties.Resources.exit;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(483, 12);
+            this.button2.Location = new System.Drawing.Point(498, 18);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 48);
@@ -151,6 +152,16 @@ namespace newchat2
             this.imageList1.Images.SetKeyName(10, "12.png");
             this.imageList1.Images.SetKeyName(11, "13.png");
             // 
+            // edit_chat_button
+            // 
+            this.edit_chat_button.Location = new System.Drawing.Point(450, 106);
+            this.edit_chat_button.Name = "edit_chat_button";
+            this.edit_chat_button.Size = new System.Drawing.Size(85, 23);
+            this.edit_chat_button.TabIndex = 11;
+            this.edit_chat_button.Text = "edit chat";
+            this.edit_chat_button.UseVisualStyleBackColor = true;
+            this.edit_chat_button.Click += new System.EventHandler(this.edit_chat_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +169,7 @@ namespace newchat2
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(605, 518);
+            this.Controls.Add(this.edit_chat_button);
             this.Controls.Add(this.create_chat);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button2);
@@ -168,6 +180,7 @@ namespace newchat2
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "+";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -186,6 +199,7 @@ namespace newchat2
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button create_chat;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button edit_chat_button;
     }
 }
 

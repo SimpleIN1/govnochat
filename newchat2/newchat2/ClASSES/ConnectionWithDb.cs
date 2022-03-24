@@ -277,11 +277,11 @@ namespace newchat2.ClASSES
                         string insert = "declare @idc int;" +
                                         "insert into chat.chats(chat_name,date,id_admin) values(@name,current_timestamp,(select id from chat.users where login=@login0));" +
                                         "set @idc = SCOPE_IDENTITY();" +
-                                        "insert into chat.users_chats(id_user, id_chat)values((select id from chat.users where login = @login0),@idc)";
+                                        "insert into chat.users_chats(id_user, id_chat,id_person_who_invited)values((select id from chat.users where login = @login0),@idc,(select id from chat.users where login = @login0))";
                         int i = 0;
                         while (i++ < list.SelectedItems.Count)
                         {
-                            insert += ",((select id from chat.users where login = @login" + i.ToString() + "),@idc)";
+                            insert += ",((select id from chat.users where login = @login" + i.ToString() + "),@idc,(select id from chat.users where login = @login0))";
                         }
 
                         SqlCommand sqlCommand = new SqlCommand(insert, conn);
