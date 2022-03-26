@@ -21,5 +21,14 @@ namespace newchat2
             this._name_user = name_user;
         }
 
+        private void Edit_chat_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Edit_chat_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 }

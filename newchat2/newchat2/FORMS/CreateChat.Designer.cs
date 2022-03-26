@@ -29,29 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateChat));
-            this.users_ListBox = new System.Windows.Forms.ListBox();
-            this.name_chat_txt = new System.Windows.Forms.TextBox();
-            this.create_chat = new System.Windows.Forms.Button();
             this.chat_name_label1 = new System.Windows.Forms.Label();
+            this.create_chat = new System.Windows.Forms.Button();
+            this.name_chat_txt = new System.Windows.Forms.TextBox();
+            this.users_ListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // users_ListBox
+            // chat_name_label1
             // 
-            this.users_ListBox.FormattingEnabled = true;
-            this.users_ListBox.Location = new System.Drawing.Point(9, 12);
-            this.users_ListBox.Name = "users_ListBox";
-            this.users_ListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.users_ListBox.Size = new System.Drawing.Size(162, 212);
-            this.users_ListBox.TabIndex = 0;
-            this.users_ListBox.SelectedIndexChanged += new System.EventHandler(this.users_ListBox_SelectedIndexChanged);
-            // 
-            // name_chat_txt
-            // 
-            this.name_chat_txt.Location = new System.Drawing.Point(40, 250);
-            this.name_chat_txt.Name = "name_chat_txt";
-            this.name_chat_txt.Size = new System.Drawing.Size(100, 20);
-            this.name_chat_txt.TabIndex = 1;
-            this.name_chat_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_chat_txt_KeyDown);
+            this.chat_name_label1.AutoSize = true;
+            this.chat_name_label1.BackColor = System.Drawing.Color.Transparent;
+            this.chat_name_label1.Location = new System.Drawing.Point(60, 234);
+            this.chat_name_label1.Name = "chat_name_label1";
+            this.chat_name_label1.Size = new System.Drawing.Size(60, 13);
+            this.chat_name_label1.TabIndex = 3;
+            this.chat_name_label1.Text = "Chat Name";
             // 
             // create_chat
             // 
@@ -63,15 +55,23 @@
             this.create_chat.UseVisualStyleBackColor = true;
             this.create_chat.Click += new System.EventHandler(this.create_chat_Click);
             // 
-            // chat_name_label1
+            // name_chat_txt
             // 
-            this.chat_name_label1.AutoSize = true;
-            this.chat_name_label1.BackColor = System.Drawing.Color.Transparent;
-            this.chat_name_label1.Location = new System.Drawing.Point(60, 234);
-            this.chat_name_label1.Name = "chat_name_label1";
-            this.chat_name_label1.Size = new System.Drawing.Size(60, 13);
-            this.chat_name_label1.TabIndex = 3;
-            this.chat_name_label1.Text = "Chat Name";
+            this.name_chat_txt.Location = new System.Drawing.Point(40, 250);
+            this.name_chat_txt.Name = "name_chat_txt";
+            this.name_chat_txt.Size = new System.Drawing.Size(100, 20);
+            this.name_chat_txt.TabIndex = 1;
+            this.name_chat_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_chat_txt_KeyDown);
+            // 
+            // users_ListBox
+            // 
+            this.users_ListBox.FormattingEnabled = true;
+            this.users_ListBox.Location = new System.Drawing.Point(9, 12);
+            this.users_ListBox.Name = "users_ListBox";
+            this.users_ListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.users_ListBox.Size = new System.Drawing.Size(162, 212);
+            this.users_ListBox.TabIndex = 0;
+            this.users_ListBox.SelectedIndexChanged += new System.EventHandler(this.users_ListBox_SelectedIndexChanged);
             // 
             // CreateChat
             // 
@@ -94,9 +94,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox users_ListBox;
-        private System.Windows.Forms.TextBox name_chat_txt;
-        private System.Windows.Forms.Button create_chat;
         private System.Windows.Forms.Label chat_name_label1;
+        private System.Windows.Forms.Button create_chat;
+        private System.Windows.Forms.TextBox name_chat_txt;
+        private System.Windows.Forms.ListBox users_ListBox;
     }
 }

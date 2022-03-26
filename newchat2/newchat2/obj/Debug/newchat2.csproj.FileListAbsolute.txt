@@ -137,3 +137,4 @@ G:\chatGitChat\newchat2\newchat2\obj\Debug\newchat2.csproj.CopyComplete
 G:\chatGitChat\newchat2\newchat2\obj\Debug\newchat2.exe
 G:\chatGitChat\newchat2\newchat2\obj\Debug\newchat2.pdb
 G:\chatGitChat\newchat2\newchat2\obj\Debug\newchat2.Edit_chat.resources
+C:\Users\griha\source\repos\chatGithub\newchat2\newchat2\obj\Debug\newchat2.Edit_chat.resources
