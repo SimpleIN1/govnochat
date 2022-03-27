@@ -11,6 +11,7 @@ namespace newchat2
     {
     }
 #if false
+    private string _path_to_file = null;7
     private void fileRead()
     {
         if (_path_to_file != null)
@@ -107,5 +108,39 @@ namespace newchat2
             }
         }
     }
+            public string get_file_name(int id_chat)
+        {
+            //create_chat(user_name, user_some);
+            string path=null;
+
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                //string select = "select name_chat from chat.chats where id =" +
+                //                    "(select id_chat from chat.users_chats where id_user in " +
+                //                        "(select id from chat.users where login in(@login1,@login2)) " +
+                //                    "group by id_chat having COUNT(id_chat)=2 )";
+                //SqlCommand sqlCommand = new SqlCommand(select, conn);
+                ////sqlCommand.Parameters.AddWithValue("name", name);
+                //sqlCommand.Parameters.AddWithValue("login1", user_name);
+                //sqlCommand.Parameters.AddWithValue("login2", user_some);
+
+                string select = "select name_chat from chat.chats where id = @id_chat";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+
+                sqlCommand.Parameters.AddWithValue("id_chat",id_chat);
+
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                if (sqlDataReader.Read())
+                    path = sqlDataReader.GetValue(0).ToString();
+                //else
+                //{
+                //    create_chat(user_name, user_some);
+                //    path = get_file_name(user_name, user_some);
+                //}
+            }   
+            return path;
+        }
 #endif
 }

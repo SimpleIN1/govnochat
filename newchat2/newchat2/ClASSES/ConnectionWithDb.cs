@@ -236,7 +236,7 @@ namespace newchat2.ClASSES
             }
         }
 
-        public void create_chat(string user_name, ListBox list, string chat_name)
+        public void create_chat(string user_name, ListBox list, string chat_name,byte[]image_arr)
         {
             string data_login = "('"+user_name+"'";
 
@@ -275,9 +275,15 @@ namespace newchat2.ClASSES
                     {
                         sqlDataReader.Close();
                         string insert = "declare @idc int;" +
-                                        "insert into chat.chats(chat_name,date,id_admin) values(@name,current_timestamp,(select id from chat.users where login=@login0));" +
-                                        "set @idc = SCOPE_IDENTITY();" +
-                                        "insert into chat.users_chats(id_user, id_chat,id_person_who_invited)values((select id from chat.users where login = @login0),@idc,(select id from chat.users where login = @login0))";
+                                        "insert into chat.chats(chat_name,date,id_admin,image) values(@name,current_timestamp,(select id from chat.users where login=@login0),";
+
+                        if (image_arr == null)
+                            insert += "null";
+                        else
+                            insert += "@imagep";
+
+                        insert+=");set @idc = SCOPE_IDENTITY();" +
+                        "insert into chat.users_chats(id_user, id_chat,id_person_who_invited)values((select id from chat.users where login = @login0),@idc,(select id from chat.users where login = @login0))";
                         int i = 0;
                         while (i++ < list.SelectedItems.Count)
                         {
@@ -287,6 +293,9 @@ namespace newchat2.ClASSES
                         SqlCommand sqlCommand = new SqlCommand(insert, conn);
                         sqlCommand.Parameters.AddWithValue("name", chat_name);
                         sqlCommand.Parameters.AddWithValue("login0", user_name);
+
+                        if(image_arr!=null)
+                            sqlCommand.Parameters.AddWithValue("imagep", image_arr);
 
                         i = 0;
                         foreach (object element in list.SelectedItems)
@@ -309,45 +318,33 @@ namespace newchat2.ClASSES
                 }
                 catch(Exception error)
                 {
-                    MessageBox.Show("Something with connection", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something with connection or\n"+error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
-/*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
-        public string get_file_name(int id_chat)
+        public byte[] show_image(int id_chat)
         {
-            //create_chat(user_name, user_some);
-            string path=null;
-
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                //string select = "select name_chat from chat.chats where id =" +
-                //                    "(select id_chat from chat.users_chats where id_user in " +
-                //                        "(select id from chat.users where login in(@login1,@login2)) " +
-                //                    "group by id_chat having COUNT(id_chat)=2 )";
-                //SqlCommand sqlCommand = new SqlCommand(select, conn);
-                ////sqlCommand.Parameters.AddWithValue("name", name);
-                //sqlCommand.Parameters.AddWithValue("login1", user_name);
-                //sqlCommand.Parameters.AddWithValue("login2", user_some);
-
-                string select = "select name_chat from chat.chats where id = @id_chat";
-                SqlCommand sqlCommand = new SqlCommand(select, conn);
-
+                string select_image = "select image from chat.chats where id = @id_chat";
+                SqlCommand sqlCommand = new SqlCommand(select_image, conn);
                 sqlCommand.Parameters.AddWithValue("id_chat",id_chat);
 
-                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                try
+                {
+                    return (byte[])sqlCommand.ExecuteScalar();
 
-                if (sqlDataReader.Read())
-                    path = sqlDataReader.GetValue(0).ToString();
-                //else
-                //{
-                //    create_chat(user_name, user_some);
-                //    path = get_file_name(user_name, user_some);
-                //}
-            }   
-            return path;
+                }
+                catch(Exception error)
+                {
+                    return null;
+                }
+            }
         }
+/*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
+
     }
 }

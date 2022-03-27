@@ -20,7 +20,6 @@ namespace newchat2
     public partial class Form1 : Form
     {
         ConnectionWithDb connectionWithDb = new ConnectionWithDb(MainPage.connection);
-        private string _path_to_file = null;
         private static int _count_written = 0;
         private string _name_user;
         private int _id_chat;
@@ -53,6 +52,7 @@ namespace newchat2
             intrvled_show_chats();
             message.Enabled = false;
             send_message.Enabled = false;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             //send_message.
             //label2.Text = listBox2.Items.Count.ToString();
             //foreach (object v in listBox2.Items)
@@ -65,8 +65,6 @@ namespace newchat2
             //    l.ImageIndex = i;
             //    listView1.Items.Add(l);
             //}
-
-
 
         }
 
@@ -85,14 +83,6 @@ namespace newchat2
             //upload_file_to_ftp();
             //download_file_from_ftp();
         }
-
-        private void create_chat_Click(object sender, EventArgs e)
-        {
-            //label4.Text = listBox2.SelectedItems.Contains.ToString();
-            CreateChat createChat = new CreateChat(_name_user);
-            createChat.Show();
-        }
-
 
         private void intrvled_show_chats()
         {
@@ -145,38 +135,12 @@ namespace newchat2
                 message.Text = "Message";
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (listBox2.SelectedItem != null)
-            //{
-            //    _count_written = 0;
-            //    listBox1.Items.Clear();
-            //    message.Enabled = true;
-            //    send_message.Enabled = true;
-            //    _id_chat = chatsKeyValuePairs.ElementAt(listBox2.SelectedIndex).Key;
-            //}
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            connectionWithDb.update_status_user(_name_user, false);
-            this.Close();
-            MainPage s = new MainPage();
-            s.Show();
-        }
-
         private void message_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
                 send_message.PerformClick();
             }
-        }
-
-        private void edit_chat_button_Click(object sender, EventArgs e)
-        {
-            Edit_chat edit_Chat = new Edit_chat(_id_chat, _name_user);
-            edit_Chat.Show();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -193,7 +157,40 @@ namespace newchat2
                 message.Enabled = true;
                 send_message.Enabled = true;
                 _id_chat = chatsKeyValuePairs.ElementAt(chatNameComboBox.SelectedIndex).Key;
+
+                byte[] arr_image;
+                if((arr_image = connectionWithDb.show_image(_id_chat)) !=null)
+                {
+                    MemoryStream streamImg = new MemoryStream(arr_image);
+                    //Image image = Image.FromStream(streamImg);
+                    pictureBox1.Image = Image.FromStream(streamImg);
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
             }
         }
+
+        private void create_chat_button_Click(object sender, EventArgs e)
+        {
+            CreateChat createChat = new CreateChat(_name_user);
+            createChat.Show();
+        }
+
+        private void edit_chat_button_Click(object sender, EventArgs e)
+        {
+            Edit_chat edit_Chat = new Edit_chat(_id_chat, _name_user);
+            edit_Chat.Show();
+        }
+
+        private void exit_button_Click(object sender, EventArgs e)
+        {
+            connectionWithDb.update_status_user(_name_user, false);
+            this.Close();
+            MainPage s = new MainPage();
+            s.Show();
+        }
+
     }
 }

@@ -15,6 +15,7 @@ namespace newchat2
     {
         ConnectionWithDb db = new ConnectionWithDb(MainPage.connection);
         private string _name_user;
+        private byte[] arr=null;
 
         public CreateChat(string name_user)
         {
@@ -25,7 +26,7 @@ namespace newchat2
         private void CreateChat_Load(object sender, EventArgs e)
         {
             name_chat_txt.Enabled = false;
-            db.show_users(users_ListBox,_name_user);
+            db.show_users(users_ListBox, _name_user);
         }
 
         private void create_chat_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace newchat2
             {
                 if (name_chat_txt.Text.Trim(' ') != "")
                 {
-                    db.create_chat(_name_user, users_ListBox, name_chat_txt.Text.Trim(' '));
+                    db.create_chat(_name_user, users_ListBox, name_chat_txt.Text.Trim(' '),arr);
                     this.Close();
                 }
                 else 
@@ -80,6 +81,22 @@ namespace newchat2
             if(e.KeyCode == Keys.Enter)
             {
                 create_chat.PerformClick();
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Image image = Image.FromFile(openFileDialog.FileName);
+                    Bitmap img = new Bitmap(image, pictureBox1.Width, pictureBox1.Height);
+                    pictureBox1.Image = img;
+                    ImageConverter imageConverter = new ImageConverter();
+                    arr = (byte[])imageConverter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+                }
             }
         }
     }
