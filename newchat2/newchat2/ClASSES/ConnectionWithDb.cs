@@ -344,7 +344,14 @@ namespace newchat2.ClASSES
                 }
             }
         }
-/*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
-
+        /*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
+        public void update_chat()
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                //s
+            }
+        }
     }
 }

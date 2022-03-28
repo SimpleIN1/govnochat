@@ -90,6 +90,12 @@
     <Compile Include="FORMS\MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\ProfileUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\ProfileUser.Designer.cs">
+      <DependentUpon>ProfileUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClASSES\TrashFunction.cs" />
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\ProfileUser.resx">
+      <DependentUpon>ProfileUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
