@@ -29,6 +29,7 @@ namespace newchat2
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_chat));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -40,8 +41,9 @@ namespace newchat2
             this.button2 = new System.Windows.Forms.Button();
             this.All_Users_ListBox = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.delete_button = new System.Windows.Forms.Button();
             this.Participants_ListBox = new System.Windows.Forms.ListBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -104,7 +106,7 @@ namespace newchat2
             this.tabControl1.Location = new System.Drawing.Point(152, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(156, 264);
+            this.tabControl1.Size = new System.Drawing.Size(163, 264);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -114,7 +116,7 @@ namespace newchat2
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(148, 238);
+            this.tabPage1.Size = new System.Drawing.Size(155, 238);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "All users";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -138,24 +140,25 @@ namespace newchat2
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.delete_button);
             this.tabPage2.Controls.Add(this.Participants_ListBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(148, 238);
+            this.tabPage2.Size = new System.Drawing.Size(155, 238);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Participants chat";
+            this.tabPage2.Text = "Participants of chat";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // delete_button
             // 
-            this.button3.Location = new System.Drawing.Point(6, 210);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 24);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.delete_button.Location = new System.Drawing.Point(6, 210);
+            this.delete_button.Name = "delete_button";
+            this.delete_button.Size = new System.Drawing.Size(136, 24);
+            this.delete_button.TabIndex = 2;
+            this.delete_button.Text = "Delete user";
+            this.delete_button.UseVisualStyleBackColor = true;
+            this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
             // 
             // Participants_ListBox
             // 
@@ -164,6 +167,11 @@ namespace newchat2
             this.Participants_ListBox.Name = "Participants_ListBox";
             this.Participants_ListBox.Size = new System.Drawing.Size(137, 199);
             this.Participants_ListBox.TabIndex = 1;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Edit_chat
             // 
@@ -201,7 +209,8 @@ namespace newchat2
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox All_Users_ListBox;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button delete_button;
         private System.Windows.Forms.ListBox Participants_ListBox;
+        private System.Windows.Forms.Timer timer1;
     }
 }

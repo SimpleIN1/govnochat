@@ -22,7 +22,7 @@ namespace newchat2
         ConnectionWithDb connectionWithDb = new ConnectionWithDb(MainPage.connection);
         private static int _count_written = 0;
         private string _name_user;
-        private int _id_chat;
+        private int _id_chat=-1;
         int _count_second = 0;
         private Dictionary<int, string> chatsKeyValuePairs = new Dictionary<int, string>();
         private List<int> key_chats = new List<int>();
@@ -53,6 +53,8 @@ namespace newchat2
             message.Enabled = false;
             send_message.Enabled = false;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            edit_chat_button.Enabled = false;
             //send_message.
             //label2.Text = listBox2.Items.Count.ToString();
             //foreach (object v in listBox2.Items)
@@ -152,6 +154,7 @@ namespace newchat2
         {
             if (chatNameComboBox.SelectedItem != null)
             {
+                edit_chat_button.Enabled = true;
                 _count_written = 0;
                 listBox1.Items.Clear();
                 message.Enabled = true;
@@ -180,6 +183,7 @@ namespace newchat2
 
         private void edit_chat_button_Click(object sender, EventArgs e)
         {
+
             Edit_chat edit_Chat = new Edit_chat(_id_chat, _name_user);
             edit_Chat.Show();
         }
