@@ -50,8 +50,8 @@ namespace newchat2
             this.LoginGroupBox.Controls.Add(this.password);
             this.LoginGroupBox.Controls.Add(this.name);
             this.LoginGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.LoginGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginGroupBox.Location = new System.Drawing.Point(387, 127);
+            this.LoginGroupBox.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginGroupBox.Location = new System.Drawing.Point(374, 125);
             this.LoginGroupBox.Name = "LoginGroupBox";
             this.LoginGroupBox.Size = new System.Drawing.Size(141, 134);
             this.LoginGroupBox.TabIndex = 0;
@@ -60,7 +60,7 @@ namespace newchat2
             // 
             // enter_Btn
             // 
-            this.enter_Btn.Location = new System.Drawing.Point(23, 71);
+            this.enter_Btn.Location = new System.Drawing.Point(23, 80);
             this.enter_Btn.Name = "enter_Btn";
             this.enter_Btn.Size = new System.Drawing.Size(96, 23);
             this.enter_Btn.TabIndex = 2;
@@ -70,9 +70,9 @@ namespace newchat2
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(23, 45);
+            this.password.Location = new System.Drawing.Point(23, 50);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(96, 22);
+            this.password.Size = new System.Drawing.Size(96, 27);
             this.password.TabIndex = 1;
             this.password.Text = "Password";
             this.password.Enter += new System.EventHandler(this.password_Enter);
@@ -83,7 +83,7 @@ namespace newchat2
             // 
             this.name.Location = new System.Drawing.Point(23, 19);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(96, 22);
+            this.name.Size = new System.Drawing.Size(96, 27);
             this.name.TabIndex = 0;
             this.name.Text = "Name";
             this.name.Enter += new System.EventHandler(this.name_Enter);
@@ -96,7 +96,7 @@ namespace newchat2
             this.regGroupBox.Controls.Add(this.name_reg);
             this.regGroupBox.Controls.Add(this.password_reg);
             this.regGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.regGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regGroupBox.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.regGroupBox.Location = new System.Drawing.Point(70, 99);
             this.regGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.regGroupBox.Name = "regGroupBox";
@@ -108,7 +108,7 @@ namespace newchat2
             // 
             // register_Btn
             // 
-            this.register_Btn.Location = new System.Drawing.Point(36, 102);
+            this.register_Btn.Location = new System.Drawing.Point(36, 116);
             this.register_Btn.Margin = new System.Windows.Forms.Padding(2);
             this.register_Btn.Name = "register_Btn";
             this.register_Btn.Size = new System.Drawing.Size(106, 29);
@@ -122,7 +122,7 @@ namespace newchat2
             this.name_reg.Location = new System.Drawing.Point(36, 54);
             this.name_reg.Margin = new System.Windows.Forms.Padding(2);
             this.name_reg.Name = "name_reg";
-            this.name_reg.Size = new System.Drawing.Size(106, 22);
+            this.name_reg.Size = new System.Drawing.Size(106, 27);
             this.name_reg.TabIndex = 2;
             this.name_reg.Text = "Name";
             this.name_reg.Enter += new System.EventHandler(this.name_reg_Enter);
@@ -130,10 +130,10 @@ namespace newchat2
             // 
             // password_reg
             // 
-            this.password_reg.Location = new System.Drawing.Point(36, 78);
+            this.password_reg.Location = new System.Drawing.Point(36, 85);
             this.password_reg.Margin = new System.Windows.Forms.Padding(2);
             this.password_reg.Name = "password_reg";
-            this.password_reg.Size = new System.Drawing.Size(106, 22);
+            this.password_reg.Size = new System.Drawing.Size(106, 27);
             this.password_reg.TabIndex = 2;
             this.password_reg.Text = "Password";
             this.password_reg.Enter += new System.EventHandler(this.password_reg_Enter);

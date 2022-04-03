@@ -132,7 +132,7 @@ namespace newchat2.ClASSES
                 SqlCommand sqlCommand = new SqlCommand(insert, conn);
                 sqlCommand.Parameters.AddWithValue("nameu", nameUser);
                 sqlCommand.Parameters.AddWithValue("idc", idChat);
-                sqlCommand.Parameters.AddWithValue("mes", message);
+                sqlCommand.Parameters.AddWithValue("mes", message);     
 
                 try
                 {
@@ -344,7 +344,62 @@ namespace newchat2.ClASSES
                 }
             }
         }
-/*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
+        /*это залупа тоже работает не правильно по отношения к нескольким пользователям*/
+        public void show_users_chat(ListBox list_user,int id_chat)
+        {
+            using (SqlConnection conn=new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users where id in(select id_user from chat.users_chats where id_chat=@idchat)";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                sqlCommand.Parameters.AddWithValue("idchat",id_chat);
+                try
+                {
+                    SqlDataReader read = sqlCommand.ExecuteReader();
+                    read.Read();
 
+                    int count_i = 0;
+                    while (read.Read())
+                    {
+                        if (++count_i > list_user.Items.Count)
+                            list_user.Items.Add(read["login"]);
+                    }
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show("error in add user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        } 
+        public bool delete_user(string name_user,int id_chat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user=(select id from chat.users where login=@login)";
+                SqlCommand sqlCommand = new SqlCommand(delete, conn);
+                sqlCommand.Parameters.AddWithValue("login", name_user);
+                sqlCommand.Parameters.AddWithValue("idchat", id_chat);
+                try
+                {
+                    sqlCommand.ExecuteReader();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    
+                    MessageBox.Show(error.ToString(), "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+        public void update_chat()
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                //s
+            }
+        }
     }
 }

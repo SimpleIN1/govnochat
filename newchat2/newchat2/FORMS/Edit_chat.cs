@@ -26,6 +26,8 @@ namespace newchat2
 
         private void Edit_chat_Load(object sender, EventArgs e)
         {
+            connectionWithDb.show_users(All_Users_ListBox, _name_user);
+            connectionWithDb.show_users_chat(Participants_ListBox, _id_chat);
             byte[] arr_image;
             if ((arr_image = connectionWithDb.show_image(_id_chat)) != null)
             {
@@ -48,6 +50,23 @@ namespace newchat2
                     Bitmap img = new Bitmap(image, pictureBox1.Width, pictureBox1.Height);
                     pictureBox1.Image = img;
                 }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            All_Users_ListBox.Items.Clear();
+            connectionWithDb.show_users(All_Users_ListBox, _name_user);
+            Participants_ListBox.Items.Clear();
+            connectionWithDb.show_users_chat(Participants_ListBox, _id_chat);
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            //chat_name_label1.Text = Participants_ListBox.SelectedItem.ToString();
+            if (connectionWithDb.delete_user(Participants_ListBox.SelectedItem.ToString(), _id_chat))
+            {
+                MessageBox.Show("Yes");
             }
         }
     }
