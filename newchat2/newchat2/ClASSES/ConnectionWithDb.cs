@@ -371,15 +371,15 @@ namespace newchat2.ClASSES
                 }
             }
         } 
-        public bool delete_user(string name_user,int id_chat)
+        public bool delete_user(string name_user,int id_chat, string your_name)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user=(select id from chat.users where login=@login)";
+                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in ("+name_user+")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=(select id from chat.users where login=@y_name))))";
                 SqlCommand sqlCommand = new SqlCommand(delete, conn);
-                sqlCommand.Parameters.AddWithValue("login", name_user);
                 sqlCommand.Parameters.AddWithValue("idchat", id_chat);
+                sqlCommand.Parameters.AddWithValue("y_name", your_name);
                 try
                 {
                     sqlCommand.ExecuteReader();

@@ -61,13 +61,37 @@ namespace newchat2
             connectionWithDb.show_users_chat(Participants_ListBox, _id_chat);
         }
 
+        private string get_collection(ListBox l)
+        {
+            string items = "";
+            int count_sep = 0;
+            foreach (object item in l.SelectedItems)
+            {
+                items +="'"+item+"'";
+                //l.Items.RemoveAt(l.SelectedIndex);
+                if (++count_sep < l.SelectedItems.Count)
+                    items += ",";
+            }
+            return items;
+        }
+
         private void delete_button_Click(object sender, EventArgs e)
         {
-            //chat_name_label1.Text = Participants_ListBox.SelectedItem.ToString();
-            if (connectionWithDb.delete_user(Participants_ListBox.SelectedItem.ToString(), _id_chat))
+
+            //chat_name_label1.Text = get_collection(Participants_ListBox);
+            //chat_name_label1.Text = get_collection(Participants_ListBox);
+            if (connectionWithDb.delete_user(get_collection(Participants_ListBox), _id_chat,_name_user))
             {
-                MessageBox.Show("Yes");
+                MessageBox.Show("user(s) is removed","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //Participants_ListBox.Update();
             }
+            //chat_name_label1.Text = get_collection(Participants_ListBox);
+            //foreach (object item_i in Participants_ListBox.sele)
+            //{
+            //    Participants_ListBox.Items.RemoveAt(Convert.ToInt32(item_i));
+            //    //chat_name_label1.Text += item_i.ToString();      
+
+            //}
         }
     }
 }

@@ -38,7 +38,7 @@ namespace newchat2
             this.Change_Button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.add_user_button = new System.Windows.Forms.Button();
             this.All_Users_ListBox = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.delete_button = new System.Windows.Forms.Button();
@@ -111,7 +111,7 @@ namespace newchat2
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.add_user_button);
             this.tabPage1.Controls.Add(this.All_Users_ListBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -121,14 +121,14 @@ namespace newchat2
             this.tabPage1.Text = "All users";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // add_user_button
             // 
-            this.button2.Location = new System.Drawing.Point(6, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 24);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.add_user_button.Location = new System.Drawing.Point(6, 210);
+            this.add_user_button.Name = "add_user_button";
+            this.add_user_button.Size = new System.Drawing.Size(136, 24);
+            this.add_user_button.TabIndex = 1;
+            this.add_user_button.Text = "add";
+            this.add_user_button.UseVisualStyleBackColor = true;
             // 
             // All_Users_ListBox
             // 
@@ -165,6 +165,7 @@ namespace newchat2
             this.Participants_ListBox.FormattingEnabled = true;
             this.Participants_ListBox.Location = new System.Drawing.Point(6, 6);
             this.Participants_ListBox.Name = "Participants_ListBox";
+            this.Participants_ListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.Participants_ListBox.Size = new System.Drawing.Size(137, 199);
             this.Participants_ListBox.TabIndex = 1;
             // 
@@ -206,7 +207,7 @@ namespace newchat2
         private System.Windows.Forms.Button Change_Button;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button add_user_button;
         private System.Windows.Forms.ListBox All_Users_ListBox;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button delete_button;
