@@ -160,6 +160,7 @@ namespace newchat2
             this.profile_button.Name = "profile_button";
             this.profile_button.Size = new System.Drawing.Size(90, 25);
             this.profile_button.Text = "Profile";
+            this.profile_button.Click += new System.EventHandler(this.profile_button_Click);
             // 
             // edit_chat_button
             // 

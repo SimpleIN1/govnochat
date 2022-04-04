@@ -196,5 +196,11 @@ namespace newchat2
             s.Show();
         }
 
+        private void profile_button_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            ProfileUser profile = new ProfileUser(_name_user);
+            profile.Show();
+        }
     }
 }

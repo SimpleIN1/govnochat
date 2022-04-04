@@ -1,5 +1,5 @@
 ﻿
-namespace newchat2.FORMS
+namespace newchat2
 {
     partial class ProfileUser
     {
@@ -91,7 +91,8 @@ namespace newchat2.FORMS
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ProfileUser";
-            this.Text = "ProfileUser";
+            this.Text = " ";
+            this.Load += new System.EventHandler(this.ProfileUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

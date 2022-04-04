@@ -77,21 +77,35 @@ namespace newchat2
 
         private void delete_button_Click(object sender, EventArgs e)
         {
-
-            //chat_name_label1.Text = get_collection(Participants_ListBox);
-            //chat_name_label1.Text = get_collection(Participants_ListBox);
-
-            //List<int> indices = new List<int>();
-            //foreach (object item in Participants_ListBox.SelectedIndices)
-            //{ indices.Add(Convert.ToInt32(item)); chat_name_label1.Text = item.ToString(); }
-
-
             if (connectionWithDb.delete_user(get_collection(Participants_ListBox), _id_chat,_name_user))
             {
                 MessageBox.Show("user(s) is removed","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            //foreach (object item_i in indices)
-            //    Participants_ListBox.Items.RemoveAt(Convert.ToInt32(item_i));
+        }
+
+        private void add_user_button_Click(object sender, EventArgs e)
+        {
+            List<string> users = new List<string>();
+            foreach (object item in All_Users_ListBox.SelectedItems)
+                users.Add(item.ToString());
+
+            if(connectionWithDb.add_user_chat(users, _name_user, _id_chat))
+            {
+                MessageBox.Show("User is added","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connectionWithDb.show_users_chat(Participants_ListBox, _id_chat);
+            }
+            
+        }
+
+        private void Change_Button_Click(object sender, EventArgs e)
+        {
+            ImageConverter imageConverter = new ImageConverter();
+            byte[] arr = (byte[])imageConverter.ConvertTo(pictureBox1.Image, typeof(byte[]));
+            if (name_chat_txt.Text.Trim()!="" && connectionWithDb.update_chat_image_name(arr,name_chat_txt.Text,_id_chat))
+            {
+                MessageBox.Show("Chat is updated", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
     }
 }

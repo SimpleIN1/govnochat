@@ -98,6 +98,7 @@ namespace newchat2
             this.Change_Button.TabIndex = 10;
             this.Change_Button.Text = "Change";
             this.Change_Button.UseVisualStyleBackColor = true;
+            this.Change_Button.Click += new System.EventHandler(this.Change_Button_Click);
             // 
             // tabControl1
             // 
@@ -129,6 +130,7 @@ namespace newchat2
             this.add_user_button.TabIndex = 1;
             this.add_user_button.Text = "add";
             this.add_user_button.UseVisualStyleBackColor = true;
+            this.add_user_button.Click += new System.EventHandler(this.add_user_button_Click);
             // 
             // All_Users_ListBox
             // 

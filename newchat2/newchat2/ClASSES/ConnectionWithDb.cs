@@ -43,7 +43,7 @@ namespace newchat2.ClASSES
             }
         }
 
-/*херня работает не правильно*/
+        /*херня работает не правильно*/
         public void show_chats(Dictionary<int, string> chatsKeyValuePairs, string name)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -371,6 +371,7 @@ namespace newchat2.ClASSES
                 }
             }
         } 
+
         public bool delete_user(string name_user,int id_chat, string your_name)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -388,45 +389,30 @@ namespace newchat2.ClASSES
                 catch (Exception error)
                 {
                     
-                    MessageBox.Show(error.ToString(), "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You can not delete the user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
         }
 
-        public bool add_user_chat(List<string> users, string name_user, int id_chat)
+        public bool add_user_chat(List<string> users_list, string name_user, int id_chat)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
 
-                //string add_user = String.Join(",",users);
+                string insert_user = "insert into chat.users_chats(id_user, id_chat,id_person_who_invited) values ";
+                int count_sep = 0;
+                foreach (object item in users_list)
+                {
+                    insert_user += "((select id from chat.users where login ='" + item.ToString() + "'),@idchat,(select id from chat.users where login = @uname))";
+                    if (++count_sep < users_list.Count)
+                        insert_user += ",";
+                } 
 
-                //string insert_user = "insert into chat.users_chats (id_user,id_chat,id_person_who_invited) values()";
-                //SqlCommand sqlCommand = new SqlCommand(insert_user, conn);
-                //sqlCommand.Parameters.AddWithValue("idchat", id_chat);
-
-                //string insert_user = "insert into chat.users_chats(id_user, id_chat,id_person_who_invited)values((select id from chat.users where login = @login0),@idc,(select id from chat.users where login = @login0))";
-                //int i = 0;
-                //while (i++ < list.SelectedItems.Count)
-                //{
-                //    insert += ",((select id from chat.users where login = @login" + i.ToString() + "),@idc,(select id from chat.users where login = @login0))";
-                //}
-
-                //SqlCommand sqlCommand = new SqlCommand(insert, conn);
-                //sqlCommand.Parameters.AddWithValue("name", chat_name);
-                //sqlCommand.Parameters.AddWithValue("login0", user_name);
-
-                //if (image_arr != null)
-                //    sqlCommand.Parameters.AddWithValue("imagep", image_arr);
-
-                //i = 0;
-                //foreach (object element in list.SelectedItems)
-                //{
-                //    i++;
-                //    sqlCommand.Parameters.AddWithValue("login" + i.ToString(), element);
-                //}
-
+                SqlCommand sqlCommand = new SqlCommand(insert_user, conn);
+                sqlCommand.Parameters.AddWithValue("idchat",id_chat);
+                sqlCommand.Parameters.AddWithValue("uname", name_user);
 
                 try
                 {
@@ -436,18 +422,33 @@ namespace newchat2.ClASSES
                 catch (Exception error)
                 {
 
-                    MessageBox.Show(error.ToString(), "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Person is added", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
         }
 
-        public void update_chat()
+        public bool update_chat_image_name(byte[] img_arr, string chat_name, int id_chat)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                //s
+                string insert = " update chat.chats set chat_name=@chatname, image=@img where id=@idchat";
+                SqlCommand sqlCommand = new SqlCommand(insert,conn);
+                sqlCommand.Parameters.AddWithValue("chatname",chat_name);
+                sqlCommand.Parameters.AddWithValue("idchat",id_chat);
+                sqlCommand.Parameters.AddWithValue("img", img_arr);
+
+                try
+                {
+                    sqlCommand.ExecuteNonQuery();
+                    return true;
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.ToString(), "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
         }
     }
