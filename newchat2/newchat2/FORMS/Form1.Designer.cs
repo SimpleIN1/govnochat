@@ -45,6 +45,7 @@ namespace newchat2
             this.exit_button = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.update_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -216,6 +217,17 @@ namespace newchat2
             this.label1.TabIndex = 15;
             this.label1.Text = "Chat name";
             // 
+            // update_button
+            // 
+            this.update_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("update_button.BackgroundImage")));
+            this.update_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.update_button.Location = new System.Drawing.Point(352, 0);
+            this.update_button.Name = "update_button";
+            this.update_button.Size = new System.Drawing.Size(39, 37);
+            this.update_button.TabIndex = 16;
+            this.update_button.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +235,7 @@ namespace newchat2
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(487, 443);
+            this.Controls.Add(this.update_button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.pictureBox1);
@@ -260,6 +273,7 @@ namespace newchat2
         private System.Windows.Forms.ToolStripButton exit_button;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button update_button;
     }
 }
 

@@ -28,7 +28,8 @@ namespace newchat2
         private List<int> key_chats = new List<int>();
         //int[] setKey = null;
         //List<int> setKey = new List<int>();
-        //Dictionary<int, string>[] setChatsKeyValuePairs;  
+        //Dictionary<int, string>[] setChatsKeyValuePairs;
+        public static bool status_user;
         public Form1()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace newchat2
         {
             this._name_user = name_user;
             InitializeComponent();
+            status_user = true;
         }
 
 

@@ -48,7 +48,7 @@ namespace newchat2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(259, 22);
+            this.label1.Location = new System.Drawing.Point(253, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -92,6 +92,7 @@ namespace newchat2
             this.Controls.Add(this.pictureBox1);
             this.Name = "ProfileUser";
             this.Text = " ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProfileUser_FormClosing);
             this.Load += new System.EventHandler(this.ProfileUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

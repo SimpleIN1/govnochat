@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace newchat2
 {
     public partial class ProfileUser : Form
@@ -22,6 +23,10 @@ namespace newchat2
         private void ProfileUser_Load(object sender, EventArgs e)
         {
             this.Text = _name_user;
+        }
+
+        private void ProfileUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }
