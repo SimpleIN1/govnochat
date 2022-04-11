@@ -22,7 +22,7 @@ namespace NewChat3
         private int _CountSecond=0;
         private Dictionary<int, string> _ChatsKeyValuePairs = new Dictionary<int, string>();
         private List<int> _KeyChats = new List<int>();
-        private List<string> _MessagesList = new List<string>();
+        private List<string> _MessagesList = new List<string>();    
 
         public ChatForm()
         {
@@ -94,7 +94,7 @@ namespace NewChat3
 
         private void LoadImage(byte[] ArrImage)
         {
-            if ((ArrImage = db.ShowImage(_IdChat)) != null)
+            if ((ArrImage = db.ShowImageChat(_IdChat)) != null)
             {
                 MemoryStream streamImg = new MemoryStream(ArrImage);
                 toolStripButton1.Image = Image.FromStream(streamImg);
@@ -157,10 +157,50 @@ namespace NewChat3
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (tabControl1.SelectedIndex == 1)
-            //{
-                
-            //}
+            if (tabControl1.SelectedIndex == 1)
+            {
+                Users users = new Users();
+                users.login = _NameUser;
+                if (db.ShowProfileUser(users))
+                {
+                    AddFriendsButton.Visible = false;
+                    StatusLabel.Text = (users.status ? "Online" : "Not online");
+                    UserNameLabel.Text = users.login;
+                    if (users.image != null)
+                    {
+                        MemoryStream streamImg = new MemoryStream(users.image);
+                        ImagePictureBox.Image = Image.FromStream(streamImg);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Loading is not successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditProfileForm editProfileForm = new EditProfileForm(_NameUser);
+            editProfileForm.Show();
+        }
+
+        private void LeaveTheChatToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (_IdChat >= 0)
+                if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
+                {
+                    MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _KeyChats.Clear();
+                    _ChatsKeyValuePairs.Clear();
+                    ChatToolStripComboBox.Text = "";
+                    ChatToolStripComboBox.Items.Clear();
+                    IntervledShowChats();
+                }
+                else
+                    MessageBox.Show("Error of the exit", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show("Choose the chat", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

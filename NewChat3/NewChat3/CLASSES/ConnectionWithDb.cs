@@ -61,7 +61,7 @@ namespace NewChat3
                 try
                 {
                     conn.Open();
-                    string sql_query = "select * from chat.users where login=@login and password=@password;";
+                    string sql_query = "select id from chat.users where login=@login and password=@password;";
                     SqlCommand sqlCommand = new SqlCommand(sql_query, conn);
 
                     sqlCommand.Parameters.AddWithValue("login", name);
@@ -185,7 +185,7 @@ namespace NewChat3
             }
         }
 
-        public byte[] ShowImage(int IdChat)
+        public byte[] ShowImageChat(int IdChat)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -334,7 +334,7 @@ namespace NewChat3
             }
         }
 
-        public bool DeleteUser(string NameUser, int IdChat, string YourName)
+        public bool DeleteUserChat(string NameUser, int IdChat, string YourName)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -416,14 +416,14 @@ namespace NewChat3
             }
         }
 
-        public bool ShowUsersChat(List<string> UsersChatList, int id_chat, ref int CountUser)
+        public bool ShowUsersChat(List<string> UsersChatList, int IdChat, ref int CountUser)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
                 string select = "select login from chat.users where id in(select id_user from chat.users_chats where id_chat=@idchat) order by id";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
-                sqlCommand.Parameters.AddWithValue("idchat", id_chat);
+                sqlCommand.Parameters.AddWithValue("idchat", IdChat);
                 try
                 {
                     SqlDataReader read = sqlCommand.ExecuteReader();
@@ -445,15 +445,62 @@ namespace NewChat3
             }
         }
 
-        public byte[] ShowImageUser(int IdChat)
+        public bool ShowProfileUser(Users u)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string SelectImage = "select image from chat.users where id = @idUhat";
+                string SelectImage = "select * from chat.users where login=@NameUser";
                 SqlCommand sqlCommand = new SqlCommand(SelectImage, conn);
-                sqlCommand.Parameters.AddWithValue("idUser", IdChat);
+                sqlCommand.Parameters.AddWithValue("NameUser", u.login);
 
+                try
+                {
+                    SqlDataReader read = sqlCommand.ExecuteReader();
+                    read.Read();
+                    if (read["image"] != DBNull.Value)
+                        u.image = (byte[])read["image"];
+                    else
+                        u.image = null;
+                    u.status = (bool)read["status"];
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteUser(string name)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string delete = "delete from chat.users where login=@y_name";
+                SqlCommand sqlCommand = new SqlCommand(delete, conn);
+                sqlCommand.Parameters.AddWithValue("y_name", name);
+                try
+                {
+
+                    sqlCommand.ExecuteReader();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public byte[] ShowImageUser(string name)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string delete = "select image from chat.users where login=@y_name";
+                SqlCommand sqlCommand = new SqlCommand(delete, conn);
+                sqlCommand.Parameters.AddWithValue("y_name", name);
                 try
                 {
                     return (byte[])sqlCommand.ExecuteScalar();
@@ -465,5 +512,34 @@ namespace NewChat3
             }
         }
 
+        public bool UpdateProfileUser(string NameUser,string NewNameUser, byte[] ImgArr)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string insert = " update chat.users set login=@NewNameUser, image=";
+                if (ImgArr == null)
+                    insert += "null";
+                else
+                    insert += "@img";
+                insert += " where login=@NameUser";
+                SqlCommand sqlCommand = new SqlCommand(insert, conn);
+                sqlCommand.Parameters.AddWithValue("NameUser", NameUser);
+                sqlCommand.Parameters.AddWithValue("NewNameUser", NewNameUser);
+                if (ImgArr != null)
+                    sqlCommand.Parameters.AddWithValue("img", ImgArr);
+
+                try
+                {
+                    sqlCommand.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
     }
 } 

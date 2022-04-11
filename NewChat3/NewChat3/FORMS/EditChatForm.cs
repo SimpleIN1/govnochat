@@ -58,7 +58,7 @@ namespace NewChat3
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (db.DeleteUser(GetCollection(ParticipantsListBox), _IdChat, _NameUser))
+            if (db.DeleteUserChat(GetCollection(ParticipantsListBox), _IdChat, _NameUser))
                 MessageBox.Show("user(s) is removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("You can not delete the user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -134,7 +134,7 @@ namespace NewChat3
             NameChatTextBox.Text = _NameChat;
 
             byte[] arr_image;
-            if ((arr_image = db.ShowImage(_IdChat)) != null)
+            if ((arr_image = db.ShowImageChat(_IdChat)) != null)
             {
                 MemoryStream streamImg = new MemoryStream(arr_image);
                 ImagePictureBox.Image = Image.FromStream(streamImg);

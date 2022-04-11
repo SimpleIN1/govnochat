@@ -41,6 +41,7 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.createChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LeaveTheChatToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ProfileTabPage = new System.Windows.Forms.TabPage();
             this.AddFriendsButton = new System.Windows.Forms.Button();
             this.FriendsListBox = new System.Windows.Forms.ListBox();
@@ -117,7 +118,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.ChatToolStripComboBox,
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.LeaveTheChatToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(311, 25);
@@ -166,6 +168,16 @@
             this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
+            // 
+            // LeaveTheChatToolStripButton
+            // 
+            this.LeaveTheChatToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.LeaveTheChatToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("LeaveTheChatToolStripButton.Image")));
+            this.LeaveTheChatToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LeaveTheChatToolStripButton.Name = "LeaveTheChatToolStripButton";
+            this.LeaveTheChatToolStripButton.Size = new System.Drawing.Size(85, 22);
+            this.LeaveTheChatToolStripButton.Text = "LeaveTheChat";
+            this.LeaveTheChatToolStripButton.Click += new System.EventHandler(this.LeaveTheChatToolStripButton_Click);
             // 
             // ProfileTabPage
             // 
@@ -221,6 +233,7 @@
             // 
             // ImagePictureBox
             // 
+            this.ImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ImagePictureBox.Location = new System.Drawing.Point(8, 46);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(135, 126);
@@ -264,6 +277,7 @@
             this.editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
             this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.editProfileToolStripMenuItem.Text = "Edit profile";
+            this.editProfileToolStripMenuItem.Click += new System.EventHandler(this.editProfileToolStripMenuItem_Click);
             // 
             // timer1
             // 
@@ -320,5 +334,6 @@
         private System.Windows.Forms.ToolStripMenuItem editProfileToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripButton LeaveTheChatToolStripButton;
     }
 }
