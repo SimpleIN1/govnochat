@@ -444,5 +444,26 @@ namespace NewChat3
                 }
             }
         }
+
+        public byte[] ShowImageUser(int IdChat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string SelectImage = "select image from chat.users where id = @idUhat";
+                SqlCommand sqlCommand = new SqlCommand(SelectImage, conn);
+                sqlCommand.Parameters.AddWithValue("idUser", IdChat);
+
+                try
+                {
+                    return (byte[])sqlCommand.ExecuteScalar();
+                }
+                catch (Exception error)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 } 

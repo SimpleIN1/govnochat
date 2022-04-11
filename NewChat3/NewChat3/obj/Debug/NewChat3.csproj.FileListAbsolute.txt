@@ -12,3 +12,17 @@ C:\Users\griha\source\repos\NewChat3\NewChat3\obj\Debug\NewChat3.pdb
 C:\Users\griha\source\repos\NewChat3\NewChat3\obj\Debug\NewChat3.ChatForm.resources
 C:\Users\griha\source\repos\NewChat3\NewChat3\obj\Debug\NewChat3.CreateChatForm.resources
 C:\Users\griha\source\repos\NewChat3\NewChat3\obj\Debug\NewChat3.EditChatForm.resources
+G:\chatGitChat\NewChat3\NewChat3\bin\Debug\NewChat3.exe.config
+G:\chatGitChat\NewChat3\NewChat3\bin\Debug\NewChat3.exe
+G:\chatGitChat\NewChat3\NewChat3\bin\Debug\NewChat3.pdb
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.csproj.AssemblyReference.cache
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.ChatForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.CreateChatForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.EditChatForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.Form1.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.MainPageForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.Properties.Resources.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.csproj.GenerateResource.cache
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.csproj.CoreCompileInputs.cache
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.exe
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.pdb

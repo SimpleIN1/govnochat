@@ -42,7 +42,7 @@
             this.createChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProfileTabPage = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AddFriendsButton = new System.Windows.Forms.Button();
             this.FriendsListBox = new System.Windows.Forms.ListBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.UserNameLabel = new System.Windows.Forms.Label();
@@ -70,6 +70,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(325, 366);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // ChatTabPage
             // 
@@ -155,20 +156,20 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
             this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
             // 
             // ProfileTabPage
             // 
-            this.ProfileTabPage.Controls.Add(this.button3);
+            this.ProfileTabPage.Controls.Add(this.AddFriendsButton);
             this.ProfileTabPage.Controls.Add(this.FriendsListBox);
             this.ProfileTabPage.Controls.Add(this.StatusLabel);
             this.ProfileTabPage.Controls.Add(this.UserNameLabel);
@@ -182,14 +183,15 @@
             this.ProfileTabPage.Text = "Profile";
             this.ProfileTabPage.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // AddFriendsButton
             // 
-            this.button3.Location = new System.Drawing.Point(213, 292);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(78, 24);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AddFriendsButton.Location = new System.Drawing.Point(213, 292);
+            this.AddFriendsButton.Name = "AddFriendsButton";
+            this.AddFriendsButton.Size = new System.Drawing.Size(78, 24);
+            this.AddFriendsButton.TabIndex = 9;
+            this.AddFriendsButton.Text = "Add friends";
+            this.AddFriendsButton.UseVisualStyleBackColor = true;
+            this.AddFriendsButton.Click += new System.EventHandler(this.AddFriendsButton_Click);
             // 
             // FriendsListBox
             // 
@@ -310,7 +312,7 @@
         private System.Windows.Forms.ListBox MessagesListBox;
         private System.Windows.Forms.ToolStripButton BackPageToolStripButton;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AddFriendsButton;
         private System.Windows.Forms.ListBox FriendsListBox;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Label UserNameLabel;

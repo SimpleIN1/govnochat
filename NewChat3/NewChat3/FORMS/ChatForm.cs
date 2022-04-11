@@ -149,5 +149,18 @@ namespace NewChat3
                 MessageBox.Show("Choose the something chat", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AddFriendsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (tabControl1.SelectedIndex == 1)
+            //{
+                
+            //}
+        }
     }
 }

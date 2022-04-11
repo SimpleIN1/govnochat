@@ -60,10 +60,10 @@
     <Compile Include="FORMS\CreateChatForm.Designer.cs">
       <DependentUpon>CreateChatForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditChatForm.cs">
+    <Compile Include="FORMS\EditChatForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditChatForm.Designer.cs">
+    <Compile Include="FORMS\EditChatForm.Designer.cs">
       <DependentUpon>EditChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -86,7 +86,7 @@
     <EmbeddedResource Include="FORMS\CreateChatForm.resx">
       <DependentUpon>CreateChatForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditChatForm.resx">
+    <EmbeddedResource Include="FORMS\EditChatForm.resx">
       <DependentUpon>EditChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
