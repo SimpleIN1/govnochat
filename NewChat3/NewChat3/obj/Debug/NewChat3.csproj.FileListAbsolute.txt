@@ -41,3 +41,4 @@ C:\Users\griha\source\repos\chatGithub\NewChat3\NewChat3\bin\Debug\NewChat3.exe.
 C:\Users\griha\source\repos\chatGithub\NewChat3\NewChat3\bin\Debug\NewChat3.exe
 C:\Users\griha\source\repos\chatGithub\NewChat3\NewChat3\bin\Debug\NewChat3.pdb
 C:\Users\griha\source\repos\chatGithub\NewChat3\NewChat3\obj\Debug\NewChat3.EditProfileForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.EditProfileForm.resources

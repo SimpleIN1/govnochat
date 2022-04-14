@@ -145,7 +145,7 @@ namespace NewChat3
                 try
                 {
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                    sqlDataReader.Read();
+                    //sqlDataReader.Read();
                     int CountI = 0;
                     while (sqlDataReader.Read())
                     {
@@ -536,7 +536,7 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }

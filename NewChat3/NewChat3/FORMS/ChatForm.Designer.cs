@@ -54,6 +54,7 @@
             this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.ExitButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -75,10 +76,12 @@
             // 
             // ChatTabPage
             // 
+            this.ChatTabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ChatTabPage.BackgroundImage")));
             this.ChatTabPage.Controls.Add(this.MessageTextBox);
             this.ChatTabPage.Controls.Add(this.SendButton);
             this.ChatTabPage.Controls.Add(this.MessagesListBox);
             this.ChatTabPage.Controls.Add(this.toolStrip1);
+            this.ChatTabPage.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChatTabPage.Location = new System.Drawing.Point(4, 22);
             this.ChatTabPage.Name = "ChatTabPage";
             this.ChatTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -89,17 +92,19 @@
             // 
             // MessageTextBox
             // 
+            this.MessageTextBox.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessageTextBox.Location = new System.Drawing.Point(40, 313);
             this.MessageTextBox.Name = "MessageTextBox";
-            this.MessageTextBox.Size = new System.Drawing.Size(173, 20);
+            this.MessageTextBox.Size = new System.Drawing.Size(173, 22);
             this.MessageTextBox.TabIndex = 9;
             this.MessageTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MessageTextBox_KeyDown);
             // 
             // SendButton
             // 
-            this.SendButton.Location = new System.Drawing.Point(219, 313);
+            this.SendButton.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SendButton.Location = new System.Drawing.Point(219, 308);
             this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(60, 21);
+            this.SendButton.Size = new System.Drawing.Size(60, 31);
             this.SendButton.TabIndex = 8;
             this.SendButton.Text = "Send";
             this.SendButton.UseVisualStyleBackColor = true;
@@ -107,10 +112,13 @@
             // 
             // MessagesListBox
             // 
+            this.MessagesListBox.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessagesListBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.MessagesListBox.FormattingEnabled = true;
+            this.MessagesListBox.ItemHeight = 16;
             this.MessagesListBox.Location = new System.Drawing.Point(40, 31);
             this.MessagesListBox.Name = "MessagesListBox";
-            this.MessagesListBox.Size = new System.Drawing.Size(239, 277);
+            this.MessagesListBox.Size = new System.Drawing.Size(239, 276);
             this.MessagesListBox.TabIndex = 7;
             // 
             // toolStrip1
@@ -158,14 +166,14 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
             this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
             // 
@@ -175,12 +183,14 @@
             this.LeaveTheChatToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("LeaveTheChatToolStripButton.Image")));
             this.LeaveTheChatToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LeaveTheChatToolStripButton.Name = "LeaveTheChatToolStripButton";
-            this.LeaveTheChatToolStripButton.Size = new System.Drawing.Size(85, 22);
+            this.LeaveTheChatToolStripButton.Size = new System.Drawing.Size(86, 22);
             this.LeaveTheChatToolStripButton.Text = "LeaveTheChat";
             this.LeaveTheChatToolStripButton.Click += new System.EventHandler(this.LeaveTheChatToolStripButton_Click);
             // 
             // ProfileTabPage
             // 
+            this.ProfileTabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ProfileTabPage.BackgroundImage")));
+            this.ProfileTabPage.Controls.Add(this.ExitButton);
             this.ProfileTabPage.Controls.Add(this.AddFriendsButton);
             this.ProfileTabPage.Controls.Add(this.FriendsListBox);
             this.ProfileTabPage.Controls.Add(this.StatusLabel);
@@ -197,44 +207,47 @@
             // 
             // AddFriendsButton
             // 
-            this.AddFriendsButton.Location = new System.Drawing.Point(213, 292);
+            this.AddFriendsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFriendsButton.BackgroundImage")));
+            this.AddFriendsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddFriendsButton.Location = new System.Drawing.Point(234, 251);
             this.AddFriendsButton.Name = "AddFriendsButton";
-            this.AddFriendsButton.Size = new System.Drawing.Size(78, 24);
+            this.AddFriendsButton.Size = new System.Drawing.Size(77, 37);
             this.AddFriendsButton.TabIndex = 9;
-            this.AddFriendsButton.Text = "Add friends";
             this.AddFriendsButton.UseVisualStyleBackColor = true;
             this.AddFriendsButton.Click += new System.EventHandler(this.AddFriendsButton_Click);
             // 
             // FriendsListBox
             // 
             this.FriendsListBox.FormattingEnabled = true;
-            this.FriendsListBox.Location = new System.Drawing.Point(183, 113);
+            this.FriendsListBox.Location = new System.Drawing.Point(23, 188);
             this.FriendsListBox.Name = "FriendsListBox";
-            this.FriendsListBox.Size = new System.Drawing.Size(120, 147);
+            this.FriendsListBox.Size = new System.Drawing.Size(135, 43);
             this.FriendsListBox.TabIndex = 8;
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(279, 28);
+            this.StatusLabel.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(268, 28);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(35, 13);
+            this.StatusLabel.Size = new System.Drawing.Size(49, 13);
             this.StatusLabel.TabIndex = 7;
             this.StatusLabel.Text = "label4";
             // 
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
+            this.UserNameLabel.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserNameLabel.Location = new System.Drawing.Point(180, 46);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.UserNameLabel.Size = new System.Drawing.Size(61, 15);
             this.UserNameLabel.TabIndex = 6;
             this.UserNameLabel.Text = "label3";
             // 
             // ImagePictureBox
             // 
             this.ImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ImagePictureBox.Location = new System.Drawing.Point(8, 46);
+            this.ImagePictureBox.Location = new System.Drawing.Point(23, 46);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(135, 126);
             this.ImagePictureBox.TabIndex = 5;
@@ -284,6 +297,17 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.BackgroundImage")));
+            this.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitButton.Location = new System.Drawing.Point(231, 294);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(80, 40);
+            this.ExitButton.TabIndex = 10;
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // ChatForm
             // 
@@ -335,5 +359,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripButton LeaveTheChatToolStripButton;
+        private System.Windows.Forms.Button ExitButton;
     }
 }

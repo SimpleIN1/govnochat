@@ -202,5 +202,10 @@ namespace NewChat3
             else
                 MessageBox.Show("Choose the chat", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
