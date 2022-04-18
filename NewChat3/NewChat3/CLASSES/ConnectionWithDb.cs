@@ -145,7 +145,7 @@ namespace NewChat3
                 try
                 {
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                    //sqlDataReader.Read();
+
                     int CountI = 0;
                     while (sqlDataReader.Read())
                     {

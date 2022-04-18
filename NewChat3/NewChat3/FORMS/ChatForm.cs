@@ -141,7 +141,7 @@ namespace NewChat3
             if (_IdChat >= 0)
             {
                 EditChatForm editChatForm = new EditChatForm(_NameUser, _IdChat, _NameChat);
-                //this.Visible = false;
+                this.Visible = false;
                 editChatForm.Show();
             }
             else
@@ -182,28 +182,18 @@ namespace NewChat3
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditProfileForm editProfileForm = new EditProfileForm(_NameUser);
-            editProfileForm.Show();
-        }
-
-        private void LeaveTheChatToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (_IdChat >= 0)
-                if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
-                {
-                    MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _KeyChats.Clear();
-                    _ChatsKeyValuePairs.Clear();
-                    ChatToolStripComboBox.Text = "";
-                    ChatToolStripComboBox.Items.Clear();
-                    IntervledShowChats();
-                }
-                else
-                    MessageBox.Show("Error of the exit", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Choose the chat", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //this.Visible = false;
+            editProfileForm.Show();   
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
+        {
+            MainPageForm mainPageForm = new MainPageForm();
+            mainPageForm.Show();
+            this.Close();
+        }
+
+        private void ChatTabPage_Click(object sender, EventArgs e)
         {
 
         }

@@ -40,6 +40,8 @@
             this.NameChatTextBox = new System.Windows.Forms.TextBox();
             this.ImageLabel = new System.Windows.Forms.Label();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.LeaveTheChatButton = new System.Windows.Forms.Button();
+            this.AdminNameLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -134,7 +136,7 @@
             this.ChatNameLabel.AutoSize = true;
             this.ChatNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.ChatNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChatNameLabel.Location = new System.Drawing.Point(47, 193);
+            this.ChatNameLabel.Location = new System.Drawing.Point(47, 164);
             this.ChatNameLabel.Name = "ChatNameLabel";
             this.ChatNameLabel.Size = new System.Drawing.Size(60, 13);
             this.ChatNameLabel.TabIndex = 15;
@@ -143,7 +145,7 @@
             // NameChatTextBox
             // 
             this.NameChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameChatTextBox.Location = new System.Drawing.Point(26, 214);
+            this.NameChatTextBox.Location = new System.Drawing.Point(26, 185);
             this.NameChatTextBox.Name = "NameChatTextBox";
             this.NameChatTextBox.Size = new System.Drawing.Size(109, 20);
             this.NameChatTextBox.TabIndex = 14;
@@ -169,11 +171,32 @@
             this.ImagePictureBox.TabStop = false;
             this.ImagePictureBox.Click += new System.EventHandler(this.ImagePictureBox_Click);
             // 
+            // LeaveTheChatButton
+            // 
+            this.LeaveTheChatButton.Location = new System.Drawing.Point(26, 222);
+            this.LeaveTheChatButton.Name = "LeaveTheChatButton";
+            this.LeaveTheChatButton.Size = new System.Drawing.Size(109, 28);
+            this.LeaveTheChatButton.TabIndex = 18;
+            this.LeaveTheChatButton.Text = "LeaveTheChat";
+            this.LeaveTheChatButton.UseVisualStyleBackColor = true;
+            this.LeaveTheChatButton.Click += new System.EventHandler(this.LeaveTheChatButton_Click);
+            // 
+            // AdminNameLabel
+            // 
+            this.AdminNameLabel.AutoSize = true;
+            this.AdminNameLabel.Location = new System.Drawing.Point(115, 9);
+            this.AdminNameLabel.Name = "AdminNameLabel";
+            this.AdminNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.AdminNameLabel.TabIndex = 19;
+            this.AdminNameLabel.Text = "label1";
+            // 
             // EditChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(357, 357);
+            this.Controls.Add(this.AdminNameLabel);
+            this.Controls.Add(this.LeaveTheChatButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.ChatNameLabel);
@@ -206,5 +229,7 @@
         private System.Windows.Forms.TextBox NameChatTextBox;
         private System.Windows.Forms.Label ImageLabel;
         private System.Windows.Forms.PictureBox ImagePictureBox;
+        private System.Windows.Forms.Button LeaveTheChatButton;
+        private System.Windows.Forms.Label AdminNameLabel;
     }
 }

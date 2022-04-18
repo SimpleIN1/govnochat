@@ -41,8 +41,8 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.createChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LeaveTheChatToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ProfileTabPage = new System.Windows.Forms.TabPage();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.AddFriendsButton = new System.Windows.Forms.Button();
             this.FriendsListBox = new System.Windows.Forms.ListBox();
             this.StatusLabel = new System.Windows.Forms.Label();
@@ -54,7 +54,6 @@
             this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.ExitButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -89,6 +88,7 @@
             this.ChatTabPage.TabIndex = 0;
             this.ChatTabPage.Text = "Chat";
             this.ChatTabPage.UseVisualStyleBackColor = true;
+            this.ChatTabPage.Click += new System.EventHandler(this.ChatTabPage_Click);
             // 
             // MessageTextBox
             // 
@@ -126,8 +126,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.ChatToolStripComboBox,
-            this.toolStripDropDownButton1,
-            this.LeaveTheChatToolStripButton});
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(311, 25);
@@ -166,26 +165,16 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
             this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
-            // 
-            // LeaveTheChatToolStripButton
-            // 
-            this.LeaveTheChatToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.LeaveTheChatToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("LeaveTheChatToolStripButton.Image")));
-            this.LeaveTheChatToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LeaveTheChatToolStripButton.Name = "LeaveTheChatToolStripButton";
-            this.LeaveTheChatToolStripButton.Size = new System.Drawing.Size(86, 22);
-            this.LeaveTheChatToolStripButton.Text = "LeaveTheChat";
-            this.LeaveTheChatToolStripButton.Click += new System.EventHandler(this.LeaveTheChatToolStripButton_Click);
             // 
             // ProfileTabPage
             // 
@@ -205,13 +194,24 @@
             this.ProfileTabPage.Text = "Profile";
             this.ProfileTabPage.UseVisualStyleBackColor = true;
             // 
+            // ExitButton
+            // 
+            this.ExitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.BackgroundImage")));
+            this.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitButton.Location = new System.Drawing.Point(231, 294);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(80, 40);
+            this.ExitButton.TabIndex = 10;
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // AddFriendsButton
             // 
             this.AddFriendsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFriendsButton.BackgroundImage")));
             this.AddFriendsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddFriendsButton.Location = new System.Drawing.Point(234, 251);
+            this.AddFriendsButton.Location = new System.Drawing.Point(231, 251);
             this.AddFriendsButton.Name = "AddFriendsButton";
-            this.AddFriendsButton.Size = new System.Drawing.Size(77, 37);
+            this.AddFriendsButton.Size = new System.Drawing.Size(80, 37);
             this.AddFriendsButton.TabIndex = 9;
             this.AddFriendsButton.UseVisualStyleBackColor = true;
             this.AddFriendsButton.Click += new System.EventHandler(this.AddFriendsButton_Click);
@@ -298,17 +298,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // ExitButton
-            // 
-            this.ExitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.BackgroundImage")));
-            this.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ExitButton.Location = new System.Drawing.Point(231, 294);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(80, 40);
-            this.ExitButton.TabIndex = 10;
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,7 +347,6 @@
         private System.Windows.Forms.ToolStripMenuItem editProfileToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.ToolStripButton LeaveTheChatToolStripButton;
         private System.Windows.Forms.Button ExitButton;
     }
 }

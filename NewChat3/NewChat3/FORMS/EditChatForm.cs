@@ -126,6 +126,27 @@ namespace NewChat3
             LoadUsersAll();
         }
 
+        private void LeaveTheChatButton_Click(object sender, EventArgs e)
+        {
+
+            if(MessageBox.Show("Are you sure want to exit from chat?","",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
+                if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
+                {
+                    MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ChatForm chatForm = new ChatForm(_NameUser);
+                    this.Close();
+                    chatForm.Show();
+                    //_KeyChats.Clear();
+                    //_ChatsKeyValuePairs.Clear();
+                    //ChatToolStripComboBox.Text = "";
+                    //ChatToolStripComboBox.Items.Clear();
+                    //IntervledShowChats();
+                }
+                else
+                    MessageBox.Show("Error of the exit", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void EditChatForm_Load(object sender, EventArgs e)
         {
             LoadUsersAll();
