@@ -66,10 +66,16 @@ namespace NewChat3
             if (NamePageTextBox.Text.Trim(' ')!="" && db.UpdateProfileUser(_NameUser,NamePageTextBox.Text, ImageArr))
             {
                 MessageBox.Show("Information at the page is updated successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                this.Close();                
             }
             else
                 MessageBox.Show("Infomation cannot update", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void EditProfileForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChatForm chatForm = new ChatForm(_NameUser);
+            chatForm.Show();
         }
     }
 }

@@ -52,7 +52,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(166, 23);
+            this.tabControl1.Location = new System.Drawing.Point(260, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(158, 264);
@@ -83,7 +83,7 @@
             // AllUsersListBox
             // 
             this.AllUsersListBox.FormattingEnabled = true;
-            this.AllUsersListBox.Location = new System.Drawing.Point(6, 6);
+            this.AllUsersListBox.Location = new System.Drawing.Point(7, 6);
             this.AllUsersListBox.Name = "AllUsersListBox";
             this.AllUsersListBox.Size = new System.Drawing.Size(137, 199);
             this.AllUsersListBox.TabIndex = 0;
@@ -123,9 +123,9 @@
             // 
             // ChangeButton
             // 
-            this.ChangeButton.Location = new System.Drawing.Point(26, 303);
+            this.ChangeButton.Location = new System.Drawing.Point(12, 246);
             this.ChangeButton.Name = "ChangeButton";
-            this.ChangeButton.Size = new System.Drawing.Size(301, 30);
+            this.ChangeButton.Size = new System.Drawing.Size(240, 30);
             this.ChangeButton.TabIndex = 16;
             this.ChangeButton.Text = "Change";
             this.ChangeButton.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             this.ChatNameLabel.AutoSize = true;
             this.ChatNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.ChatNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChatNameLabel.Location = new System.Drawing.Point(47, 164);
+            this.ChatNameLabel.Location = new System.Drawing.Point(172, 40);
             this.ChatNameLabel.Name = "ChatNameLabel";
             this.ChatNameLabel.Size = new System.Drawing.Size(60, 13);
             this.ChatNameLabel.TabIndex = 15;
@@ -145,7 +145,7 @@
             // NameChatTextBox
             // 
             this.NameChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameChatTextBox.Location = new System.Drawing.Point(26, 185);
+            this.NameChatTextBox.Location = new System.Drawing.Point(143, 74);
             this.NameChatTextBox.Name = "NameChatTextBox";
             this.NameChatTextBox.Size = new System.Drawing.Size(109, 20);
             this.NameChatTextBox.TabIndex = 14;
@@ -155,7 +155,7 @@
             this.ImageLabel.AutoSize = true;
             this.ImageLabel.BackColor = System.Drawing.Color.Transparent;
             this.ImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ImageLabel.Location = new System.Drawing.Point(57, 35);
+            this.ImageLabel.Location = new System.Drawing.Point(54, 40);
             this.ImageLabel.Name = "ImageLabel";
             this.ImageLabel.Size = new System.Drawing.Size(36, 13);
             this.ImageLabel.TabIndex = 13;
@@ -164,7 +164,7 @@
             // ImagePictureBox
             // 
             this.ImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ImagePictureBox.Location = new System.Drawing.Point(26, 51);
+            this.ImagePictureBox.Location = new System.Drawing.Point(23, 61);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(109, 94);
             this.ImagePictureBox.TabIndex = 12;
@@ -173,7 +173,7 @@
             // 
             // LeaveTheChatButton
             // 
-            this.LeaveTheChatButton.Location = new System.Drawing.Point(26, 222);
+            this.LeaveTheChatButton.Location = new System.Drawing.Point(143, 112);
             this.LeaveTheChatButton.Name = "LeaveTheChatButton";
             this.LeaveTheChatButton.Size = new System.Drawing.Size(109, 28);
             this.LeaveTheChatButton.TabIndex = 18;
@@ -184,7 +184,7 @@
             // AdminNameLabel
             // 
             this.AdminNameLabel.AutoSize = true;
-            this.AdminNameLabel.Location = new System.Drawing.Point(115, 9);
+            this.AdminNameLabel.Location = new System.Drawing.Point(20, 12);
             this.AdminNameLabel.Name = "AdminNameLabel";
             this.AdminNameLabel.Size = new System.Drawing.Size(35, 13);
             this.AdminNameLabel.TabIndex = 19;
@@ -194,7 +194,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 357);
+            this.ClientSize = new System.Drawing.Size(430, 290);
             this.Controls.Add(this.AdminNameLabel);
             this.Controls.Add(this.LeaveTheChatButton);
             this.Controls.Add(this.tabControl1);
@@ -205,6 +205,7 @@
             this.Controls.Add(this.ImagePictureBox);
             this.Name = "EditChatForm";
             this.Text = "Edit chat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditChatForm_FormClosing);
             this.Load += new System.EventHandler(this.EditChatForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

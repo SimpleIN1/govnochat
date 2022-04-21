@@ -190,7 +190,7 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string SelectImage = "select image from chat.chats where id = @id_chat";
+                string SelectImage = "select image, from chat.chats where id = @id_chat";
                 SqlCommand sqlCommand = new SqlCommand(SelectImage, conn);
                 sqlCommand.Parameters.AddWithValue("id_chat", IdChat);
 

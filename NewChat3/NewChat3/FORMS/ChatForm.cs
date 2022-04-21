@@ -109,6 +109,7 @@ namespace NewChat3
             {
                 SendButton.Enabled = true;
                 MessagesListBox.Items.Clear();
+                _MessagesList.Clear();
                 _CountWritten = 0;
                 _NameChat = ChatToolStripComboBox.SelectedItem.ToString();
                 _IdChat = _ChatsKeyValuePairs.ElementAt(ChatToolStripComboBox.SelectedIndex).Key;
@@ -133,6 +134,7 @@ namespace NewChat3
         {
             CreateChatForm create = new CreateChatForm(_NameUser);
             //this.Visible = false;
+            this.Close();
             create.Show();
         }
 
@@ -141,7 +143,8 @@ namespace NewChat3
             if (_IdChat >= 0)
             {
                 EditChatForm editChatForm = new EditChatForm(_NameUser, _IdChat, _NameChat);
-                this.Visible = false;
+                //this.Visible = false;
+                this.Close();
                 editChatForm.Show();
             }
             else
@@ -183,6 +186,7 @@ namespace NewChat3
         {
             EditProfileForm editProfileForm = new EditProfileForm(_NameUser);
             //this.Visible = false;
+            this.Close();
             editProfileForm.Show();   
         }
 

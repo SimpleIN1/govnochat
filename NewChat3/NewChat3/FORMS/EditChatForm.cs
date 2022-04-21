@@ -134,9 +134,8 @@ namespace NewChat3
                 {
                     MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    ChatForm chatForm = new ChatForm(_NameUser);
                     this.Close();
-                    chatForm.Show();
+    
                     //_KeyChats.Clear();
                     //_ChatsKeyValuePairs.Clear();
                     //ChatToolStripComboBox.Text = "";
@@ -147,12 +146,20 @@ namespace NewChat3
                     MessageBox.Show("Error of the exit", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void EditChatForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChatForm chatForm = new ChatForm(_NameUser);
+            chatForm.Show();
+        }
+
         private void EditChatForm_Load(object sender, EventArgs e)
         {
             LoadUsersAll();
             LoadUsersPart();
 
             NameChatTextBox.Text = _NameChat;
+
+            //AdminNameLabel.Text
 
             byte[] arr_image;
             if ((arr_image = db.ShowImageChat(_IdChat)) != null)
