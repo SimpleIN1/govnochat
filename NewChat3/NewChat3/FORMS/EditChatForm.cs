@@ -158,8 +158,11 @@ namespace NewChat3
             LoadUsersPart();
 
             NameChatTextBox.Text = _NameChat;
-
-            //AdminNameLabel.Text
+            string AdminName = null;
+            if (db.GetNameAdminChat(_IdChat, ref AdminName))
+                AdminNameLabel.Text = "Admin chat: " + AdminName;
+            else
+                MessageBox.Show("There is trouble with read the admin", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             byte[] arr_image;
             if ((arr_image = db.ShowImageChat(_IdChat)) != null)

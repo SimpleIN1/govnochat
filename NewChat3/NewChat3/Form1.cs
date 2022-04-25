@@ -46,5 +46,22 @@ namespace NewChat3
         {
 
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new UserControl());
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new UserControl1());
+        }
     }
 }

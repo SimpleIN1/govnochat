@@ -541,5 +541,25 @@ namespace NewChat3
                 }
             }
         }
+
+        public bool GetNameAdminChat(int IdChat, ref string NameAdminChat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users where id = (select id_admin from chat.chats where id=@idchat)";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                sqlCommand.Parameters.AddWithValue("idchat",IdChat);
+                try
+                {
+                    NameAdminChat = sqlCommand.ExecuteScalar().ToString();
+                    return true;
+                }
+                catch(Exception error)
+                {
+                    return false;
+                }
+            }
+        }
     }
 } 

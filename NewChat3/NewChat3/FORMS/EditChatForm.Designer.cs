@@ -136,7 +136,7 @@
             this.ChatNameLabel.AutoSize = true;
             this.ChatNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.ChatNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChatNameLabel.Location = new System.Drawing.Point(172, 40);
+            this.ChatNameLabel.Location = new System.Drawing.Point(172, 59);
             this.ChatNameLabel.Name = "ChatNameLabel";
             this.ChatNameLabel.Size = new System.Drawing.Size(60, 13);
             this.ChatNameLabel.TabIndex = 15;
@@ -145,7 +145,7 @@
             // NameChatTextBox
             // 
             this.NameChatTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameChatTextBox.Location = new System.Drawing.Point(143, 74);
+            this.NameChatTextBox.Location = new System.Drawing.Point(143, 93);
             this.NameChatTextBox.Name = "NameChatTextBox";
             this.NameChatTextBox.Size = new System.Drawing.Size(109, 20);
             this.NameChatTextBox.TabIndex = 14;
@@ -155,7 +155,7 @@
             this.ImageLabel.AutoSize = true;
             this.ImageLabel.BackColor = System.Drawing.Color.Transparent;
             this.ImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ImageLabel.Location = new System.Drawing.Point(54, 40);
+            this.ImageLabel.Location = new System.Drawing.Point(54, 59);
             this.ImageLabel.Name = "ImageLabel";
             this.ImageLabel.Size = new System.Drawing.Size(36, 13);
             this.ImageLabel.TabIndex = 13;
@@ -164,7 +164,7 @@
             // ImagePictureBox
             // 
             this.ImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ImagePictureBox.Location = new System.Drawing.Point(23, 61);
+            this.ImagePictureBox.Location = new System.Drawing.Point(23, 80);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(109, 94);
             this.ImagePictureBox.TabIndex = 12;
@@ -173,7 +173,7 @@
             // 
             // LeaveTheChatButton
             // 
-            this.LeaveTheChatButton.Location = new System.Drawing.Point(143, 112);
+            this.LeaveTheChatButton.Location = new System.Drawing.Point(143, 131);
             this.LeaveTheChatButton.Name = "LeaveTheChatButton";
             this.LeaveTheChatButton.Size = new System.Drawing.Size(109, 28);
             this.LeaveTheChatButton.TabIndex = 18;
