@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProfileForm));
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.NamePageTextBox = new System.Windows.Forms.TextBox();
             this.DeletePageButton = new System.Windows.Forms.Button();
@@ -51,14 +52,15 @@
             // 
             this.NamePageTextBox.Location = new System.Drawing.Point(153, 61);
             this.NamePageTextBox.Name = "NamePageTextBox";
-            this.NamePageTextBox.Size = new System.Drawing.Size(107, 20);
+            this.NamePageTextBox.Size = new System.Drawing.Size(116, 20);
             this.NamePageTextBox.TabIndex = 8;
             // 
             // DeletePageButton
             // 
-            this.DeletePageButton.Location = new System.Drawing.Point(153, 133);
+            this.DeletePageButton.Font = new System.Drawing.Font("Georgia", 9.75F);
+            this.DeletePageButton.Location = new System.Drawing.Point(162, 139);
             this.DeletePageButton.Name = "DeletePageButton";
-            this.DeletePageButton.Size = new System.Drawing.Size(107, 32);
+            this.DeletePageButton.Size = new System.Drawing.Size(98, 26);
             this.DeletePageButton.TabIndex = 9;
             this.DeletePageButton.Text = "Delete your page";
             this.DeletePageButton.UseVisualStyleBackColor = true;
@@ -67,26 +69,29 @@
             // ImageLabel
             // 
             this.ImageLabel.AutoSize = true;
-            this.ImageLabel.Location = new System.Drawing.Point(60, 23);
+            this.ImageLabel.Font = new System.Drawing.Font("Georgia", 9.75F);
+            this.ImageLabel.Location = new System.Drawing.Point(58, 20);
             this.ImageLabel.Name = "ImageLabel";
-            this.ImageLabel.Size = new System.Drawing.Size(36, 13);
+            this.ImageLabel.Size = new System.Drawing.Size(47, 16);
             this.ImageLabel.TabIndex = 10;
             this.ImageLabel.Text = "Image";
             // 
             // NamePageLabel
             // 
             this.NamePageLabel.AutoSize = true;
-            this.NamePageLabel.Location = new System.Drawing.Point(167, 45);
+            this.NamePageLabel.Font = new System.Drawing.Font("Georgia", 9.75F);
+            this.NamePageLabel.Location = new System.Drawing.Point(153, 42);
             this.NamePageLabel.Name = "NamePageLabel";
-            this.NamePageLabel.Size = new System.Drawing.Size(93, 13);
+            this.NamePageLabel.Size = new System.Drawing.Size(116, 16);
             this.NamePageLabel.TabIndex = 11;
             this.NamePageLabel.Text = "Change nickname";
             // 
             // ChangeButton
             // 
-            this.ChangeButton.Location = new System.Drawing.Point(78, 199);
+            this.ChangeButton.Font = new System.Drawing.Font("Georgia", 9.75F);
+            this.ChangeButton.Location = new System.Drawing.Point(88, 199);
             this.ChangeButton.Name = "ChangeButton";
-            this.ChangeButton.Size = new System.Drawing.Size(114, 39);
+            this.ChangeButton.Size = new System.Drawing.Size(122, 39);
             this.ChangeButton.TabIndex = 12;
             this.ChangeButton.Text = "Change";
             this.ChangeButton.UseVisualStyleBackColor = true;
@@ -96,6 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(277, 265);
             this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.NamePageLabel);

@@ -355,6 +355,11 @@ namespace NewChat3
             }
         }
 
+        public bool CheckAdminChat(string UserName)
+        {
+            return true;
+        } 
+
         public bool UpdateChatImageName(byte[] ImgArr, string ChatName, int IdChat,ref string errorStr)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -536,6 +541,7 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
+                    //
                     //MessageBox.Show(error.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
