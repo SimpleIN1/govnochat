@@ -17,7 +17,7 @@ namespace NewChat3
         ConnectionWithDb db = new ConnectionWithDb(MainPageForm.connection);
         private string _NameUser;
         byte[] ImageArr = null;
-        public EditProfileForm(string NameUser)
+        public EditProfileForm(string  NameUser)
         {
             InitializeComponent();
             this._NameUser = NameUser;
@@ -63,7 +63,7 @@ namespace NewChat3
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            if (NamePageTextBox.Text.Trim(' ')!="" && db.UpdateProfileUser(_NameUser,NamePageTextBox.Text, ImageArr))
+            if (NamePageTextBox.Text.Trim(' ')!="" && db.UpdateProfileUser(ref _NameUser,NamePageTextBox.Text, ImageArr))
             {
                 MessageBox.Show("Information at the page is updated successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();                

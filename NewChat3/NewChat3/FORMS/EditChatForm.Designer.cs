@@ -199,7 +199,7 @@
             this.LeaveTheChatButton.Font = new System.Drawing.Font("Georgia", 9.75F);
             this.LeaveTheChatButton.Location = new System.Drawing.Point(132, 117);
             this.LeaveTheChatButton.Name = "LeaveTheChatButton";
-            this.LeaveTheChatButton.Size = new System.Drawing.Size(97, 22);
+            this.LeaveTheChatButton.Size = new System.Drawing.Size(97, 31);
             this.LeaveTheChatButton.TabIndex = 18;
             this.LeaveTheChatButton.Text = "LeaveTheChat";
             this.LeaveTheChatButton.UseVisualStyleBackColor = true;

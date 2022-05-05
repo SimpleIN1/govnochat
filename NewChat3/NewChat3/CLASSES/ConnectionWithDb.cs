@@ -190,7 +190,7 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string SelectImage = "select image, from chat.chats where id = @id_chat";
+                string SelectImage = "select image from chat.chats where id = @id_chat";
                 SqlCommand sqlCommand = new SqlCommand(SelectImage, conn);
                 sqlCommand.Parameters.AddWithValue("id_chat", IdChat);
 
@@ -345,7 +345,7 @@ namespace NewChat3
                 sqlCommand.Parameters.AddWithValue("y_name", YourName);
                 try
                 {
-                    sqlCommand.ExecuteReader();
+                    sqlCommand.ExecuteNonQuery();
                     return true;
                 }
                 catch (Exception error)
@@ -355,9 +355,25 @@ namespace NewChat3
             }
         }
 
-        public bool CheckAdminChat(string UserName)
+        public bool CheckAdminChat(string UserName, int IdChat)
         {
-            return true;
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                string show = "select id_admin from chat.chats where id_admin=(select id from chat.users where login=@username) and id=@idchat";
+
+                SqlCommand sqlCommand = new SqlCommand(show, conn);
+                sqlCommand.Parameters.AddWithValue("username", UserName);
+                sqlCommand.Parameters.AddWithValue("idchat", IdChat);
+                try
+                {
+                    SqlDataReader read = sqlCommand.ExecuteReader();
+                    return (!read.Read()?true:false);//this is part of code dont work
+                }
+                catch(Exception error)
+                {
+                    return false;
+                }    
+            }
         } 
 
         public bool UpdateChatImageName(byte[] ImgArr, string ChatName, int IdChat,ref string errorStr)
@@ -517,7 +533,7 @@ namespace NewChat3
             }
         }
 
-        public bool UpdateProfileUser(string NameUser,string NewNameUser, byte[] ImgArr)
+        public bool UpdateProfileUser(ref string NameUser,string NewNameUser, byte[] ImgArr)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -537,6 +553,7 @@ namespace NewChat3
                 try
                 {
                     sqlCommand.ExecuteNonQuery();
+                    NameUser = NewNameUser;
                     return true;
                 }
                 catch (Exception error)

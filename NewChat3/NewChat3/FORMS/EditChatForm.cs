@@ -130,12 +130,16 @@ namespace NewChat3
         {
 
             if(MessageBox.Show("Are you sure want to exit from chat?","",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
-                if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
+                if (db.CheckAdminChat(_NameUser, _IdChat))
+                {
+                    MessageBox.Show("Success");
+                }
+                else if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
                 {
                     MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Close();
-    
+
                     //_KeyChats.Clear();
                     //_ChatsKeyValuePairs.Clear();
                     //ChatToolStripComboBox.Text = "";
