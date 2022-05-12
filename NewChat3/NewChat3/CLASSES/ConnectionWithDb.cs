@@ -79,11 +79,13 @@ namespace NewChat3
                     else
                     {
                         checkError = true;
+
                         return false;
                     }
                 }
                 catch (Exception error)
                 {
+                    MessageBox.Show(error.ToString());
                     return false;
                 }
             }

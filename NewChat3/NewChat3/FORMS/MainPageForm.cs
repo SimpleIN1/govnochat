@@ -15,7 +15,7 @@ namespace NewChat3
     public partial class MainPageForm : Form
     {
         //<<<<<<< HEAD
-        public static string connection =  @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
+        public static string connection =  @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True; User ID=aa;Password=1";//@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
         //@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS1;Integrated Security=True;User ID=aa;Password=1;";  //@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
         //@"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//  @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";
         //=======
