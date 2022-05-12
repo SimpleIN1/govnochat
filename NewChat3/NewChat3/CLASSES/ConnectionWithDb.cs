@@ -359,6 +359,7 @@ namespace NewChat3
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
+                conn.Open();
                 string show = "select id_admin from chat.chats where id_admin=(select id from chat.users where login=@username) and id=@idchat";
 
                 SqlCommand sqlCommand = new SqlCommand(show, conn);
@@ -367,7 +368,7 @@ namespace NewChat3
                 try
                 {
                     SqlDataReader read = sqlCommand.ExecuteReader();
-                    return (!read.Read()?true:false);//this is part of code dont work
+                    return read.Read();//this is part of code dont work//successfully
                 }
                 catch(Exception error)
                 {
@@ -462,6 +463,34 @@ namespace NewChat3
                 catch (Exception error)
                 {
                     return false;                  
+                }
+            }
+        }
+
+        public bool ShowUsersChat1(List<string> UsersChatList, int IdChat, string NameUser)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from Chat.users where id in " +
+                                    "(select id_user from Chat.users_chats where id_user not in" +
+                                        "(select id from Chat.users where login in "+GenerateData(UsersChatList,NameUser)+") " +
+                                    "and id_chat=@IdChat)";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                sqlCommand.Parameters.AddWithValue("IdChat",IdChat);
+
+                try
+                {
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UsersChatList.Add(reader["login"].ToString());
+                    }
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
                 }
             }
         }

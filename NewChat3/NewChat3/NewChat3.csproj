@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="CLASSES\ConnectionWithDb.cs" />
     <Compile Include="CLASSES\Crypt.cs" />
+    <Compile Include="FORMS\ChooseAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\ChooseAdminForm.Designer.cs">
+      <DependentUpon>ChooseAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\CreateChatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="FORMS\ChatForm.resx">
       <DependentUpon>ChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\ChooseAdminForm.resx">
+      <DependentUpon>ChooseAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\CreateChatForm.resx">
       <DependentUpon>CreateChatForm.cs</DependentUpon>

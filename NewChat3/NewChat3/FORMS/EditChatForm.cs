@@ -132,7 +132,9 @@ namespace NewChat3
             if(MessageBox.Show("Are you sure want to exit from chat?","",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
                 if (db.CheckAdminChat(_NameUser, _IdChat))
                 {
-                    MessageBox.Show("Success");
+                    //MessageBox.Show("Success");
+                    ChooseAdminForm chooseAdminForm = new ChooseAdminForm(_IdChat,_NameUser);
+                    chooseAdminForm.Show();
                 }
                 else if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
                 {
