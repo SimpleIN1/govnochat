@@ -67,7 +67,7 @@ namespace NewChat3
         private void ChangeButton_Click(object sender, EventArgs e)
         {
             string errorStr=null;
-            if (db.UpdateChatImageName(ImageArr, NameChatTextBox.Text, _IdChat,ref errorStr))
+            if (NameChatTextBox.Text.Trim()!="" && db.UpdateChatImageName(ImageArr, NameChatTextBox.Text, _IdChat,ref errorStr))
             {
                 MessageBox.Show("Chat is updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

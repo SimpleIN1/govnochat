@@ -339,10 +339,14 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=(select id from chat.users where login=@y_name))))";
+                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + "))" +
+                                "and(id_chat = (select id from chat.chats where id=@idchat and id_admin = (select id from chat.users where login = @y_name))" +
+                                "or id_person_who_invited = (select id from chat.users where login = @y_name))";
+                    //"delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=@y_name)))";
                 SqlCommand sqlCommand = new SqlCommand(delete, conn);
                 sqlCommand.Parameters.AddWithValue("idchat", IdChat);
                 sqlCommand.Parameters.AddWithValue("y_name", YourName);
+                MessageBox.Show(delete);
                 try
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -350,6 +354,7 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
+                    MessageBox.Show(error.ToString());
                     return false;
                 }
             }
