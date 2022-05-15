@@ -52,13 +52,13 @@
             this.BackPageToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PeolpeTabPage = new System.Windows.Forms.TabPage();
+            this.LoginLabel = new System.Windows.Forms.Label();
+            this.SearchLoginUserButton = new System.Windows.Forms.Button();
+            this.LoginUserSearchTextBox = new System.Windows.Forms.TextBox();
+            this.AllUserListBox = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.PeolpeTabPage = new System.Windows.Forms.TabPage();
-            this.AllUserListBox = new System.Windows.Forms.ListBox();
-            this.LoginUserSearchTextBox = new System.Windows.Forms.TextBox();
-            this.SearchLoginUserButton = new System.Windows.Forms.Button();
-            this.LoginLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -171,14 +171,14 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
             this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
             // 
@@ -298,12 +298,6 @@
             this.editProfileToolStripMenuItem.Text = "Edit profile";
             this.editProfileToolStripMenuItem.Click += new System.EventHandler(this.editProfileToolStripMenuItem_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // PeolpeTabPage
             // 
             this.PeolpeTabPage.Controls.Add(this.LoginLabel);
@@ -317,20 +311,14 @@
             this.PeolpeTabPage.Text = "People";
             this.PeolpeTabPage.UseVisualStyleBackColor = true;
             // 
-            // AllUserListBox
+            // LoginLabel
             // 
-            this.AllUserListBox.FormattingEnabled = true;
-            this.AllUserListBox.Location = new System.Drawing.Point(44, 60);
-            this.AllUserListBox.Name = "AllUserListBox";
-            this.AllUserListBox.Size = new System.Drawing.Size(227, 264);
-            this.AllUserListBox.TabIndex = 0;
-            // 
-            // LoginUserSearchTextBox
-            // 
-            this.LoginUserSearchTextBox.Location = new System.Drawing.Point(86, 23);
-            this.LoginUserSearchTextBox.Name = "LoginUserSearchTextBox";
-            this.LoginUserSearchTextBox.Size = new System.Drawing.Size(119, 20);
-            this.LoginUserSearchTextBox.TabIndex = 1;
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Location = new System.Drawing.Point(12, 27);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(68, 13);
+            this.LoginLabel.TabIndex = 3;
+            this.LoginLabel.Text = "Login of user";
             // 
             // SearchLoginUserButton
             // 
@@ -341,14 +329,26 @@
             this.SearchLoginUserButton.Text = "Search";
             this.SearchLoginUserButton.UseVisualStyleBackColor = true;
             // 
-            // LoginLabel
+            // LoginUserSearchTextBox
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(12, 27);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(68, 13);
-            this.LoginLabel.TabIndex = 3;
-            this.LoginLabel.Text = "Login of user";
+            this.LoginUserSearchTextBox.Location = new System.Drawing.Point(86, 23);
+            this.LoginUserSearchTextBox.Name = "LoginUserSearchTextBox";
+            this.LoginUserSearchTextBox.Size = new System.Drawing.Size(119, 20);
+            this.LoginUserSearchTextBox.TabIndex = 1;
+            // 
+            // AllUserListBox
+            // 
+            this.AllUserListBox.FormattingEnabled = true;
+            this.AllUserListBox.Location = new System.Drawing.Point(44, 60);
+            this.AllUserListBox.Name = "AllUserListBox";
+            this.AllUserListBox.Size = new System.Drawing.Size(227, 264);
+            this.AllUserListBox.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ChatForm
             // 

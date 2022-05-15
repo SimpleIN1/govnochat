@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditChatForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -43,6 +44,7 @@
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.AdminNameLabel = new System.Windows.Forms.Label();
             this.LeaveTheChatButton = new System.Windows.Forms.Button();
+            this.ParticipantAllUserToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -93,6 +95,7 @@
             this.AllUsersListBox.Size = new System.Drawing.Size(159, 196);
             this.AllUsersListBox.TabIndex = 0;
             this.AllUsersListBox.DoubleClick += new System.EventHandler(this.AllUsersListBox_DoubleClick);
+            this.AllUsersListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AllUsersListBox_KeyDown);
             // 
             // tabPage2
             // 
@@ -124,9 +127,9 @@
             this.ParticipantsListBox.ItemHeight = 16;
             this.ParticipantsListBox.Location = new System.Drawing.Point(12, 6);
             this.ParticipantsListBox.Name = "ParticipantsListBox";
-            this.ParticipantsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ParticipantsListBox.Size = new System.Drawing.Size(159, 196);
             this.ParticipantsListBox.TabIndex = 1;
+            this.ParticipantsListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ParticipantsListBox_KeyDown);
             this.ParticipantsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ParticipantsListBox_MouseDoubleClick);
             // 
             // ChangeButton
@@ -248,5 +251,6 @@
         private System.Windows.Forms.PictureBox ImagePictureBox;
         private System.Windows.Forms.Label AdminNameLabel;
         private System.Windows.Forms.Button LeaveTheChatButton;
+        private System.Windows.Forms.ToolTip ParticipantAllUserToolTip;
     }
 }

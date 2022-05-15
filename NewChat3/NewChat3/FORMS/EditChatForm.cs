@@ -15,7 +15,8 @@ namespace NewChat3
     {
         ConnectionWithDb db = new ConnectionWithDb(MainPageForm.connection);
         List<string> users = new List<string>();
-        List<string> usersChat = new List<string>();
+        List<string> SelectedUserList = new List<string>();
+        List<string> UsersChat = new List<string>();
         private int _IdChat;
         private string _NameUser;
         private string _NameChat;
@@ -29,37 +30,48 @@ namespace NewChat3
             this._NameChat = NameChat;
         }
 
-        private void AddUserButton_Click(object sender, EventArgs e)
+        private void AddSelectedUserList(List<string> SelectedUserList)
         {
-            users.Clear();
             foreach (object item in AllUsersListBox.SelectedItems)
-                users.Add(item.ToString()); 
-            if (db.AddUserChat(users, _NameUser, _IdChat))
-            {
-                MessageBox.Show("User is added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                users.Clear();
-            }
-            else
-                MessageBox.Show("Person have added yet", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectedUserList.Add(item.ToString());
         }
 
-        private string GetCollection(ListBox l)
+        private void AddUserButton_Click(object sender, EventArgs e)
         {
-            string items = "";
-            int CountSep = 0;
-            foreach (object item in l.SelectedItems)
+            SelectedUserList.Clear();
+            AddSelectedUserList(SelectedUserList);
+            if (db.AddUserChat(SelectedUserList, _NameUser, _IdChat))
             {
-                items += "'" + item + "'";
-                if (++CountSep < l.SelectedItems.Count)
-                    items += ",";
+                MessageBox.Show("User is added", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            return items;
+            else
+            {
+                MessageBox.Show("Person have added yet", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string GetItemList(ListBox l,ref bool check)
+        {
+            check = (l.SelectedItem.ToString().Trim() == _NameUser ? true:false);
+            string item = "'" + l.SelectedItem.ToString() + "'";
+            UsersChat.RemoveAt(l.SelectedIndex);
+            ParticipantsListBox.Items.RemoveAt(l.SelectedIndex);
+            --_CountUserChat;
+            return item;
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (db.DeleteUserChat(GetCollection(ParticipantsListBox), _IdChat, _NameUser))
+            bool CheckUserInList = false;
+            if (db.DeleteUserChat(GetItemList(ParticipantsListBox,ref CheckUserInList), _IdChat, _NameUser))
+            {
                 MessageBox.Show("user(s) is removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));//list
+
+                if (CheckUserInList)
+                    this.Close();
+            }
             else
                 MessageBox.Show("You can not delete the user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -94,35 +106,42 @@ namespace NewChat3
 
         private void LoadUsersPart()
         {
-            ParticipantsListBox.Items.Clear();
-            if (db.ShowUsersChat(usersChat, _IdChat, ref _CountUserChat))
-                foreach (object el in usersChat)
-                    ParticipantsListBox.Items.Add(el);
+            if (db.ShowUsersChat1(UsersChat,_IdChat,""))
+            {
+                //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));//list
+                while (_CountUserChat < UsersChat.Count)
+                {
+                    ParticipantsListBox.Items.Add(UsersChat[_CountUserChat++]);
+                } 
+            }
             else
-                MessageBox.Show("error in shwo users", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MessageBox.Show("error in show users", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadUsersAll()
         {
-            AllUsersListBox.Items.Clear();
-            if (db.ShowUsers(users, _NameUser, ref _CountUser))
-                foreach (object el in users)
-                    AllUsersListBox.Items.Add(el);
+            if (db.ShowUsers1(users, _NameUser))
+            {
+                while (_CountUser < users.Count)
+                {
+                    AllUsersListBox.Items.Add(users[_CountUser++]);
+                }
+            }
             else
+            {
                 MessageBox.Show("error in show users", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ParticipantsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            _CountUserChat = 0;
-            usersChat.Clear();
             LoadUsersPart();
         }
 
         private void AllUsersListBox_DoubleClick(object sender, EventArgs e)
         {
-            _CountUser = 0;
-            users.Clear();
             LoadUsersAll();
         }
 
@@ -159,8 +178,46 @@ namespace NewChat3
             chatForm.Show();
         }
 
+        private void AllUsersListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(tabControl1.SelectedIndex==0)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (AllUsersListBox.SelectedIndices.Count > 0)
+                    {
+                        AddUserButton.PerformClick();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have to choose a data");
+                    }   
+                }
+            }
+        }
+
+        private void ParticipantsListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(tabControl1.SelectedIndex == 1)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (ParticipantsListBox.SelectedIndices.Count > 0)
+                    {
+                        DeleteButton.PerformClick();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have to choose a data");
+                    }
+                }
+            }
+        }
+
         private void EditChatForm_Load(object sender, EventArgs e)
         {
+            ParticipantAllUserToolTip.SetToolTip(ParticipantsListBox, "Double cliking on the listbox updates the contents of the listbox");
+            ParticipantAllUserToolTip.SetToolTip(AllUsersListBox, "Double cliking on the listbox updates the contents of the listbox");
             LoadUsersAll();
             LoadUsersPart();
 

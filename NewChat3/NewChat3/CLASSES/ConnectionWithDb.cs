@@ -305,7 +305,7 @@ namespace NewChat3
 
         }
 
-        public bool ShowUsers(List<string> list, string name,ref int CountUser)
+        public bool ShowUsers(List<string> list, string name,ref int CountUser)//delete function
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -334,6 +334,36 @@ namespace NewChat3
             }
         }
 
+        public bool ShowUsers1(List<string> UsersList, string NameUser)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users "+
+                                "where id not in (select id from chat.users where login in "+ GenerateData(UsersList, NameUser) + ") " +
+                                "order by id;";
+
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                //MessageBox.Show(select);
+                try
+                {
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                    while (sqlDataReader.Read())
+                    {
+                        UsersList.Add(sqlDataReader["login"].ToString());
+                    }
+
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    //MessageBox.Show(error.ToString());
+                    return false;
+                }
+            }
+        }
+
         public bool DeleteUserChat(string NameUser, int IdChat, string YourName)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -341,12 +371,11 @@ namespace NewChat3
                 conn.Open();
                 string delete = "delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + "))" +
                                 "and(id_chat = (select id from chat.chats where id=@idchat and id_admin = (select id from chat.users where login = @y_name))" +
-                                "or id_person_who_invited = (select id from chat.users where login = @y_name))";
-                    //"delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=@y_name)))";
+                                "or id_person_who_invited = (select id from chat.users where login = @y_name) or id_user = (select id from chat.users where login = @y_name))";//or id_user=(select id from chat.users where login=("+NameUser+"))
+                                                                                                                 //"delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=@y_name)))";
                 SqlCommand sqlCommand = new SqlCommand(delete, conn);
                 sqlCommand.Parameters.AddWithValue("idchat", IdChat);
                 sqlCommand.Parameters.AddWithValue("y_name", YourName);
-                MessageBox.Show(delete);
                 try
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -354,7 +383,7 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show(error.ToString());
+                    //MessageBox.Show(error.ToString());
                     return false;
                 }
             }
@@ -417,7 +446,7 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-
+                //MessageBox.Show(string.Join(",", UsersList.Select(x => x.ToString()).ToArray()));//
                 string InsertUser = "insert into chat.users_chats(id_user, id_chat,id_person_who_invited) values ";
                 int CountSep = 0;
                 foreach (object item in UsersList)
@@ -438,6 +467,7 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
+                    //MessageBox.Show(error.ToString());
                     return false;
                 }
             }
@@ -500,15 +530,44 @@ namespace NewChat3
             }
         }
 
+        public bool CheckUserChat(string NameNewAdmin, int IdChat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+
+                try
+                {
+                    SqlCommand CheckSqlCommand = new SqlCommand("select id_user from chat.users_chats where id_user=(select id from chat.users where login=@loginuser) and id_chat=@idchat", conn);
+                    CheckSqlCommand.Parameters.AddWithValue("loginuser", NameNewAdmin);
+                    CheckSqlCommand.Parameters.AddWithValue("idchat", IdChat);
+                    SqlDataReader reader = CheckSqlCommand.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
         public bool UpdateAdminChat(string NameNewAdmin, int IdChat)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
+
                 string select = "update chat.chats set id_admin = (select id from chat.users where login=@userlogin) where id=@IdChat";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
-                sqlCommand.Parameters.AddWithValue("IdChat",IdChat);
-                sqlCommand.Parameters.AddWithValue("userlogin",NameNewAdmin);
+                sqlCommand.Parameters.AddWithValue("IdChat", IdChat);
+                sqlCommand.Parameters.AddWithValue("userlogin", NameNewAdmin);
 
                 try
                 {
@@ -517,9 +576,8 @@ namespace NewChat3
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show(error.ToString());
                     return false;
-                }
+                }               
             }
         }
 

@@ -16,7 +16,7 @@ namespace NewChat3
         ConnectionWithDb db = new ConnectionWithDb(MainPageForm.connection);
         private List<string> _UsersChatList = new List<string>();
         private int _IdChat;
-        private int _CountGet = 0, _CountCurrent = 0;
+        private int _CountUser=0;
         private string _NameUser;
 
         public ChooseAdminForm(int IdChat,string NameUser)
@@ -28,14 +28,11 @@ namespace NewChat3
 
         private void FullChatList()
         {
-            _CountCurrent = _UsersChatList.Count;
             if (db.ShowUsersChat1(_UsersChatList, _IdChat, _NameUser))
             {
-                _CountGet = _UsersChatList.Count;
             }
             else
             {
-                _CountGet = _CountCurrent;
                 MessageBox.Show("Load is not succesfully", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
@@ -43,10 +40,8 @@ namespace NewChat3
 
         private void FullChatListBox()
         {
-            for(int i = _CountCurrent; i < _CountGet; ++i)
-            {
-                UserChatListBox.Items.Add(_UsersChatList[i]);
-            }
+            while(_CountUser<_UsersChatList.Count)
+                UserChatListBox.Items.Add(_UsersChatList[_CountUser++]);
         }
 
         private void ChooseAdminForm_Load(object sender, EventArgs e)
@@ -59,12 +54,19 @@ namespace NewChat3
         {
             if (UserChatListBox.SelectedItems.Count == 1)
             {
-                if(db.UpdateAdminChat(UserChatListBox.SelectedItem.ToString(),_IdChat))
+                if(db.CheckUserChat(UserChatListBox.SelectedItem.ToString(), _IdChat))
                 {
-                    MessageBox.Show("Successful");
-                    db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser);
-                    this.Close();
-                }                    
+                    if (db.UpdateAdminChat(UserChatListBox.SelectedItem.ToString(), _IdChat))
+                    {
+                        MessageBox.Show("Successful");
+                        db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser);
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("User is not located in the chat");
+                }
             }
             else
             {

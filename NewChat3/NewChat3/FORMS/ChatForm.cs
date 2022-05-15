@@ -40,6 +40,7 @@ namespace NewChat3
             IntervledShowChats();
             SendButton.Enabled = false;
             db.UpdateStatusUser(_NameUser, true);
+            //MessagesListBox.lin
             //ImagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
