@@ -22,7 +22,8 @@ namespace NewChat3
         private int _CountSecond=0;
         private Dictionary<int, string> _ChatsKeyValuePairs = new Dictionary<int, string>();
         private List<int> _KeyChats = new List<int>();
-        private List<string> _MessagesList = new List<string>();    
+        private List<string> _MessagesList = new List<string>();
+        private bool CheckMessage = false;
 
         public ChatForm()
         {
@@ -73,9 +74,17 @@ namespace NewChat3
         private void LoadMessages()
         {
             CountW = _CountWritten;
-            if (db.ShowMessages(_IdChat, _MessagesList,ref _CountWritten))
+            if (db.ShowMessages(_IdChat, _MessagesList, ref _CountWritten))
                 while (CountW < _CountWritten)
+                {
                     MessagesListBox.Items.Add(_MessagesList[CountW++]);
+                    if (CheckMessage)
+                    {
+                        CheckMessage = false;
+                        MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+                    }
+                  
+                }
             else
                 MessageBox.Show("Read is not successfull", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -121,11 +130,12 @@ namespace NewChat3
 
         private void SendButton_Click(object sender, EventArgs e)
         {
-            if (db.InsertMessage(_NameUser, _IdChat, MessageTextBox.Text))
+            if (MessageTextBox.Text.Trim()!="" && db.InsertMessage(_NameUser, _IdChat, MessageTextBox.Text.Trim()))
             {
-                MessagesListBox.Items.Add(DateTime.Now.Hour.ToString()+":"+ DateTime.Now.Minute.ToString() + " "+_NameUser+" -> "+MessageTextBox.Text);
-                MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
-                ++_CountWritten;
+                //MessagesListBox.Items.Add(DateTime.Now.Hour.ToString()+":"+ DateTime.Now.Minute.ToString() + " "+_NameUser+" -> "+MessageTextBox.Text);
+                //MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+                //++_CountWritten;
+                CheckMessage = true;
             }
             else
                 MessageBox.Show("The message was not sent successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

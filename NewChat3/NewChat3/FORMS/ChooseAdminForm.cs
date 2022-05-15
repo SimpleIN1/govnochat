@@ -15,6 +15,7 @@ namespace NewChat3
     {
         ConnectionWithDb db = new ConnectionWithDb(MainPageForm.connection);
         private List<string> _UsersChatList = new List<string>();
+        private List<string> _UsersChatListDelete = new List<string>();
         private int _IdChat;
         private int _CountUser=0;
         private string _NameUser;
@@ -26,16 +27,41 @@ namespace NewChat3
             this._NameUser = NameUser;
         }
 
+        private void DeleteUserChat()
+        {
+            foreach(object item in _UsersChatListDelete)
+            {
+                //MessageBox.Show(_UsersChatList.FindIndex(p => p.ToString() == item.ToString()).ToString());
+                int index;
+                if((index =_UsersChatList.FindIndex(p => p.ToString() == item.ToString()))>-1)
+                {
+                    _UsersChatList.RemoveAt(index);
+                    UserChatListBox.Items.RemoveAt(index);
+                    --_CountUser;
+                }
+            }
+        }
+
         private void FullChatList()
         {
+            if (_UsersChatList.Count > 0 && db.ShowAllUsersDelete(_UsersChatList, _UsersChatListDelete))
+            {
+                //MessageBox.Show(string.Join(",",_UserChatListDelete.Select(x =>x.ToString()).ToArray()));
+                if (_UsersChatListDelete.Count > 0)
+                {
+                    DeleteUserChat();
+                    _UsersChatListDelete.Clear();
+                }
+            }
+
             if (db.ShowUsersChat1(_UsersChatList, _IdChat, _NameUser))
             {
+                FullChatListBox();
             }
             else
             {
                 MessageBox.Show("Load is not succesfully", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            } 
         }
 
         private void FullChatListBox()
@@ -47,7 +73,6 @@ namespace NewChat3
         private void ChooseAdminForm_Load(object sender, EventArgs e)
         {
             FullChatList();
-            FullChatListBox();
         }
 
         private void ChooseButton_Click(object sender, EventArgs e)
@@ -83,7 +108,6 @@ namespace NewChat3
         private void timer1_Tick(object sender, EventArgs e)
         {
             FullChatList();
-            FullChatListBox();
         }
     }
 }

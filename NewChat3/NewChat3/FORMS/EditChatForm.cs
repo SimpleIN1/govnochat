@@ -16,7 +16,9 @@ namespace NewChat3
         ConnectionWithDb db = new ConnectionWithDb(MainPageForm.connection);
         List<string> users = new List<string>();
         List<string> SelectedUserList = new List<string>();
-        List<string> UsersChat = new List<string>();
+        List<string> _UsersChat = new List<string>();
+        private List<string> _UsersChatListDelete = new List<string>();
+        private List<string> _AllUsersListDelete = new List<string>();
         private int _IdChat;
         private string _NameUser;
         private string _NameChat;
@@ -54,7 +56,7 @@ namespace NewChat3
         {
             check = (l.SelectedItem.ToString().Trim() == _NameUser ? true:false);
             string item = "'" + l.SelectedItem.ToString() + "'";
-            UsersChat.RemoveAt(l.SelectedIndex);
+            _UsersChat.RemoveAt(l.SelectedIndex);
             ParticipantsListBox.Items.RemoveAt(l.SelectedIndex);
             --_CountUserChat;
             return item;
@@ -104,15 +106,36 @@ namespace NewChat3
             }
         }
 
+        private void DeleteUserChat()
+        {
+            foreach (object item in _UsersChatListDelete)
+            {
+                //MessageBox.Show(_UsersChatList.FindIndex(p => p.ToString() == item.ToString()).ToString());
+                int index;
+                if ((index = _UsersChat.FindIndex(p => p.ToString() == item.ToString())) > -1)
+                {
+                    _UsersChat.RemoveAt(index);
+                    ParticipantsListBox.Items.RemoveAt(index);
+                    --_CountUserChat;
+                }
+            }
+        }
+
         private void LoadUsersPart()
         {
-            if (db.ShowUsersChat1(UsersChat,_IdChat,""))
+            if (_UsersChat.Count > 0 && db.ShowUsersDeleteChat(_UsersChat, _UsersChatListDelete, _IdChat))
+            {
+                if (_UsersChatListDelete.Count > 0)
+                {
+                    DeleteUserChat();
+                    _UsersChatListDelete.Clear();
+                }
+            }
+
+            if (db.ShowUsersChat1(_UsersChat,_IdChat,""))
             {
                 //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));//list
-                while (_CountUserChat < UsersChat.Count)
-                {
-                    ParticipantsListBox.Items.Add(UsersChat[_CountUserChat++]);
-                } 
+                FullChatParticipantListBox();
             }
             else
             {
@@ -120,18 +143,57 @@ namespace NewChat3
             }
         }
 
+        private void FullChatParticipantListBox()
+        {
+            while (_CountUserChat < _UsersChat.Count)
+            {
+                ParticipantsListBox.Items.Add(_UsersChat[_CountUserChat++]);
+            }
+        }
+
+        private void DeleteAllUsers()
+        {
+            foreach (object item in _AllUsersListDelete)
+            {
+                //MessageBox.Show(_UsersChatList.FindIndex(p => p.ToString() == item.ToString()).ToString());
+                int index;
+                if ((index = users.FindIndex(p => p.ToString() == item.ToString())) > -1)
+                {
+                    users.RemoveAt(index);
+                    AllUsersListBox.Items.RemoveAt(index);
+                    --_CountUser;
+                }
+            }
+        }
+
         private void LoadUsersAll()
         {
+            if (users.Count > 0 && db.ShowAllUsersDelete(users, _AllUsersListDelete))//rewrite this function+++
+            {
+                //MessageBox.Show(string.Join(",",_UserChatListDelete.Select(x =>x.ToString()).ToArray()));
+                if (_AllUsersListDelete.Count > 0)
+                {
+                    DeleteAllUsers();
+                    _AllUsersListDelete.Clear();
+                }
+            }
+
+
             if (db.ShowUsers1(users, _NameUser))
             {
-                while (_CountUser < users.Count)
-                {
-                    AllUsersListBox.Items.Add(users[_CountUser++]);
-                }
+                FullAllUsersListBox();
             }
             else
             {
                 MessageBox.Show("error in show users", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FullAllUsersListBox()
+        {
+            while (_CountUser < users.Count)
+            {
+                AllUsersListBox.Items.Add(users[_CountUser++]);
             }
         }
 

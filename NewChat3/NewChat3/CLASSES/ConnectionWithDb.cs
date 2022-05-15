@@ -305,7 +305,7 @@ namespace NewChat3
 
         }
 
-        public bool ShowUsers(List<string> list, string name,ref int CountUser)//delete function
+        public bool ShowUsers(List<string> list, string name,ref int CountUser)//Delete this function
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -473,7 +473,7 @@ namespace NewChat3
             }
         }
 
-        public bool ShowUsersChat(List<string> UsersChatList, int IdChat, ref int CountUser)
+        public bool ShowUsersChat2(List<string> UsersChatList, int IdChat, ref int CountUser)//Delete this function
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
@@ -502,6 +502,59 @@ namespace NewChat3
             }
         }
 
+        public bool ShowUsersDeleteChat(List<string> UsersChat,List<string> DeleteUsersChat, int IdChat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users where login in "+GenerateData(UsersChat,"")+" except " +
+                                "select login from chat.users where id in " +
+                                "(select id_user from chat.users_chats where id_chat = @IdChat)";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                sqlCommand.Parameters.AddWithValue("IdChat", IdChat);
+
+                try
+                {
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        DeleteUsersChat.Add(reader["login"].ToString());
+                    }
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool ShowAllUsersDelete(List<string> UsersChat, List<string> DeleteUsersChat)//rewrite this function
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users where login in " + GenerateData(UsersChat, "") + " except " +
+                                "select login from chat.users where id in " +
+                                "(select id_user from chat.users_chats where id_chat = @IdChat)";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+
+                try
+                {
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        DeleteUsersChat.Add(reader["login"].ToString());
+                    }
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
         public bool ShowUsersChat1(List<string> UsersChatList, int IdChat, string NameUser)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
@@ -518,8 +571,9 @@ namespace NewChat3
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
                     while (reader.Read())
-                    {
+                    {   
                         UsersChatList.Add(reader["login"].ToString());
+                        //MessageBox.Show(string.Join(",", UsersChatList.Select(x => x.ToString()).ToArray()));
                     }
                     return true;
                 }
