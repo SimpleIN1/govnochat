@@ -760,13 +760,14 @@ namespace NewChat3
         }
 
         public bool SearchUsersAll(List<string> UserList, string LoginUser)
-        {
+        {                           
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
                 string select = "select login from chat.users where login like '%@userlogin%'";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 sqlCommand.Parameters.AddWithValue("userlogin", LoginUser);
+                
                 try
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
