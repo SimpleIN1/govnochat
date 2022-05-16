@@ -269,6 +269,8 @@ namespace NewChat3
                             insert += ",((select id from chat.users where login = @login" + i.ToString() + "),@idc,(select id from chat.users where login = @login0))";
                         }
 
+
+
                         SqlCommand sqlCommand = new SqlCommand(insert, conn);
                         sqlCommand.Parameters.AddWithValue("name", ChatName);
                         sqlCommand.Parameters.AddWithValue("login0", UserName);
@@ -283,6 +285,8 @@ namespace NewChat3
                             sqlCommand.Parameters.AddWithValue("login" + i.ToString(), element);
                         }
 
+                        MessageBox.Show(insert.ToString());
+
                         try
                         {
                             sqlCommand.ExecuteNonQuery();
@@ -290,6 +294,7 @@ namespace NewChat3
                         }
                         catch (Exception error)
                         {
+                            MessageBox.Show(error.ToString());
                             errorStr = "OSHIBKA";
                             return false;
                         }
@@ -749,6 +754,31 @@ namespace NewChat3
                 }
                 catch(Exception error)
                 {
+                    return false;
+                }
+            }
+        }
+
+        public bool SearchUsersAll(List<string> UserList, string LoginUser)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select login from chat.users where login like '%@userlogin%'";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+                sqlCommand.Parameters.AddWithValue("userlogin", LoginUser);
+                try
+                {
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        UserList.Add(reader["login"].ToString());
+                    }
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString()); ;
                     return false;
                 }
             }

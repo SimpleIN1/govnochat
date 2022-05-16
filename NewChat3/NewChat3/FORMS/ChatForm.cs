@@ -23,6 +23,7 @@ namespace NewChat3
         private Dictionary<int, string> _ChatsKeyValuePairs = new Dictionary<int, string>();
         private List<int> _KeyChats = new List<int>();
         private List<string> _MessagesList = new List<string>();
+        private List<string> _AllUser = new List<string>();
         private bool CheckMessage = false;
 
         public ChatForm()
@@ -211,6 +212,24 @@ namespace NewChat3
         private void ChatTabPage_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SearchLoginUserButton_Click(object sender, EventArgs e)
+        {
+            _AllUser.Clear();
+            if (LoginUserSearchTextBox.Text.Trim()!=""  && db.SearchUsersAll(_AllUser, LoginUserSearchTextBox.Text.Trim()))
+            {
+                if (_AllUser.Count > 0)
+                {
+                    AllUserListBox.Items.Clear();
+                    foreach (object item in _AllUser)
+                        AllUserListBox.Items.Add(item.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Need the enter or conntents");
+            }
         }
     }
 }

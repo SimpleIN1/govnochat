@@ -328,6 +328,7 @@
             this.SearchLoginUserButton.TabIndex = 2;
             this.SearchLoginUserButton.Text = "Search";
             this.SearchLoginUserButton.UseVisualStyleBackColor = true;
+            this.SearchLoginUserButton.Click += new System.EventHandler(this.SearchLoginUserButton_Click);
             // 
             // LoginUserSearchTextBox
             // 

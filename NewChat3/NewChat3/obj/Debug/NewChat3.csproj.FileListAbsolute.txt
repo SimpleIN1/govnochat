@@ -60,3 +60,4 @@ C:\Users\grigoriy\source\repos\ChatGitHub\govnochat\NewChat3\NewChat3\obj\Debug\
 C:\Users\grigoriy\source\repos\ChatGitHub\govnochat\NewChat3\NewChat3\obj\Debug\NewChat3.exe
 C:\Users\grigoriy\source\repos\ChatGitHub\govnochat\NewChat3\NewChat3\obj\Debug\NewChat3.pdb
 C:\Users\grigoriy\source\repos\ChatGitHub\govnochat\NewChat3\NewChat3\obj\Debug\NewChat3.ChooseAdminForm.resources
+G:\chatGitChat\NewChat3\NewChat3\obj\Debug\NewChat3.ChooseAdminForm.resources
