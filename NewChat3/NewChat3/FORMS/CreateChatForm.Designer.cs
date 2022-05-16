@@ -129,6 +129,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.UsersListBox);
             this.Name = "CreateChatForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateChatForm_FormClosing);
             this.Load += new System.EventHandler(this.CreateChatForm_Load);

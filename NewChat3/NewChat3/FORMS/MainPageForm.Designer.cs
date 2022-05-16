@@ -151,6 +151,7 @@ namespace NewChat3
             this.Controls.Add(this.regGroupBox);
             this.Controls.Add(this.LoginGroupBox);
             this.Name = "MainPageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main page";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.LoginGroupBox.ResumeLayout(false);

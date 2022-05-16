@@ -15,7 +15,7 @@ namespace NewChat3
     public partial class MainPageForm : Form
     {
         //<<<<<<< HEAD
-        public static string connection = @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//@"Data Source=DESKTOP-CAV5533\SQLEXPRESS;Initial Catalog=Chat;Integrated Security=True";
+        public static string connection = @"Data Source=DESKTOP-CAV5533\SQLEXPRESS;Initial Catalog=Chat;Integrated Security=True";
             //@"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
         //@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS1;Integrated Security=True;User ID=aa;Password=1;";  //@"Data Source=DESKTOP-H4QAP6P;Initial Catalog=TOWORKWITHCS;Integrated Security=True";
         //@"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//  @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";
@@ -68,9 +68,12 @@ namespace NewChat3
         {
             if (db.LogInUser(nameLogTextBox.Text, passwordLogTextBox.Text))
             {
-                this.Visible = false;
+                this.visible = false;
+
                 ChatForm chatForm = new ChatForm(nameLogTextBox.Text);
+                //this.Close();
                 chatForm.Show();
+                //this.Close();
             }
             else
             {

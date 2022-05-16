@@ -764,16 +764,19 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select login from chat.users where login like '%@userlogin%'";
+                string select = "select login,status from chat.users where login like @userlogin";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
-                sqlCommand.Parameters.AddWithValue("userlogin", LoginUser);
+                sqlCommand.Parameters.AddWithValue("userlogin", "%"+LoginUser+"%");
                 
                 try
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
                     while (reader.Read())
                     {
-                        UserList.Add(reader["login"].ToString());
+                        if(Convert.ToBoolean(reader["status"]))
+                            UserList.Add(reader["login"].ToString()+" Online");
+                        else
+                            UserList.Add(reader["login"].ToString());
                     }
                     return true;
                 }
