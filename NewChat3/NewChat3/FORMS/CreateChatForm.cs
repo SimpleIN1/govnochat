@@ -42,6 +42,7 @@ namespace NewChat3
         private void CreateChatForm_Load(object sender, EventArgs e)
         {
             UpdateUsers();
+            UpdateButtonToolTip.SetToolTip(UpdateButton, "Cliking on the button to upadte list");
         }
 
         private void CreateChatButton_Click(object sender, EventArgs e)

@@ -15,5 +15,6 @@ namespace NewChat3
         public string login { get;  set; }
         public byte[] image { get; set; }
         public bool status { get; set; }
+        public bool StatusDeleted { get; set; }
     }
 }

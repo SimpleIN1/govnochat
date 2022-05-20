@@ -1,0 +1,12 @@
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\bin\Debug\NewChat4.0.exe.config
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\bin\Debug\NewChat4.0.exe
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\bin\Debug\NewChat4.0.pdb
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.csprojAssemblyReference.cache
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.NewChat4.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.Properties.Resources.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.csproj.GenerateResource.cache
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.csproj.CoreCompileInputs.cache
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.exe
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.pdb
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.MainPageUserControl.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.ChatFormUserControl.resources

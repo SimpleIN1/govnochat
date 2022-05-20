@@ -68,7 +68,7 @@ namespace NewChat3
         {
             if (db.LogInUser(nameLogTextBox.Text, passwordLogTextBox.Text))
             {
-                this.visible = false;
+                this.Visible = false;
 
                 ChatForm chatForm = new ChatForm(nameLogTextBox.Text);
                 //this.Close();

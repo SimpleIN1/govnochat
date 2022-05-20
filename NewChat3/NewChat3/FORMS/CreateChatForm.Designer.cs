@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateChatForm));
             this.ImageLabel = new System.Windows.Forms.Label();
             this.ChatNameLabel = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.UsersListBox = new System.Windows.Forms.ListBox();
             this.UsersLabel = new System.Windows.Forms.Label();
             this.UpdateButton = new System.Windows.Forms.Button();
+            this.UpdateButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,5 +151,6 @@
         private System.Windows.Forms.ListBox UsersListBox;
         private System.Windows.Forms.Label UsersLabel;
         private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.ToolTip UpdateButtonToolTip;
     }
 }

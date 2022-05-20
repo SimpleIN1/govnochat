@@ -28,7 +28,7 @@ namespace NewChat3
                 try
                 {
                     conn.Open();
-                    string insert = "insert into chat.users(login,password,status) values (@login,@password,0)";
+                    string insert = "insert into chat.users(login,password,status,status_deleted) values (@login,@password,0,0)";
                     SqlCommand sqlCommand = new SqlCommand(insert, conn);
 
                     sqlCommand.Parameters.AddWithValue("login", name_reg);
@@ -206,15 +206,14 @@ namespace NewChat3
             }
         }
 
-        private string GenerateData(List<string> UsersList, string UserName)
+        private string GenerateData(List<string> UsersList, string UserName, string parametrlf="'", string parametrrg="'")
         {
-            string data = "('" + UserName + "'";
+            string data = parametrlf + UserName + parametrrg;
 
             foreach (object element in UsersList)
             {
-                data += ",'" + element + "'";
+                data += ","+parametrlf + element + parametrrg;
             }
-            data += ")";
 
             return data;
         }
@@ -230,9 +229,9 @@ namespace NewChat3
                 if (UsersList.Count + 1 == 2)
                 {
                     select = "select id_chat, count(id_user) from chat.users_chats where id_user in" +
-                                    "(select id from chat.users where login in " + DataLogins + ") and id_chat not in" +
+                                    "(select id from chat.users where login in (" + DataLogins + ")) and id_chat not in" +
                                     "(select id_chat from chat.users_chats where id_user in" +
-                                    "(select id from chat.users where login not in " + DataLogins + ")) group by id_chat having count(*) = " + (UsersList.Count + 1).ToString();
+                                    "(select id from chat.users where login not in (" + DataLogins + "))) group by id_chat having count(*) = " + (UsersList.Count + 1).ToString();
                 }
                 else
                 {
@@ -345,7 +344,7 @@ namespace NewChat3
             {
                 conn.Open();
                 string select = "select login from chat.users "+
-                                "where id not in (select id from chat.users where login in "+ GenerateData(UsersList, NameUser) + ") " +
+                                "where id not in (select id from chat.users where login in ("+ GenerateData(UsersList, NameUser) + ")) " +
                                 "order by id;";
 
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
@@ -369,18 +368,50 @@ namespace NewChat3
             }
         }
 
+        public bool ShowDeleteUserChat(string NameUser, int IdChat, string YourName)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string delete = "select * from chat.users_chats where id_chat=@idchat and id_user = (select id from chat.users where login=@NameUser)" +
+                                "and(id_chat = (select id from chat.chats where id=@idchat and id_admin = (select id from chat.users where login = @y_name))" +
+                                "or id_person_who_invited = (select id from chat.users where login = @y_name) or id_user = (select id from chat.users where login = @y_name))";//or id_user=(select id from chat.users where login=("+NameUser+"))
+                                                                                                                                                                               //"delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=@y_name)))";
+                SqlCommand sqlCommand = new SqlCommand(delete, conn);
+                sqlCommand.Parameters.AddWithValue("idchat", IdChat);
+                sqlCommand.Parameters.AddWithValue("y_name", YourName);
+                sqlCommand.Parameters.AddWithValue("NameUser", NameUser);
+
+                try
+                {
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    if (reader.HasRows)
+                        return true;
+                    else
+                        return false;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.ToString());
+                    return false;
+                }
+            }
+        }
+
         public bool DeleteUserChat(string NameUser, int IdChat, string YourName)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + "))" +
+                string delete = "delete from chat.users_chats where id_chat=@idchat and id_user = (select id from chat.users where login=@NameUser)" +
                                 "and(id_chat = (select id from chat.chats where id=@idchat and id_admin = (select id from chat.users where login = @y_name))" +
                                 "or id_person_who_invited = (select id from chat.users where login = @y_name) or id_user = (select id from chat.users where login = @y_name))";//or id_user=(select id from chat.users where login=("+NameUser+"))
                                                                                                                  //"delete from chat.users_chats where id_chat=@idchat and id_user in (select id from chat.users where login in (" + NameUser + ")) and (id_person_who_invited=(select id from chat.users where login=@y_name) or id_chat=(select id from chat.chats where id_admin=(select id from chat.users where login=@y_name)))";
                 SqlCommand sqlCommand = new SqlCommand(delete, conn);
                 sqlCommand.Parameters.AddWithValue("idchat", IdChat);
                 sqlCommand.Parameters.AddWithValue("y_name", YourName);
+                sqlCommand.Parameters.AddWithValue("NameUser", NameUser);
+
                 try
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -512,7 +543,7 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select login from chat.users where login in "+GenerateData(UsersChat,"")+" except " +
+                string select = "select login from chat.users where login in ("+GenerateData(UsersChat,"")+") except " +
                                 "select login from chat.users where id in " +
                                 "(select id_user from chat.users_chats where id_chat = @IdChat)";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
@@ -521,6 +552,10 @@ namespace NewChat3
                 try
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                    //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));
+                    //MessageBox.Show(string.Join(",", DeleteUsersChat.Select(x => x.ToString()).ToArray()));
+
                     while (reader.Read())
                     {
                         DeleteUsersChat.Add(reader["login"].ToString());
@@ -539,9 +574,8 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select login from chat.users where login in " + GenerateData(UsersChat, "") + " except " +
-                                "select login from chat.users where id in " +
-                                "(select id_user from chat.users_chats where id_chat = @IdChat)";
+                string select = "select * from ( values "+GenerateData(UsersChat,"('","')")+") tlogins(login) except"+
+                                "select login from chat.users";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
 
                 try
@@ -567,7 +601,7 @@ namespace NewChat3
                 conn.Open();
                 string select = "select login from chat.users where id in " +
                                     "(select id_user from chat.users_chats where id_user not in" +
-                                        "(select id from chat.users where login in "+GenerateData(UsersChatList,NameUser)+") " +
+                                        "(select id from chat.users where login in ("+GenerateData(UsersChatList,NameUser)+")) " +
                                     "and id_chat=@IdChat)";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 sqlCommand.Parameters.AddWithValue("IdChat",IdChat);
@@ -667,28 +701,29 @@ namespace NewChat3
             }
         }
 
-        public bool DeleteUser(string name)
+        public bool DeleteUser(string name)//add funtion the recovery page of user!
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string delete = "delete from chat.users where login=@y_name";
+                //string delete = "delete from chat.users where login=@y_name";
+                string delete = "update chat.users set status_deleted=1 where login=@y_name";
                 SqlCommand sqlCommand = new SqlCommand(delete, conn);
                 sqlCommand.Parameters.AddWithValue("y_name", name);
                 try
                 {
-
                     sqlCommand.ExecuteReader();
                     return true;
                 }
                 catch (Exception error)
                 {
+                    MessageBox.Show(error.ToString());
                     return false;
                 }
             }
         }
 
-        public byte[] ShowImageUser(string name)
+        public byte[] ShowImageUser(string  name)
         {
             using (SqlConnection conn = new SqlConnection(_connection))
             {
