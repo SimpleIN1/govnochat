@@ -1,0 +1,14 @@
+USE [Chat]
+GO
+/****** Object:  Trigger [chat].[__insert_friend_user_table_friends__]    Script Date: 21.05.2022 0:26:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER trigger [chat].[__insert_friend_user_table_friends__] on [chat].[friends]
+for insert
+as 
+if @@rowcount=1 and(select id_user_who_add from inserted)=(select id_user_friend_added from inserted)
+begin
+rollback transaction
+end

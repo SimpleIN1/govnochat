@@ -110,6 +110,7 @@
             this.Controls.Add(this.NamePageTextBox);
             this.Controls.Add(this.ImagePictureBox);
             this.Name = "EditProfileForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditProfileForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditProfileForm_FormClosing);
             this.Load += new System.EventHandler(this.EditProfileForm_Load);

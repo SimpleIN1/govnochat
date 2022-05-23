@@ -84,7 +84,7 @@ namespace NewChat3
                     if (db.UpdateAdminChat(UserChatListBox.SelectedItem.ToString(), _IdChat))
                     {
                         MessageBox.Show("Successful");
-                        db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser);
+                        db.DeleteUserChat(_NameUser, _IdChat, _NameUser);
                         this.Close();
                     }
                 }

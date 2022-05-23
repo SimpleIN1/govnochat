@@ -223,6 +223,7 @@
             this.Controls.Add(this.ImageLabel);
             this.Controls.Add(this.ImagePictureBox);
             this.Name = "EditChatForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit chat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditChatForm_FormClosing);
             this.Load += new System.EventHandler(this.EditChatForm_Load);

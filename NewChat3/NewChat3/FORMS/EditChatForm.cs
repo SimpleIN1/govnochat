@@ -55,7 +55,7 @@ namespace NewChat3
         private string GetItemList(ListBox l,ref bool check)
         {
             check = (l.SelectedItem.ToString().Trim() == _NameUser ? true:false);
-            string item = "'" + l.SelectedItem.ToString() + "'";
+            string item = l.SelectedItem.ToString();
             _UsersChat.RemoveAt(l.SelectedIndex);
             ParticipantsListBox.Items.RemoveAt(l.SelectedIndex);
             --_CountUserChat;
@@ -65,14 +65,21 @@ namespace NewChat3
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             bool CheckUserInList = false;
-            if (db.DeleteUserChat(GetItemList(ParticipantsListBox,ref CheckUserInList), _IdChat, _NameUser))
+            if (db.ShowDeleteUserChat(ParticipantsListBox.SelectedItem.ToString(), _IdChat, _NameUser))
             {
-                MessageBox.Show("user(s) is removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (CheckAdmin())
+                {
+                    MessageBox.Show(1.ToString());
+                }
+                else if (db.DeleteUserChat(GetItemList(ParticipantsListBox, ref CheckUserInList), _IdChat, _NameUser))
+                {
+                    MessageBox.Show("user(s) is removed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));//list
-
-                if (CheckUserInList)
-                    this.Close();
+                    //MessageBox.Show(string.Join(",", UsersChat.Select(x => x.ToString()).ToArray()));//list
+                    //ParticipantsListBox.Items.RemoveAt(l.SelectedIndex);
+                    if (CheckUserInList)
+                        this.Close();
+                }
             }
             else
                 MessageBox.Show("You can not delete the user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -207,18 +214,31 @@ namespace NewChat3
             LoadUsersAll();
         }
 
+        private bool CheckAdmin()
+        {
+            if (db.CheckAdminChat(_NameUser, _IdChat))
+            {
+                //MessageBox.Show("Success");
+                ChooseAdminForm chooseAdminForm = new ChooseAdminForm(_IdChat, _NameUser);
+                chooseAdminForm.Show();
+                this.Visible = false;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void LeaveTheChatButton_Click(object sender, EventArgs e)
         {
 
             if(MessageBox.Show("Are you sure want to exit from chat?","",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
-                if (db.CheckAdminChat(_NameUser, _IdChat))
+                if (CheckAdmin())
                 {
-                    //MessageBox.Show("Success");
-                    ChooseAdminForm chooseAdminForm = new ChooseAdminForm(_IdChat,_NameUser);
-                    chooseAdminForm.Show();
-                    this.Visible = false;
+                    MessageBox.Show("Success");
                 }
-                else if (db.DeleteUserChat("'" + _NameUser + "'", _IdChat, _NameUser))
+                else if (db.DeleteUserChat(_NameUser, _IdChat, _NameUser))
                 {
                     MessageBox.Show("You exit", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

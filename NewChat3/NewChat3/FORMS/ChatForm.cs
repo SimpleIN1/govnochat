@@ -192,6 +192,10 @@ namespace NewChat3
                     MessageBox.Show("Loading is not successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            if (tabControl1.SelectedIndex == 2)
+            {
+                SearchAllUser("");
+            }
         }
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,10 +218,10 @@ namespace NewChat3
 
         }
 
-        private void SearchLoginUserButton_Click(object sender, EventArgs e)
+        private void SearchAllUser(string LoginUser)
         {
             _AllUser.Clear();
-            if (LoginUserSearchTextBox.Text.Trim()!=""  && db.SearchUsersAll(_AllUser, LoginUserSearchTextBox.Text.Trim()))
+            if (db.SearchUsersAll(_AllUser, LoginUser))
             {
                 if (_AllUser.Count > 0)
                 {
@@ -230,6 +234,11 @@ namespace NewChat3
             {
                 MessageBox.Show("Need the enter or conntents");
             }
+        }
+
+        private void SearchLoginUserButton_Click(object sender, EventArgs e)
+        {
+            SearchAllUser(LoginUserSearchTextBox.Text.Trim());
         }
     }
 }
