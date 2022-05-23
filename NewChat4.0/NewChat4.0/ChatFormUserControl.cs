@@ -172,6 +172,8 @@ namespace NewChat4._0
                     MemoryStream streamImg = new MemoryStream(users.image);
                     ImagePictureBox.Image = Image.FromStream(streamImg);
                 }
+                else
+                    ImagePictureBox.Image = null;
             }
             else
             {
