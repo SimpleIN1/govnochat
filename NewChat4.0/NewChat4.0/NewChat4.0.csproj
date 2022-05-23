@@ -53,8 +53,36 @@
       <DependentUpon>ChatFormUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ChatFormUserControlDbClass.cs" />
+    <Compile Include="ChooseAdminChatUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChooseAdminChatUserControl.Designer.cs">
+      <DependentUpon>ChooseAdminChatUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseAdminChatUserControlDbClass.cs" />
     <Compile Include="CLASSES\CryptClass.cs" />
     <Compile Include="CLASSES\MainPageUserControlDbClass.cs" />
+    <Compile Include="CreateChatUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreateChatUserControl.Designer.cs">
+      <DependentUpon>CreateChatUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateChatUserControlDbClass.cs" />
+    <Compile Include="EditChatUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditChatUserControl.Designer.cs">
+      <DependentUpon>EditChatUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditChatUserControlDbClass.cs" />
+    <Compile Include="EditProfileUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditProfileUserControl.Designer.cs">
+      <DependentUpon>EditProfileUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfileUserControlDbClass.cs" />
     <Compile Include="USERCONTROLS\MainPageUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +100,18 @@
     <Compile Include="UsersClass.cs" />
     <EmbeddedResource Include="ChatFormUserControl.resx">
       <DependentUpon>ChatFormUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseAdminChatUserControl.resx">
+      <DependentUpon>ChooseAdminChatUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateChatUserControl.resx">
+      <DependentUpon>CreateChatUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditChatUserControl.resx">
+      <DependentUpon>EditChatUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProfileUserControl.resx">
+      <DependentUpon>EditProfileUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="USERCONTROLS\MainPageUserControl.resx">
       <DependentUpon>MainPageUserControl.cs</DependentUpon>

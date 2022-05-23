@@ -10,3 +10,7 @@ C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.exe
 C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4.0.pdb
 C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.MainPageUserControl.resources
 C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.ChatFormUserControl.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.EditProfileUserControl.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.EditChatUserControl.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.ChooseAdminChatUserControl.resources
+C:\Users\grigoriy\source\repos\NewChat4.0\NewChat4.0\obj\Debug\NewChat4._0.CreateChatUserControl.resources

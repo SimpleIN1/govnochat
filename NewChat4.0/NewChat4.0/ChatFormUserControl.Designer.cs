@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatFormUserControl));
             this.ChatFormTabControl = new System.Windows.Forms.TabControl();
             this.ChatTabPage = new System.Windows.Forms.TabPage();
@@ -51,11 +52,15 @@
             this.BackPageToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateProfileInfToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.PeolpeTabPage = new System.Windows.Forms.TabPage();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.SearchLoginUserButton = new System.Windows.Forms.Button();
             this.LoginUserSearchTextBox = new System.Windows.Forms.TextBox();
             this.AllUserListBox = new System.Windows.Forms.ListBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.UpdateUserListToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.DeleteUserButton = new System.Windows.Forms.Button();
             this.ChatFormTabControl.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -100,6 +105,7 @@
             this.MessageTextBox.Name = "MessageTextBox";
             this.MessageTextBox.Size = new System.Drawing.Size(173, 22);
             this.MessageTextBox.TabIndex = 9;
+            this.MessageTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MessageTextBox_KeyDown);
             // 
             // SendButton
             // 
@@ -110,6 +116,7 @@
             this.SendButton.TabIndex = 8;
             this.SendButton.Text = "Send";
             this.SendButton.UseVisualStyleBackColor = true;
+            this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
             // MessagesListBox
             // 
@@ -147,6 +154,7 @@
             this.ChatToolStripComboBox.Name = "ChatToolStripComboBox";
             this.ChatToolStripComboBox.Size = new System.Drawing.Size(121, 25);
             this.ChatToolStripComboBox.Text = "Choose the chat";
+            this.ChatToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.ChatToolStripComboBox_SelectedIndexChanged);
             // 
             // toolStripDropDownButton1
             // 
@@ -164,18 +172,21 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
+            this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
+            this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
             // 
             // ProfileTabPage
             // 
             this.ProfileTabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ProfileTabPage.BackgroundImage")));
+            this.ProfileTabPage.Controls.Add(this.DeleteUserButton);
             this.ProfileTabPage.Controls.Add(this.ExitButton);
             this.ProfileTabPage.Controls.Add(this.AddFriendsButton);
             this.ProfileTabPage.Controls.Add(this.FriendsListBox);
@@ -190,6 +201,7 @@
             this.ProfileTabPage.TabIndex = 1;
             this.ProfileTabPage.Text = "Profile";
             this.ProfileTabPage.UseVisualStyleBackColor = true;
+            this.ProfileTabPage.Click += new System.EventHandler(this.ProfileTabPage_Click);
             // 
             // ExitButton
             // 
@@ -220,6 +232,8 @@
             this.FriendsListBox.Name = "FriendsListBox";
             this.FriendsListBox.Size = new System.Drawing.Size(135, 43);
             this.FriendsListBox.TabIndex = 8;
+            this.FriendsListBox.DoubleClick += new System.EventHandler(this.FriendsListBox_DoubleClick);
+            this.FriendsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.FriendsListBox_MouseDoubleClick);
             // 
             // StatusLabel
             // 
@@ -254,7 +268,8 @@
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BackPageToolStripButton,
-            this.toolStripDropDownButton2});
+            this.toolStripDropDownButton2,
+            this.UpdateProfileInfToolStripButton2});
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(755, 25);
@@ -286,8 +301,19 @@
             // editProfileToolStripMenuItem
             // 
             this.editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editProfileToolStripMenuItem.Text = "Edit profile";
+            this.editProfileToolStripMenuItem.Click += new System.EventHandler(this.editProfileToolStripMenuItem_Click);
+            // 
+            // UpdateProfileInfToolStripButton2
+            // 
+            this.UpdateProfileInfToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UpdateProfileInfToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("UpdateProfileInfToolStripButton2.Image")));
+            this.UpdateProfileInfToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateProfileInfToolStripButton2.Name = "UpdateProfileInfToolStripButton2";
+            this.UpdateProfileInfToolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.UpdateProfileInfToolStripButton2.Text = "UpdateProfileInfToolStripButton2";
+            this.UpdateProfileInfToolStripButton2.Click += new System.EventHandler(this.UpdateProfileInfToolStripButton2_Click);
             // 
             // PeolpeTabPage
             // 
@@ -337,6 +363,22 @@
             this.AllUserListBox.Size = new System.Drawing.Size(227, 264);
             this.AllUserListBox.TabIndex = 0;
             this.AllUserListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AllUserListBox_MouseDoubleClick);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // DeleteUserButton
+            // 
+            this.DeleteUserButton.Location = new System.Drawing.Point(231, 208);
+            this.DeleteUserButton.Name = "DeleteUserButton";
+            this.DeleteUserButton.Size = new System.Drawing.Size(80, 37);
+            this.DeleteUserButton.TabIndex = 11;
+            this.DeleteUserButton.Text = "Delete";
+            this.DeleteUserButton.UseVisualStyleBackColor = true;
+            this.DeleteUserButton.Click += new System.EventHandler(this.DeleteUserButton_Click);
             // 
             // ChatFormUserControl
             // 
@@ -391,5 +433,9 @@
         private System.Windows.Forms.Button SearchLoginUserButton;
         private System.Windows.Forms.TextBox LoginUserSearchTextBox;
         private System.Windows.Forms.ListBox AllUserListBox;
+        private System.Windows.Forms.ToolStripButton UpdateProfileInfToolStripButton2;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolTip UpdateUserListToolTip;
+        private System.Windows.Forms.Button DeleteUserButton;
     }
 }

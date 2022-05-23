@@ -69,7 +69,7 @@ namespace NewChat3
             {
                 if (CheckAdmin())
                 {
-
+                    MessageBox.Show(1.ToString());
                 }
                 else if (db.DeleteUserChat(GetItemList(ParticipantsListBox, ref CheckUserInList), _IdChat, _NameUser))
                 {

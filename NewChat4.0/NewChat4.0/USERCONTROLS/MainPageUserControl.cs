@@ -14,6 +14,7 @@ namespace NewChat4._0
     public partial class MainPageUserControl : UserControl
     {
         public static string connection = @"Data Source=DESKTOP-CAV5533\SQLEXPRESS;Initial Catalog=Chat;Integrated Security=True";
+        public static string NameUser=null;
         public MainPageUserControl(Panel panel)
         {
             InitializeComponent();
@@ -57,20 +58,41 @@ namespace NewChat4._0
             }
         }
 
+        public static void CheckStatusEnterExitUser(bool check)//update status users
+        {
+            if(NameUser != null)
+                MainPageUserControlDbClass.UpdateStatusUser(NameUser, check);
+        }
+
+        public void MoveTransferFollowUserControl()
+        {
+            NameUser = nameLogTextBox.Text;
+            panel.Controls.Clear();
+            panel.Controls.Add(new ChatFormUserControl(nameLogTextBox.Text.Trim(), panel));
+        }
+
         private void enterLogButton_Click(object sender, EventArgs e)
         {
+            
             if (ControlDbClass.LogInUser(nameLogTextBox.Text, passwordLogTextBox.Text))
             {
-                //this.Visible = false;
-                panel.Controls.Clear();
-                ControlDbClass.UpdateStatusUser(nameLogTextBox.Text,true);
-                panel.Controls.Add(new ChatFormUserControl(nameLogTextBox.Text.Trim(),panel));
-
+                if (MainPageUserControlDbClass.CheckStatusDeletedUser)
+                {
+                    if (MessageBox.Show("Do you want to recovery your page?", "Recovery", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        ControlDbClass.UpdateStatusDeletedUser(nameLogTextBox.Text);
+                        MoveTransferFollowUserControl();
+                    }
+                }
+                else
+                {
+                    MoveTransferFollowUserControl();
+                }
             }
             else
             {
                 if (MainPageUserControlDbClass.CheckError)
-                { MessageBox.Show("wrong a name and password", "Error logIn", MessageBoxButtons.OK, MessageBoxIcon.Warning); MainPageUserControlDbClass.CheckError = false; }
+                { MessageBox.Show("wrong a name and passwb v ord", "Error logIn", MessageBoxButtons.OK, MessageBoxIcon.Warning); MainPageUserControlDbClass.CheckError = false; }
                 else
                     MessageBox.Show("Trouble with connection", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

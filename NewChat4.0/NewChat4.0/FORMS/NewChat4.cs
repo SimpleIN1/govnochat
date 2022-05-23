@@ -24,7 +24,7 @@ namespace NewChat4._0
 
         private void NewChat4_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //MainPageUserControlDbClass.UpdateStatusUser();//this makes
+            MainPageUserControl.CheckStatusEnterExitUser(false);
         }
     }
 }
