@@ -760,13 +760,14 @@ namespace NewChat3
         }
 
         public bool SearchUsersAll(List<string> UserList, string LoginUser)
-        {
+        {                           
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-                string select = "select login from chat.users where login like '%@userlogin%'";
+                string select = "select login from chat.users where login like '%"+LoginUser+"%'";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 sqlCommand.Parameters.AddWithValue("userlogin", LoginUser);
+                
                 try
                 {
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -774,6 +775,7 @@ namespace NewChat3
                     {
                         UserList.Add(reader["login"].ToString());
                     }
+                    MessageBox.Show(string.Join(",", UserList.Select(x => x.ToString()).ToArray()));
                     return true;
                 }
                 catch (Exception error)
