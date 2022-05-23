@@ -54,14 +54,20 @@ namespace NewChat4._0
 
         }
 
+        public void CreateChat()
+        {
+
+        }
+
         private void CreateChatButton_Click(object sender, EventArgs e)
         {
+            bool check = false; 
             foreach (object element in UsersListBox.SelectedItems)
                 _SelectedItemList.Add(element.ToString());
             if (ChatNameTextBox.Text.Trim(' ') != "")
             {
                 string error = null;
-                if (ControlDbClass.CreateChat(_NameUser, _SelectedItemList, ChatNameTextBox.Text, ImageArr, ref error))
+                if (CreateChatUserControlDbClass.CreateChat(_NameUser, _SelectedItemList, ChatNameTextBox.Text, ref error,ref check, ImageArr))
                 {
 
                     MessageBox.Show("Chat is created", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

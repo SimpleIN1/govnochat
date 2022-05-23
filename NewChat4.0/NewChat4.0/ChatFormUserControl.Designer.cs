@@ -61,6 +61,7 @@
             this.AllUserListBox = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.UpdateUserListToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.WriteToUserButton = new System.Windows.Forms.Button();
             this.ChatFormTabControl.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -172,20 +173,21 @@
             // createChatToolStripMenuItem
             // 
             this.createChatToolStripMenuItem.Name = "createChatToolStripMenuItem";
-            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.createChatToolStripMenuItem.Text = "Create chat";
             this.createChatToolStripMenuItem.Click += new System.EventHandler(this.createChatToolStripMenuItem_Click);
             // 
             // editChatToolStripMenuItem
             // 
             this.editChatToolStripMenuItem.Name = "editChatToolStripMenuItem";
-            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editChatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.editChatToolStripMenuItem.Text = "Edit chat";
             this.editChatToolStripMenuItem.Click += new System.EventHandler(this.editChatToolStripMenuItem_Click);
             // 
             // ProfileTabPage
             // 
             this.ProfileTabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ProfileTabPage.BackgroundImage")));
+            this.ProfileTabPage.Controls.Add(this.WriteToUserButton);
             this.ProfileTabPage.Controls.Add(this.DeleteUserButton);
             this.ProfileTabPage.Controls.Add(this.ExitButton);
             this.ProfileTabPage.Controls.Add(this.AddFriendsButton);
@@ -386,6 +388,16 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // WriteToUserButton
+            // 
+            this.WriteToUserButton.Location = new System.Drawing.Point(436, 278);
+            this.WriteToUserButton.Name = "WriteToUserButton";
+            this.WriteToUserButton.Size = new System.Drawing.Size(102, 43);
+            this.WriteToUserButton.TabIndex = 12;
+            this.WriteToUserButton.Text = "Write";
+            this.WriteToUserButton.UseVisualStyleBackColor = true;
+            this.WriteToUserButton.Click += new System.EventHandler(this.WriteToUserButton_Click);
+            // 
             // ChatFormUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,5 +455,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolTip UpdateUserListToolTip;
         private System.Windows.Forms.Button DeleteUserButton;
+        private System.Windows.Forms.Button WriteToUserButton;
     }
 }

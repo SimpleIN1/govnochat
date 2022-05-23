@@ -45,11 +45,11 @@ namespace NewChat4._0
             }
         }
 
-        public bool CreateChat(string UserName, List<string> UsersList, string ChatName, byte[] ImageArr, ref string errorStr)
+        public static bool CreateChat(string UserName, List<string> UsersList, string ChatName, ref string errorStr,ref bool CheckCreateChat, byte[] ImageArr = null)
         {
             string DataLogins = ChatFormUserControlDbClass.GenerateData(UsersList, UserName);/*"("+UsersList.Join(',') + ")" //*/
 
-            using (SqlConnection conn = new SqlConnection(_connection))
+            using (SqlConnection conn = new SqlConnection(MainPageUserControl.connection))
             {
                 conn.Open();
                 string select;
@@ -74,6 +74,7 @@ namespace NewChat4._0
                     if (sqlDataReader.Read())
                     {
                         errorStr = "Chats is exists";
+                        CheckCreateChat = true;
                         return false;
                     }
                     else

@@ -380,6 +380,8 @@ namespace NewChat4._0
             }
         }
 
+        //private void
+
         private void ChatToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ChatToolStripComboBox.SelectedItem != null)
@@ -412,6 +414,31 @@ namespace NewChat4._0
         {
             panel.Controls.Clear();
             panel.Controls.Add(new CreateChatUserControl(_NameUser,panel));
+        }
+
+        private void WriteToUserButton_Click(object sender, EventArgs e)
+        {
+            string error = null;
+            bool CheckCreateChat = false;
+            List<string> UsersList = new List<string>();
+            UsersList.Add(UserNameLabel.Text);
+            _NameChat = _NameUser + "_" + UserNameLabel.Text.Trim();
+            if (CreateChatUserControlDbClass.CreateChat(_NameUser, UsersList, _NameChat, ref error,ref CheckCreateChat))
+            {
+                MessageBox.Show("Chat is created", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ChatFormTabControl.SelectTab(ChatTabPage);
+
+
+                UsersList.Clear();
+            }
+            else
+            {
+                if(CheckCreateChat)
+                {
+                    ChatFormTabControl.SelectTab(ChatTabPage);
+                }
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
