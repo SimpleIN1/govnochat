@@ -21,6 +21,7 @@ namespace NewChat4._0
         private static int _CountWritten = 0;
         private string _NameChat;
         private string SelectedFriend = null;
+        private bool CheckChatCreate = false;
 
         private int _CountUserFriends = 0;
 
@@ -41,11 +42,13 @@ namespace NewChat4._0
             this._NameUser = NameUser;
             InitializeComponent();
             this.panel = panel;
+            timer1.Enabled = true;
         }
 
             
         private void ChatFormUserControl_Load(object sender, EventArgs e)
         {
+            
             UpdateUserListToolTip.SetToolTip(FriendsListBox, "Double cliking on the listbox updates the contents of the listbox");
             UpdateUserListToolTip.SetToolTip(AddFriendsButton, "Add friend");
             UpdateUserListToolTip.SetToolTip(DeleteUserButton, "Delete friend");
@@ -294,6 +297,7 @@ namespace NewChat4._0
         {
             if (_NameUser == UserNameLabel.Text)
             {
+                CloseLoad();
                 panel.Controls.Clear();
                 panel.Controls.Add(new EditProfileUserControl(_NameUser, panel));
             }
@@ -305,22 +309,24 @@ namespace NewChat4._0
 
             if (ChatFormTabControl.SelectedIndex == 0)
             {
+                timer1.Enabled = true;
                 DeleteUserButton.Visible = false;
             }
             if (ChatFormTabControl.SelectedIndex == 1)
             {
+                CloseLoad();
                 LoadInformationProfile(_NameUser);
                 if (_NameUser == UserNameLabel.Text)
                 {
                     
                     FillFriendsListBox(_NameUser);
-                    //MessageBox.Show("sss");
                     CheckClearFriendsListBox(_NameUser);
                 }
                     
             }
             if (ChatFormTabControl.SelectedIndex == 2)
             {
+                CloseLoad();
                 SearchAllUser("");
                 DeleteUserButton.Visible = false;
             }
@@ -337,6 +343,11 @@ namespace NewChat4._0
                 _CountSecond = 0;
                 IntervledShowChats();
             }
+            if (CheckChatCreate)
+            {
+                IntervledShowChats();
+                CheckChatCreate = false;
+            }
         }
 
         private void LoadImage(byte[] ArrImage)
@@ -350,6 +361,11 @@ namespace NewChat4._0
                 toolStripButton1.Image = null;
         }
 
+        private void CloseLoad()
+        {
+            timer1.Enabled = false;
+        }
+
         private void editChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //panel.Controls.Clear();
@@ -357,6 +373,7 @@ namespace NewChat4._0
 
             if (_IdChat > -1)
             {
+                CloseLoad();
                 panel.Controls.Clear();
                 panel.Controls.Add(new EditChatUserControl(_NameUser, _IdChat, _NameChat, panel));
                 //editChatForm.Show();
@@ -384,7 +401,7 @@ namespace NewChat4._0
 
         private void ChatToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ChatToolStripComboBox.SelectedItem != null)
+            if (ChatToolStripComboBox.SelectedIndex >-1)
             {
                 SendButton.Enabled = true;
                 MessagesListBox.Items.Clear();
@@ -416,6 +433,25 @@ namespace NewChat4._0
             panel.Controls.Add(new CreateChatUserControl(_NameUser,panel));
         }
 
+        private void SelectChat(List<string> UsersList)
+        {
+            ChatFormTabControl.SelectTab(ChatTabPage);
+            UsersList.Clear();
+            UsersList.Add(_NameUser);
+            UsersList.Add(UserNameLabel.Text);
+            if (ControlDbClass.ShowIdchat(UsersList, ref _IdChat))
+            {
+                //MessageBox.Show("IdChat: " + _IdChat.ToString());
+                if (_ChatsKeyValuePairs.Keys.Contains(_IdChat))
+                {
+                    int IndexSelectedChat = _KeyChats.FindIndex(p => p == _IdChat);
+                    //MessageBox.Show(IndexSelectedChat.ToString());
+                    ChatToolStripComboBox.SelectedIndex = IndexSelectedChat;
+                }
+            }
+            UsersList.Clear();
+        }
+
         private void WriteToUserButton_Click(object sender, EventArgs e)
         {
             string error = null;
@@ -426,18 +462,17 @@ namespace NewChat4._0
             if (CreateChatUserControlDbClass.CreateChat(_NameUser, UsersList, _NameChat, ref error,ref CheckCreateChat))
             {
                 MessageBox.Show("Chat is created", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ChatFormTabControl.SelectTab(ChatTabPage);
-
-
-                UsersList.Clear();
+                CheckChatCreate = true;
+                SelectChat(UsersList);
+                
             }
             else
             {
                 if(CheckCreateChat)
                 {
-                    ChatFormTabControl.SelectTab(ChatTabPage);
+                    SelectChat(UsersList);
                 }
-                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

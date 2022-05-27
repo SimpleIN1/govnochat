@@ -332,5 +332,27 @@ namespace NewChat4._0
                 }
             }
         }
+
+        public bool ShowIdchat(List<string> UserList,ref int IdChat)
+        {
+            using (SqlConnection conn = new SqlConnection(_connection))
+            {
+                conn.Open();
+                string select = "select id from chat.chats where id not in "+
+                                "(select id_chat from chat.users_chats where id_user in "+
+                                "(select id from chat.users where login not in ("+GenerateData(UserList)+")))";
+                SqlCommand sqlCommand = new SqlCommand(select, conn);
+
+                try
+                {
+                    IdChat = (int)sqlCommand.ExecuteScalar();
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

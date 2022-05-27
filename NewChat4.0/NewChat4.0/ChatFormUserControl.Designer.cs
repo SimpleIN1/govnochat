@@ -42,6 +42,7 @@
             this.createChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProfileTabPage = new System.Windows.Forms.TabPage();
+            this.WriteToUserButton = new System.Windows.Forms.Button();
             this.DeleteUserButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.AddFriendsButton = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.AllUserListBox = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.UpdateUserListToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.WriteToUserButton = new System.Windows.Forms.Button();
             this.ChatFormTabControl.SuspendLayout();
             this.ChatTabPage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -205,6 +205,16 @@
             this.ProfileTabPage.UseVisualStyleBackColor = true;
             this.ProfileTabPage.Click += new System.EventHandler(this.ProfileTabPage_Click);
             // 
+            // WriteToUserButton
+            // 
+            this.WriteToUserButton.Location = new System.Drawing.Point(436, 278);
+            this.WriteToUserButton.Name = "WriteToUserButton";
+            this.WriteToUserButton.Size = new System.Drawing.Size(102, 43);
+            this.WriteToUserButton.TabIndex = 12;
+            this.WriteToUserButton.Text = "Write";
+            this.WriteToUserButton.UseVisualStyleBackColor = true;
+            this.WriteToUserButton.Click += new System.EventHandler(this.WriteToUserButton_Click);
+            // 
             // DeleteUserButton
             // 
             this.DeleteUserButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteUserButton.BackgroundImage")));
@@ -270,6 +280,7 @@
             // 
             // ImagePictureBox
             // 
+            this.ImagePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ImagePictureBox.Location = new System.Drawing.Point(140, 51);
             this.ImagePictureBox.Name = "ImagePictureBox";
@@ -387,16 +398,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // WriteToUserButton
-            // 
-            this.WriteToUserButton.Location = new System.Drawing.Point(436, 278);
-            this.WriteToUserButton.Name = "WriteToUserButton";
-            this.WriteToUserButton.Size = new System.Drawing.Size(102, 43);
-            this.WriteToUserButton.TabIndex = 12;
-            this.WriteToUserButton.Text = "Write";
-            this.WriteToUserButton.UseVisualStyleBackColor = true;
-            this.WriteToUserButton.Click += new System.EventHandler(this.WriteToUserButton_Click);
             // 
             // ChatFormUserControl
             // 
