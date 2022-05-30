@@ -407,8 +407,11 @@ namespace NewChat4._0
                 MessagesListBox.Items.Clear();
                 _MessagesList.Clear();
                 _CountWritten = 0;
+                MessageBox.Show("Chat is selected");
+                
                 _NameChat = ChatToolStripComboBox.SelectedItem.ToString();
                 _IdChat = _ChatsKeyValuePairs.ElementAt(ChatToolStripComboBox.SelectedIndex).Key;
+                MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " " + _IdChat.ToString() + " " + ChatToolStripComboBox.SelectedIndex.ToString());
                 byte[] ArrImage = null;
                 LoadImage(ArrImage);
             }
@@ -442,11 +445,16 @@ namespace NewChat4._0
             if (ControlDbClass.ShowIdchat(UsersList, ref _IdChat))
             {
                 //MessageBox.Show("IdChat: " + _IdChat.ToString());
+                MessageBox.Show("IdChat:"+ _IdChat.ToString());
+                MessageBox.Show(string.Join(",", _KeyChats.Select(x => x.ToString()).ToArray()));
+                MessageBox.Show(string.Join(",", _ChatsKeyValuePairs.Keys.Select(x => x.ToString()).ToArray()));
                 if (_ChatsKeyValuePairs.Keys.Contains(_IdChat))
                 {
                     int IndexSelectedChat = _KeyChats.FindIndex(p => p == _IdChat);
+
                     //MessageBox.Show(IndexSelectedChat.ToString());
                     ChatToolStripComboBox.SelectedIndex = IndexSelectedChat;
+                    MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " "  + IndexSelectedChat.ToString());
                 }
             }
             UsersList.Clear();

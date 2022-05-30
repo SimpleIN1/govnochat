@@ -342,7 +342,7 @@ namespace NewChat4._0
                                 "(select id_chat from chat.users_chats where id_user in "+
                                 "(select id from chat.users where login not in ("+GenerateData(UserList)+")))";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
-
+                MessageBox.Show(select);
                 try
                 {
                     IdChat = (int)sqlCommand.ExecuteScalar();

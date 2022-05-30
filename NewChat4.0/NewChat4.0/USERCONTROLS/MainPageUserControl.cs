@@ -13,7 +13,7 @@ namespace NewChat4._0
 {
     public partial class MainPageUserControl : UserControl
     {
-        public static string connection = /*@"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//*/@"Data Source=DESKTOP-CAV5533\SQLEXPRESS;Initial Catalog=Chat;Integrated Security=True";
+        public static string connection = @"Data Source=dbsrv\sql2021;Initial Catalog=chat2.0;Integrated Security=True";//@"Data Source=DESKTOP-CAV5533\SQLEXPRESS;Initial Catalog=Chat;Integrated Security=True";
         public static string NameUser=null;
         public MainPageUserControl(Panel panel)
         {

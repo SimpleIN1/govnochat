@@ -207,11 +207,12 @@
             // 
             // WriteToUserButton
             // 
-            this.WriteToUserButton.Location = new System.Drawing.Point(436, 278);
+            this.WriteToUserButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WriteToUserButton.BackgroundImage")));
+            this.WriteToUserButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.WriteToUserButton.Location = new System.Drawing.Point(595, 272);
             this.WriteToUserButton.Name = "WriteToUserButton";
-            this.WriteToUserButton.Size = new System.Drawing.Size(102, 43);
+            this.WriteToUserButton.Size = new System.Drawing.Size(96, 39);
             this.WriteToUserButton.TabIndex = 12;
-            this.WriteToUserButton.Text = "Write";
             this.WriteToUserButton.UseVisualStyleBackColor = true;
             this.WriteToUserButton.Click += new System.EventHandler(this.WriteToUserButton_Click);
             // 
@@ -219,7 +220,7 @@
             // 
             this.DeleteUserButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteUserButton.BackgroundImage")));
             this.DeleteUserButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteUserButton.Location = new System.Drawing.Point(595, 221);
+            this.DeleteUserButton.Location = new System.Drawing.Point(596, 223);
             this.DeleteUserButton.Name = "DeleteUserButton";
             this.DeleteUserButton.Size = new System.Drawing.Size(97, 43);
             this.DeleteUserButton.TabIndex = 11;
@@ -230,7 +231,7 @@
             // 
             this.ExitButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.BackgroundImage")));
             this.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ExitButton.Location = new System.Drawing.Point(595, 337);
+            this.ExitButton.Location = new System.Drawing.Point(636, 363);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(97, 41);
             this.ExitButton.TabIndex = 10;
@@ -241,7 +242,7 @@
             // 
             this.AddFriendsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddFriendsButton.BackgroundImage")));
             this.AddFriendsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddFriendsButton.Location = new System.Drawing.Point(595, 280);
+            this.AddFriendsButton.Location = new System.Drawing.Point(596, 176);
             this.AddFriendsButton.Name = "AddFriendsButton";
             this.AddFriendsButton.Size = new System.Drawing.Size(97, 41);
             this.AddFriendsButton.TabIndex = 9;
@@ -262,7 +263,7 @@
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(519, 28);
+            this.StatusLabel.Location = new System.Drawing.Point(576, 39);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(49, 13);
             this.StatusLabel.TabIndex = 7;
