@@ -15,6 +15,7 @@ namespace NewChat4._0
     {
         private string _NameUser;
         private int _IdChat=-1;
+        private int _IdChatSelected = -1;
         int CountW = 0;
         private int _CountSecond = 0;
         private Dictionary<int, string> _ChatsKeyValuePairs = new Dictionary<int, string>();
@@ -57,6 +58,7 @@ namespace NewChat4._0
             DeleteUserButton.Visible = false; IntervledShowChats();
             SendButton.Enabled = false;
             //db.UpdateStatusUser(_NameUser, true);
+            IntervledShowChats();
         }
 
         private void IntervledShowChats()
@@ -74,20 +76,32 @@ namespace NewChat4._0
 
         private void LoadMessages()
         {
-            CountW = _CountWritten;
-            if (ControlDbClass.ShowMessages(_IdChat, _MessagesList, ref _CountWritten))
-                while (CountW < _CountWritten)
-                {
-                    MessagesListBox.Items.Add(_MessagesList[CountW++]);
-                    if (CheckMessage)
+            //if (_IdChat == _IdChatSelected)
+            //{
+                CountW = _CountWritten;
+                if (ControlDbClass.ShowMessages(_IdChat, _MessagesList, ref _CountWritten))
+                    while (CountW < _CountWritten)
                     {
-                        CheckMessage = false;
-                        MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
-                    }
+                        MessagesListBox.Items.Add(_MessagesList[CountW++]);
 
-                }
-            else
-                MessageBox.Show("Read is not successfull", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (CheckMessage)
+                        {
+                            CheckMessage = false;
+                            MessagesListBox.SelectedIndex = MessagesListBox.Items.Count - 1;
+                        }
+
+                    }
+                else
+                    MessageBox.Show("Read is not successfull", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Er");
+            //    _IdChat = _IdChatSelected;
+            //    _MessagesList.Clear();
+            //    CountW = 0;
+            //    _CountWritten = 0;
+            //}
         }
 
 
@@ -407,11 +421,13 @@ namespace NewChat4._0
                 MessagesListBox.Items.Clear();
                 _MessagesList.Clear();
                 _CountWritten = 0;
-                MessageBox.Show("Chat is selected");
-                
+                //MessageBox.Show("Chat is selected");
+                //MessageBox.Show(_MessagesList.Count.ToString());
+                //MessageBox.Show(4.ToString());
                 _NameChat = ChatToolStripComboBox.SelectedItem.ToString();
+                //_IdChat = _ChatsKeyValuePairs.ElementAt(ChatToolStripComboBox.SelectedIndex).Key;
                 _IdChat = _ChatsKeyValuePairs.ElementAt(ChatToolStripComboBox.SelectedIndex).Key;
-                MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " " + _IdChat.ToString() + " " + ChatToolStripComboBox.SelectedIndex.ToString());
+                //MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " " + _IdChat.ToString() + " " + ChatToolStripComboBox.SelectedIndex.ToString());
                 byte[] ArrImage = null;
                 LoadImage(ArrImage);
             }
@@ -442,19 +458,22 @@ namespace NewChat4._0
             UsersList.Clear();
             UsersList.Add(_NameUser);
             UsersList.Add(UserNameLabel.Text);
-            if (ControlDbClass.ShowIdchat(UsersList, ref _IdChat))
+            _MessagesList.Clear();
+            _CountWritten = 0;
+            if (ControlDbClass.ShowIdchat(UsersList, ref _IdChatSelected))
             {
                 //MessageBox.Show("IdChat: " + _IdChat.ToString());
-                MessageBox.Show("IdChat:"+ _IdChat.ToString());
-                MessageBox.Show(string.Join(",", _KeyChats.Select(x => x.ToString()).ToArray()));
-                MessageBox.Show(string.Join(",", _ChatsKeyValuePairs.Keys.Select(x => x.ToString()).ToArray()));
-                if (_ChatsKeyValuePairs.Keys.Contains(_IdChat))
+                //MessageBox.Show("IdChat:"+ _IdChat.ToString());
+                //MessageBox.Show(string.Join(",", _KeyChats.Select(x => x.ToString()).ToArray()));
+                //MessageBox.Show(string.Join(",", _ChatsKeyValuePairs.Keys.Select(x => x.ToString()).ToArray()));
+                //MessageBox.Show(2.ToString());
+                if (_ChatsKeyValuePairs.Keys.Contains(_IdChatSelected))
                 {
-                    int IndexSelectedChat = _KeyChats.FindIndex(p => p == _IdChat);
-
+                    int IndexSelectedChat = _KeyChats.FindIndex(p => p ==_IdChatSelected);
+                    //MessageBox.Show(3.ToString());
                     //MessageBox.Show(IndexSelectedChat.ToString());
                     ChatToolStripComboBox.SelectedIndex = IndexSelectedChat;
-                    MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " "  + IndexSelectedChat.ToString());
+                    //MessageBox.Show(_NameUser + " " + UserNameLabel.Text + " "  + IndexSelectedChat.ToString());
                 }
             }
             UsersList.Clear();
@@ -470,7 +489,8 @@ namespace NewChat4._0
             if (CreateChatUserControlDbClass.CreateChat(_NameUser, UsersList, _NameChat, ref error,ref CheckCreateChat))
             {
                 MessageBox.Show("Chat is created", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CheckChatCreate = true;
+                CheckChatCreate = true;IntervledShowChats();
+                //MessageBox.Show(1.ToString());
                 SelectChat(UsersList);
                 
             }
@@ -478,9 +498,10 @@ namespace NewChat4._0
             {
                 if(CheckCreateChat)
                 {
+                    //MessageBox.Show("1.1");
                     SelectChat(UsersList);
                 }
-                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

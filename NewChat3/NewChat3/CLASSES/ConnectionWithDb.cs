@@ -799,15 +799,15 @@ namespace NewChat3
             using (SqlConnection conn = new SqlConnection(_connection))
             {
                 conn.Open();
-<<<<<<< HEAD
+
                 string select = "select login from chat.users where login like '%"+LoginUser+"%'";
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 sqlCommand.Parameters.AddWithValue("userlogin", LoginUser);
-=======
-                string select = "select login,status from chat.users where login like @userlogin";
-                SqlCommand sqlCommand = new SqlCommand(select, conn);
-                sqlCommand.Parameters.AddWithValue("userlogin", "%"+LoginUser+"%");
->>>>>>> 00bf2a38ab13cc78e8c25dddfab3d650227ba6fd
+
+                //string select = "select login,status from chat.users where login like @userlogin";
+                //SqlCommand sqlCommand = new SqlCommand(select, conn);
+                //sqlCommand.Parameters.AddWithValue("userlogin", "%"+LoginUser+"%");
+
                 
                 try
                 {
