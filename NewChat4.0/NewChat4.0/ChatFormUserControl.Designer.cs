@@ -381,6 +381,7 @@
             this.LoginUserSearchTextBox.Name = "LoginUserSearchTextBox";
             this.LoginUserSearchTextBox.Size = new System.Drawing.Size(119, 20);
             this.LoginUserSearchTextBox.TabIndex = 1;
+            this.LoginUserSearchTextBox.TextChanged += new System.EventHandler(this.LoginUserSearchTextBox_TextChanged);
             this.LoginUserSearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginUserSearchTextBox_KeyDown);
             // 
             // AllUserListBox

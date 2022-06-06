@@ -340,8 +340,18 @@ namespace NewChat4._0
                 conn.Open();
                 //string select = "select id from chat.chats where id not in "+
                 //                "(select id_chat from chat.users_chats where id_user in "+
+//<<<<<<< HEAD
                 //                "(select id from chat.users where login not in  ("+GenerateData(UserList)+")))";
-                string select = "";
+                //string select = "";
+//=======
+                //                "(select id from chat.users where login not in ("+GenerateData(UserList)+")))";
+
+                string select = "select id_chat, count(id_user) from chat.users_chats where id_user in" +
+                                "(select id from chat.users where login in (" + GenerateData(UserList) + ")) and id_chat not in" +
+                                "(select id_chat from chat.users_chats where id_user in" +
+                                "(select id from chat.users where login not in ("+GenerateData(UserList)+"))) group by id_chat having count(*) = 2";
+
+//>>>>>>> de17afa98dae69be7bcf2c25d5a5ba9a6d070930
                 SqlCommand sqlCommand = new SqlCommand(select, conn);
                 //MessageBox.Show(select);
                 try
