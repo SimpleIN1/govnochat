@@ -193,7 +193,9 @@ namespace NewChat4._0
             UsersClass users = new UsersClass();
             users.login = NameUser;
 
-            AddFriendsButton.Visible = (_NameUser != NameUser ? true : false);
+            //AddFriendsButton.Visible = (_NameUser == NameUser ? true : false);
+            if (_NameUser == NameUser)
+                AddFriendsButton.Visible = false;
 
             if (ControlDbClass.ShowProfileUser(users))
             {
@@ -227,6 +229,7 @@ namespace NewChat4._0
                 {
                     MessageBox.Show("User is added is successfull");
                     DeleteUserButton.Visible = true;
+                    AddFriendsButton.Visible = false;
                 }
                 else
                     MessageBox.Show("User is have adding yet");
@@ -354,7 +357,7 @@ namespace NewChat4._0
                 LoadInformationProfile(_NameUser);
                 if (_NameUser == UserNameLabel.Text)
                 {
-                    
+                    AddFriendsButton.Visible = false;
                     FillFriendsListBox(_NameUser);
                     CheckClearFriendsListBox(_NameUser);
                 }
