@@ -164,10 +164,16 @@ namespace NewChat4._0
                     FillFriendsListBox(SelectedFriend);
                     CheckClearFriendsListBox(SelectedFriend);
 
-                    if (ControlDbClass.CheckIsFriend(_NameUser,SelectedFriend))
+                    if (ControlDbClass.CheckIsFriend(_NameUser, SelectedFriend))
+                    {
                         DeleteUserButton.Visible = true;
+                        AddFriendsButton.Visible = false;
+                    }
                     else
+                    {
                         DeleteUserButton.Visible = false;
+                        AddFriendsButton.Visible = true;
+                    }
                 }
                 else
                     MessageBox.Show("User is deleted");
@@ -284,7 +290,8 @@ namespace NewChat4._0
             if (ControlDbClass.CheckIsFriend(_NameUser, SelectedFriend))
             {
                 DeleteUserButton.Visible = false;
-                if(ControlDbClass.DeleteFriend(_NameUser, SelectedFriend))
+                AddFriendsButton.Visible = true;
+                if (ControlDbClass.DeleteFriend(_NameUser, SelectedFriend))
                     MessageBox.Show("Friend is delete");
                 else
                     MessageBox.Show("Mistake when delete");
@@ -307,9 +314,15 @@ namespace NewChat4._0
                     CheckClearFriendsListBox(SelectedFriend);
 
                     if (ControlDbClass.CheckIsFriend(_NameUser, SelectedFriend))
+                    {
                         DeleteUserButton.Visible = true;
+                        AddFriendsButton.Visible = false;
+                    }
                     else
+                    {
+                        AddFriendsButton.Visible = true;
                         DeleteUserButton.Visible = false;
+                    }
                 }
                 else
                     MessageBox.Show("User is deleted");
